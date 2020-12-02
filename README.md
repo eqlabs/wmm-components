@@ -6,5 +6,7 @@ There are several ways for adding a simple **Web Monetization** for your website
 
 ## Run development environment
 
-`npm run installGlobalDevDeps`
-`npm run dev`
+```
+npm run installGlobalDevDeps
+npm run dev
+```
