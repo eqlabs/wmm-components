@@ -1,0 +1,20 @@
+{
+  "name": "wmm-components",
+  "version": "0.0.1",
+  "description": "Web Monetization components",
+  "scripts": {
+    "dev": "live-server --open=./src/index.html",
+    "installGlobalDevDeps": "npm install live-server -g"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eqlabs/wmm-components.git"
+  },
+  "keywords": [
+    "web monetization",
+    "web components"
+  ],
+  "bugs": {
+    "url": "https://github.com/eqlabs/wmm-components/issues"
+  }
+}
