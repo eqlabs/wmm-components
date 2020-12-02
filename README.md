@@ -10,3 +10,12 @@ There are several ways for adding a simple **Web Monetization** for your website
 npm run installGlobalDevDeps
 npm run dev
 ```
+
+## Run docs locally
+
+```
+cd docs
+npm run start
+```
+
+Open browser at http://localhost:3000 and update docs by modifying files in /docs/docs etc.
