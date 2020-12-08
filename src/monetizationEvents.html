@@ -3,7 +3,7 @@
   <meta name="monetization" content="$wallet.example.com/alice">
 </head>
 
-<body>
+<body style="background:white">
   <h1>Web Monetization events</h1>
   <p>
     Use this page to test Web Monetization events.
@@ -26,9 +26,9 @@
       document.querySelector('#status').textContent = document.monetization.state
     }
     const elEvents = document.querySelector('#events')
-    function logEvent(obj){
+    function logEvent(text){
       const pre = document.createElement('pre')
-      pre.textContent = JSON.stringify(obj)
+      pre.textContent = text
       elEvents.insertBefore(pre, elEvents.firstChild)
     }
     (function(){
@@ -36,10 +36,11 @@
         return alert("Web Monetization not supported")
       }
       updateStatus();
-      ['monetizationstart', 'monetizationprogress'].forEach((evName) => {
+      ['monetizationstart', 'monetizationprogress', 'monetizationpending', 'monetizationstop'].forEach((evName) => {
         document.monetization.addEventListener(evName, (ev) => {
+          console.log('event: ', evName)
           updateStatus()
-          logEvent(ev.detail)
+          logEvent(evName + ': ' + JSON.stringify(ev.detail))
         })
       })
     })()
