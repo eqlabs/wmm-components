@@ -1,11 +1,11 @@
 module.exports = {
-  title: 'My Site',
+  title: 'Web Monetization components',
   tagline: 'The tagline of my site',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/wm-icon.svg',
   organizationName: 'eqlabs', // Usually your GitHub org/user name.
   projectName: 'wmm-components', // Usually your repo name.
   themeConfig: {
@@ -13,7 +13,7 @@ module.exports = {
       title: 'Web Monetization components',
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        src: 'img/wm-icon.svg',
       },
       items: [
         {
@@ -22,11 +22,11 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
+        // {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/eqlabs/wmm-components',
           label: 'GitHub',
-          position: 'right',
+          position: 'left',
         },
       ],
     },
