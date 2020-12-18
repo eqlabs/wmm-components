@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "Web Monetization components",
   "scripts": {
-    "dev": "live-server --open=./src/index.html",
-    "installGlobalDevDeps": "npm install live-server -g"
+    "dev": "live-server --open=./src/index.html --ignore=node_modules/**,temp/** .",
+    "devInstallGlobalDeps": "npm install live-server -g",
+    "docs": "cd docs; npm run start",
+    "video": "cd src/video; node backend.js",
+    "videoSetup": "cd src/video; npm install"
   },
   "repository": {
     "type": "git",
