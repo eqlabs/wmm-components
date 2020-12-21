@@ -12,6 +12,12 @@ export default {
     You can set up you own server (https://github.com/coilhq/receipt-verifier),
     though this requires connecting to interledger livenet which may turn out to be
     challenging at the moment. */
-  "receiptService": "https://webmonetization.org/api/receipts/"
+  "receiptService": "https://webmonetization.org/api/receipts/",
+
+  // These folders are served publicly by the server
+  "publicFolders": {
+    "wm-utils": "../wm-utils",
+    "resources": "../../resources",
+  }
 
 }

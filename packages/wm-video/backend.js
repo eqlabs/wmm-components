@@ -3,10 +3,15 @@ const app = new Koa()
 import koaRouter from 'koa-router'
 const router = koaRouter()
 import serve from 'koa-static'
+import mount from 'koa-mount'
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 import bodyParser from 'koa-body-parser'
 import path from 'path'
 import fetch from 'node-fetch'
+
+import {test} from 'wm-utils'
+
+console.log(test)
 
 import config  from './config.js'
 
@@ -41,8 +46,14 @@ app
   .use(bodyParser())
   .use(router.routes())
   // .use(router.allowedMethods())
-  .use(serve(path.resolve(__dirname, './client')))
-  .listen(process.env.PORT || 3009)
+  .use(serve(path.resolve(__dirname, './client'))) // root static folder
+
+// static folders from configs
+for (let [folder, folderPath] of Object.entries(config.publicFolders)) {
+  app.use(mount('/'+folder, serve(path.resolve(__dirname, folderPath))))
+}
+
+app.listen(process.env.PORT || 3009)
 
 
 // router.get('/videos/:id', async ctx => {

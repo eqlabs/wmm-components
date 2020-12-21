@@ -1,4 +1,4 @@
-import { addMetaTag, logEvent } from './utils.js'
+import { addMetaTag, logEvent } from './wm-utils/frontend.js'
 
 // Initialize monetization meta tag with payment pointer and receipt service
 addMetaTag("$ilp.uphold.com/4m2d2Xn4EUyk",

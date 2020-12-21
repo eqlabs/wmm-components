@@ -1,0 +1,12 @@
+{
+  "name": "wm-utils",
+  "version": "1.0.0",
+  "description": "Common utils used by different WM packages",
+  "main": "backend.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
