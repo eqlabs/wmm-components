@@ -17,7 +17,9 @@ export default {
   // These folders are served publicly by the server
   "publicFolders": {
     "wm-utils": "../wm-utils",
-    "resources": "../../resources",
-  }
+    // "resources": "../../resources",
+  },
+
+  "videoPath": "../../resources/dinosaur.mp4" // "videoPath": "../../resources/paragliding.mp4"
 
 }
