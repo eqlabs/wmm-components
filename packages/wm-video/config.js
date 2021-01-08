@@ -20,6 +20,12 @@ export default {
     // "resources": "../../resources",
   },
 
-  "videoPath": "../../resources/dinosaur.mp4" // "videoPath": "../../resources/paragliding.mp4"
+  "videoPath": "../../resources/dinosaur.mp4",
 
+  "assetType": "XRP",
+  // Coil sends about 0.03 $ per minute (~ 0.01 XRP),
+  // to keep video service smooth, keep the required amount below this value.
+  "pricePerMinute": 0.1,
+  // if pricePerMB is defined, price is calculated based on file *size* instead of length in *time*
+  // "pricePerMB": 0.212, // 0.01,
 }
