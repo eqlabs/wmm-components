@@ -17,6 +17,7 @@ export default {
   // These folders are served publicly by the server
   "publicFolders": {
     "wm-utils": "../wm-utils",
+    "wm-web-components": "../wm-web-components",
     // "resources": "../../resources",
   },
 

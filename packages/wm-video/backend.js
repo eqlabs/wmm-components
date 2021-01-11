@@ -142,6 +142,7 @@ app
   .use(bodyParser())
   .use(router.routes())
   // .use(router.allowedMethods())
+  .use(serve(path.resolve(__dirname, './config.js'))) // root static folder
   .use(serve(path.resolve(__dirname, './client'))) // root static folder
 
 // static folders from configs
