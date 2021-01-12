@@ -1,24 +1,26 @@
 import Koa from 'koa'
-const app = new Koa()
 import koaRouter from 'koa-router'
-const router = koaRouter()
 import serve from 'koa-static'
 import mount from 'koa-mount'
-const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 import bodyParser from 'koa-body-parser'
 import fs from 'fs'
-import stream from 'stream'
 import path from 'path'
 import fetch from 'node-fetch'
 import videoDuration from "get-video-duration"
 const {getVideoDurationInSeconds} = videoDuration
 import {sleep, deposit, spend, balance} from 'wm-utils'
+import { receiptService, videoPath, publicFolders,
+         pricePerMB, pricePerMinute } from './common/config.js'
 
-// setTimeout(() => {getVideoDurationInSeconds;debugger}, 2000)
+const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
-import config from './config.js'
-const { receiptService, videoPath, publicFolders, pricePerMB } = config
+if (pricePerMB && pricePerMinute)
+  throw Error("Price can be difned only in minutes or in megabytes, set the other one as null.")
+
 const assetScale = 9 // make sure this matches the assetScale used by client and recipe service
+
+const app = new Koa()
+const router = koaRouter()
 
 router.post('/verifyReceipt', async ctx => {
   const {amount, paymentPointer, receipt, requestId, userId} = ctx.request.body
@@ -51,9 +53,15 @@ router.post('/verifyReceipt', async ctx => {
   ctx.body = deposit(userId, serviceAmount / 10**assetScale)
 })
 
+/* From node.js docs:
+  "developers should choose one of the methods of consuming data and should
+  never use multiple methods to consume data from a single stream.
+  Specifically, using a combination of on('data'), on('readable'), pipe(),
+  or async iterators could lead to unintuitive behavior."
+*/
 
 async function pipeVideo(stream, userId, vMeta) {
-  console.log('pipeVideo')
+  console.log('pipeVideo') // TEMP
   while (stream.readableLength) {
     if (spend(userId, pricePerBytes(stream.readableLength, vMeta))) {
       stream.read()
@@ -65,20 +73,13 @@ async function pipeVideo(stream, userId, vMeta) {
   }
 }
 
-/*
-  "developers should choose one of the methods of consuming data and should
-  never use multiple methods to consume data from a single stream.
-  Specifically, using a combination of on('data'), on('readable'), pipe(),
-  or async iterators could lead to unintuitive behavior."
-*/
-
 function pricePerBytes(bytes, {seconds, fileSize}) {
-  if (config.pricePerMB)
-    return bytes * config.pricePerMB / 10**6
-  if (!config.pricePerMinute)
+  if (pricePerMB)
+    return bytes * pricePerMB / 10**6
+  if (!pricePerMinute)
     throw Error("pricePerMinute or pricePerMB required in configs")
 
-  const pricePerSecond = config.pricePerMinute/60,
+  const pricePerSecond = pricePerMinute/60,
         bytesInSecond = fileSize / seconds,
         pricePerByte = pricePerSecond / bytesInSecond
   return pricePerByte * bytes
@@ -141,9 +142,9 @@ router.get('/videoFile', async ctx => {
 app
   .use(bodyParser())
   .use(router.routes())
-  // .use(router.allowedMethods())
-  .use(serve(path.resolve(__dirname, './config.js'))) // root static folder
-  .use(serve(path.resolve(__dirname, './client'))) // root static folder
+  // serve 'client' and 'common' folders to frontend
+  .use(serve(path.resolve(__dirname, './client')))
+  .use(serve(path.resolve(__dirname, './common')))
 
 // static folders from configs
 for (let [folder, folderPath] of Object.entries(publicFolders)) {
