@@ -5,4 +5,5 @@ import {fullPaymentUrl} from '/config.js'
 const wmVideo = document.createElement('wm-video')
 wmVideo.src = `videoFile`
 wmVideo.paymentUrl = fullPaymentUrl
+wmVideo.setAttribute('skipVerification', true)
 document.body.appendChild(wmVideo)

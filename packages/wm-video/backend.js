@@ -17,7 +17,9 @@ const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 if (pricePerMB && pricePerMinute)
   throw Error("Price can be difned only in minutes or in megabytes, set the other one as null.")
 
-const assetScale = 9 // make sure this matches the assetScale used by client and recipe service
+// assetScale can't be verified using receipt service (https://github.com/coilhq/receipt-verifier/issues/27)
+// so it is hard coded and assumed to be 9 (this is used by coil wallet)
+const assetScale = 9
 
 const app = new Koa()
 const router = koaRouter()

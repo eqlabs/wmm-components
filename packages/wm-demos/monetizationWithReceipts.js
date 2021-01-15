@@ -1,7 +1,7 @@
-import { addMetaTag } from '../utils.js'
+import { setPaymentUrl } from '../utils.js'
 
 // Initialize monetization meta tag with payment pointer and receipt service
-addMetaTag("$ilp.uphold.com/4m2d2Xn4EUyk",
+setPaymentUrl("$ilp.uphold.com/4m2d2Xn4EUyk",
           "https://webmonetization.org/api/receipts/")
 
 // Toggle logging

@@ -1,5 +1,5 @@
 import {userId} from '/wm-utils/client/user.js'
-import { addMetaTag, pipeReceiptEventsToBackend } from '/wm-utils/client/monetize.js'
+import { setPaymentUrl, pipeReceiptEventsToBackend } from '/wm-utils/client/monetize.js'
 class WmVideo extends HTMLElement {
   #videoEl
   #shadow
@@ -39,9 +39,11 @@ class WmVideo extends HTMLElement {
     if (!this.paymentUrl)
       return console.error("Add paymentUrl attribute (<wm-video paymentUrl='...'>)")
     // Set payment address and receipt service url
-    addMetaTag(this.paymentUrl) // , receiptService)
+    setPaymentUrl(this.paymentUrl)
     // Pass payment receipts to backend
-    pipeReceiptEventsToBackend(userId)
+    const skipBackendVerification = JSON.parse(this.getAttribute('skipVerification'))
+    if (!skipBackendVerification)
+      pipeReceiptEventsToBackend(userId)
   }
 
   // static get observedAttributes() { return ['src', 'paymentUrl'] }

@@ -2,30 +2,34 @@ import { logEvent } from '/wm-utils/client/index.js'
 
 const getMetaTag = () => document.querySelector("head meta[name=monetization]")
 
-// NOTE: separate receiptService deprecated for now
-export function addMetaTag(paymentUrl, receiptService) {
-  if (getMetaTag()) {
-    return alert("Monetization meta tag already exists, unable to add new.")
+export const setPaymentPointerWithReceiptService = (paymentPointer, receiptService) =>
+  setPaymentUrl(receiptService + encodeURIComponent(paymentPointer))
+
+export function setPaymentUrl(paymentUrl) {
+  let metaTag = getMetaTag()
+  if (metaTag && metaTag.content == paymentUrl) {
+    return
   }
-  var mTag = document.createElement('meta')
-  mTag.name = "monetization"
-  // if (receiptService) {
-  //   paymentPointer = receiptService + encodeURIComponent(paymentPointer)
-  // }
+  if (!metaTag) {
+    var mTag = document.createElement('meta')
+    mTag.name = "monetization"
+    document.head.appendChild(mTag)
+  } else {
+    console.info(`Web monetization address changed: ${paymentUrl}`)
+  }
   mTag.content = paymentUrl
-  document.head.appendChild(mTag)
 }
 
 export function pipeReceiptEventsToBackend(userId) {
   if (!getMetaTag()) {
-    throw Error("addMetaTag (payment address) before piping payment events")
+    throw Error("setPaymentUrl (payment address) before piping payment events")
   }
   if (!userId) {
     throw Error("userId required to identify receipt owner")
   }
   document.monetization.addEventListener('monetizationprogress', async (ev) => {
     if (!ev.detail?.receipt)
-      return console.log('no receipt', ev)
+      return console.log('No receipt fond, skips backend verification')
     ev.detail.userId = userId
     const res = await fetch('/verifyReceipt', {
       method: 'POST',
