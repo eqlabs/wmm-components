@@ -1,5 +1,5 @@
 import {userId} from '/wm-utils/client/user.js'
-import { setPaymentUrl, pipeReceiptEventsToBackend } from '/wm-utils/client/monetize.js'
+import { initMediaMonetization, monetizeEvents } from '/wm-utils/client/monetize.js'
 class WmVideo extends HTMLElement {
   #videoEl
   #shadow
@@ -22,28 +22,31 @@ class WmVideo extends HTMLElement {
   constructor () {
     super()
     this.#shadow = this.attachShadow({ mode: 'open' })
-    this.initVideoEl()
+    this.#initVideoEl()
   }
-  connectedCallback () {
-    console.log('video added to dom')
-    this.initMonetization()
+  connectedCallback () { // element added to dom
+    this.#initMonetization()
   }
-  initVideoEl() {
+  #initVideoEl() {
     const videoEl = this.#videoEl = document.createElement('video')
     videoEl.controls = true
     videoEl.autoplay = true
     videoEl.volume = 0
     this.#shadow.appendChild(videoEl)
   }
-  initMonetization() {
+  #initMonetization() {
     if (!this.paymentUrl)
       return console.error("Add paymentUrl attribute (<wm-video paymentUrl='...'>)")
-    // Set payment address and receipt service url
-    setPaymentUrl(this.paymentUrl)
-    // Pass payment receipts to backend
     const skipBackendVerification = JSON.parse(this.getAttribute('skipVerification'))
-    if (!skipBackendVerification)
-      pipeReceiptEventsToBackend(userId)
+    initMediaMonetization(this, this.paymentUrl, skipBackendVerification)
+  }
+
+  addEventListener(name, action) {
+    if (monetizeEvents.has(name)) {
+      super.addEventListener(name, action)
+    } else {
+      this.#videoEl.addEventListener(name, action)
+    }
   }
 
   // static get observedAttributes() { return ['src', 'paymentUrl'] }
