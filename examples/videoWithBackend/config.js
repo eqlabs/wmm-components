@@ -16,10 +16,10 @@ export const receiptService = "https://webmonetization.org/api/receipts/"
 export const fullPaymentUrl = receiptService + encodeURIComponent(paymentPointer)
 
 // These folders are served publicly by the backend
+const packages = '../../packages/'
 export const publicFolders = {
-  "wm-utils": "../wm-utils",
-  "wm-web-components": "../wm-web-components",
-  // "resources": "../../resources",
+  "wm-utils": packages + 'wm-utils',
+  "wm-web-components": packages + 'wm-web-components',
 }
 
 // TODO figure out how to parse this; now it's read from packages/wmm-utils/backend -folder

@@ -4,7 +4,7 @@ import serve from 'koa-static'
 import mount from 'koa-mount'
 import bodyParser from 'koa-body-parser'
 import path from 'path'
-import * as config from './common/config.js'
+import * as config from './config.js'
 const { videoPath, publicFolders } = config
 import { getVideoMeta, initVideoMeta,
          verifyReceipt,
@@ -29,12 +29,14 @@ router.get('/videoFile', async ctx => {
   ctx.body = stream
 })
 
+// const clientFiles = ['index.js', 'client.js']
+
 app
   .use(bodyParser())
   .use(router.routes())
   // serve 'client' and 'common' folders to frontend
-  .use(serve(path.resolve(__dirname, './client')))
-  .use(serve(path.resolve(__dirname, './common')))
+  .use(serve(path.resolve(__dirname, '.')))
+  // .use(serve(path.resolve(__dirname, './common')))
 
 // static folders from configs
 for (let [folder, folderPath] of Object.entries(publicFolders)) {
