@@ -18,8 +18,8 @@ export const fullPaymentUrl = receiptService + encodeURIComponent(paymentPointer
 // These folders are served publicly by the backend
 const packages = '../../packages/'
 export const publicFolders = {
-  "wm-utils": packages + 'wm-utils',
-  "wm-web-components": packages + 'wm-web-components',
+  "wmm-utils": packages + 'wmm-utils',
+  "wmm-web-components": packages + 'wmm-web-components',
 }
 
 // TODO figure out how to parse this; now it's read from packages/wmm-utils/backend -folder

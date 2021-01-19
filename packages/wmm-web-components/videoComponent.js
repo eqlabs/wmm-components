@@ -1,5 +1,5 @@
-import {userId} from '/wm-utils/client/user.js'
-import { initMediaMonetization, monetizeEvents } from '/wm-utils/client/monetize.js'
+import {userId} from '/wmm-utils/client/user.js'
+import { initMediaMonetization, monetizeEvents } from '/wmm-utils/client/monetize.js'
 class WmVideo extends HTMLElement {
   #videoEl
   #shadow
@@ -36,7 +36,7 @@ class WmVideo extends HTMLElement {
   }
   #initMonetization() {
     if (!this.paymentUrl)
-      return console.error("Add paymentUrl attribute (<wm-video paymentUrl='...'>)")
+      return console.error("Add paymentUrl attribute (<wmm-video paymentUrl='...'>)")
     const skipBackendVerification = JSON.parse(this.getAttribute('skipVerification'))
     initMediaMonetization(this, this.paymentUrl, skipBackendVerification)
   }
@@ -59,4 +59,4 @@ class WmVideo extends HTMLElement {
 
 }
 
-window.customElements.define('wm-video', WmVideo)
+window.customElements.define('wmm-video', WmVideo)

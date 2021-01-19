@@ -6,8 +6,8 @@
     "dev": "live-server --open=./packages --ignore=node_modules/**,temp/** .",
     "devInstallGlobalDeps": "npm install live-server -g",
     "docs": "cd docs; npm run start",
-    "video": "cd packages/wm-video; node backend.js",
-    "videoSetup": "cd packages/wm-video; npm install"
+    "video": "cd packages/wmm-video; node backend.js",
+    "videoSetup": "cd packages/wmm-video; npm install"
   },
   "repository": {
     "type": "git",

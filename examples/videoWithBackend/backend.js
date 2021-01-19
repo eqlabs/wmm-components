@@ -8,7 +8,7 @@ import * as config from './config.js'
 const { videoPath, publicFolders } = config
 import { getVideoMeta, initVideoMeta,
          verifyReceipt,
-         prepareStreamCtx, createStream, pipeVideoIntoStream  } from 'wm-utils'
+         prepareStreamCtx, createStream, pipeVideoIntoStream  } from 'wmm-utils'
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
 initVideoMeta(config)

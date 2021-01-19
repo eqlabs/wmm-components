@@ -1,5 +1,5 @@
 {
-  "name": "wm-utils",
+  "name": "wmm-utils",
   "version": "1.0.0",
   "description": "Common utils used by different WM packages",
   "main": "backend.js",
