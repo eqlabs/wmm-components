@@ -7,13 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "get-video-duration": "^3.0.2",
     "koa": "^2.13.0",
     "koa-body-parser": "^1.1.2",
     "koa-mount": "^4.0.0",
     "koa-router": "^10.0.0",
     "koa-static": "^5.0.0",
-    "node-fetch": "^2.6.1",
     "wm-utils": "file:../wm-utils"
   }
 }

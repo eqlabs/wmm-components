@@ -22,7 +22,6 @@ export function initMediaMonetization(media, paymentUrl, skipBackendVerification
     pipeReceiptEventsToBackend()
 }
 
-
 // NOTE: not used, since currently this is done in config file
 const setPaymentPointerWithReceiptService = (paymentPointer, receiptService) =>
   setPaymentUrl(receiptService + encodeURIComponent(paymentPointer))
@@ -60,8 +59,6 @@ function pipeReceiptEventsToBackend() {
     })
     const result = await res.text(),
           success = !isNaN(Number(result))
-    console.log('result', result)
-    console.log('success', success)
     if (success) {
       media.dispatchEvent(new CustomEvent("monetized", {detail: {accountBalance: parseFloat(result)}}))
     } else {

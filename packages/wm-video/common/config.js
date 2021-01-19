@@ -22,7 +22,8 @@ export const publicFolders = {
   // "resources": "../../resources",
 }
 
-export const videoPath = "../../resources/dinosaur.mp4"
+// TODO figure out how to parse this; now it's read from packages/wmm-utils/backend -folder
+export const videoPath = "../../../resources/dinosaur.mp4"
 
 export const assetType = "XRP"
 
