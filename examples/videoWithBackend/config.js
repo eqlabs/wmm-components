@@ -15,16 +15,6 @@ export const receiptService = "https://webmonetization.org/api/receipts/"
 
 export const fullPaymentUrl = receiptService + encodeURIComponent(paymentPointer)
 
-// These folders are served publicly by the backend
-const packages = '../../packages/'
-export const publicFolders = {
-  "wmm-utils": packages + 'wmm-utils',
-  "wmm-web-components": packages + 'wmm-web-components',
-}
-
-// TODO figure out how to parse this; now it's read from packages/wmm-utils/backend -folder
-export const videoPath = "../../../resources/dinosaur.mp4"
-
 export const assetType = "XRP"
 
 // Coil sends about 0.03 $ per minute (~ 0.01 XRP),
@@ -33,3 +23,13 @@ export const pricePerMinute = 0.1
 // Alternatively the price can be calculated in megabytes
 // (in this case set pricePerMinute as null).
 export const pricePerMB = null // 0.212 // 0.01,
+
+// TODO figure out how to parse this; now it's read from packages/wmm-utils/backend -folder
+export const videoPath = "../../../resources/dinosaur.mp4"
+
+// These folders are served publicly by the backend
+const packages = '../../packages/'
+export const publicFolders = {
+  "wmm-utils": packages + 'wmm-utils',
+  "wmm-web-components": packages + 'wmm-web-components',
+}

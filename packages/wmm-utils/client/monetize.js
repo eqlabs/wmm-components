@@ -6,13 +6,13 @@ export const monetizeEvents = new Set(
   ['monetizationStopped', 'monetized', 'monetizeFailed']
 )
 
-let media // video or audio that is currently being monetized
+let activeMedia // video or audio that is currently being monetized
 
-function updateMedia(newMedia) {
-  if (media && media.paymentUrl !== newMedia.paymentUrl)
-    media.dispatchEvent(new CustomEvent('mediaMonetizationStopped',
-                            {account: {paymentUrl: media.paymentUrl()}}))
-  media = newMedia
+function updateMedia(media) {
+  if (activeMedia && activeMedia.paymentUrl !== media.paymentUrl)
+    activeMedia.dispatchEvent(new CustomEvent('mediaMonetizationStopped',
+                            {account: {paymentUrl: activeMedia.paymentUrl()}}))
+  activeMedia = media
 }
 
 export function initMediaMonetization(media, paymentUrl, skipBackendVerification) {
@@ -20,6 +20,13 @@ export function initMediaMonetization(media, paymentUrl, skipBackendVerification
   setPaymentUrl(paymentUrl)
   if (!skipBackendVerification)
     pipeReceiptEventsToBackend()
+}
+
+export function mediaRemoved(media) {
+  if (media === activeMedia) {
+    document.querySelector("head meta[name='monetization']").remove()
+    activeMedia = null
+  }
 }
 
 // NOTE: not used, since currently this is done in config file
@@ -49,6 +56,7 @@ function pipeReceiptEventsToBackend() {
     throw Error("userId required to identify receipt owner")
   }
   document.monetization.addEventListener('monetizationprogress', async (ev) => {
+    if (!activeMedia) return // media removed from dom
     if (!ev.detail?.receipt)
       return console.log('No receipt fond, skips backend verification')
     ev.detail.userId = userId
@@ -60,9 +68,9 @@ function pipeReceiptEventsToBackend() {
     const result = await res.text(),
           success = !isNaN(Number(result))
     if (success) {
-      media.dispatchEvent(new CustomEvent("monetized", {detail: {accountBalance: parseFloat(result)}}))
+      activeMedia.dispatchEvent(new CustomEvent("monetized", {detail: {accountBalance: parseFloat(result)}}))
     } else {
-      media.dispatchEvent(new CustomEvent("monetizeFailed", {detail: result}))
+      activeMedia.dispatchEvent(new CustomEvent("monetizeFailed", {detail: result}))
     }
   })
 }

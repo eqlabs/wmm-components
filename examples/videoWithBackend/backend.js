@@ -24,12 +24,10 @@ router.get('/videoFile', async ctx => {
   let vMeta = await getVideoMeta(videoPath)
   prepareStreamCtx(ctx, vMeta)
   const stream = createStream(vMeta.fullPath)
-  console.log('pricePerMB', ''+config.pricePerMB)
+  // console.log('pricePerMB', ''+config.pricePerMB)
   pipeVideoIntoStream(vMeta, stream, config, ctx.query.userId)
   ctx.body = stream
 })
-
-// const clientFiles = ['index.js', 'client.js']
 
 app
   .use(bodyParser())

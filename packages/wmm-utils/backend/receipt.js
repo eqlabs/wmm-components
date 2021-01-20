@@ -3,11 +3,11 @@ import {deposit} from '../backend.js'
 
 // assetScale can't be verified using receipt service (https://github.com/coilhq/receipt-verifier/issues/27)
 // so it is hard coded and assumed to be 9 (this is used by coil wallet)
-const assetScale = 9
+const assumedAssetScale = 9
 
 export async function verifyReceipt({amount, paymentPointer, receipt, requestId, userId, assetScale},
                                     {receiptService}) {
-  if (assetScale !== assetScale)
+  if (assetScale !== assumedAssetScale)
     throw Error("unexpected assetScale")
   const spspEndpoint = decodeURIComponent(
     paymentPointer.replace(receiptService,'')

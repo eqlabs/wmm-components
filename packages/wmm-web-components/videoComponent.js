@@ -1,6 +1,14 @@
+/*
+ * Web monetized video element. Usage:
+ * <wmm-video
+ *   src="video file source"
+ *   paymentUrl="Payment pointer URL, can also include receipt service url"
+ *   skipVerification="if true, don't send receipts to backend for verifications">
+ */
+
 import {userId} from '/wmm-utils/client/user.js'
-import { initMediaMonetization, monetizeEvents } from '/wmm-utils/client/monetize.js'
-class WmVideo extends HTMLElement {
+import { initMediaMonetization, monetizeEvents, mediaRemoved } from '/wmm-utils/client/monetize.js'
+class WmmVideo extends HTMLElement {
   #videoEl
   #shadow
 
@@ -24,9 +32,19 @@ class WmVideo extends HTMLElement {
     this.#shadow = this.attachShadow({ mode: 'open' })
     this.#initVideoEl()
   }
+
+  // Native events
   connectedCallback () { // element added to dom
     this.#initMonetization()
+    this.#initCssClasses()
+    this.#setClass('data-pending')
   }
+  disconnectedCallback () {
+    console.log('video removed from dom')
+    mediaRemoved(this)
+  }
+
+  // Instance methods
   #initVideoEl() {
     const videoEl = this.#videoEl = document.createElement('video')
     videoEl.controls = true
@@ -41,6 +59,16 @@ class WmVideo extends HTMLElement {
     initMediaMonetization(this, this.paymentUrl, skipBackendVerification)
   }
 
+  #initCssClasses() {
+    this.addEventListener('progress', ev => this.#setClass('data-ok'))
+    this.addEventListener('stalled', ev => this.#setClass('data-stalled'))
+  }
+  static #wmmClasses = ['data-pending', 'data-ok', 'data-stalled']
+  #setClass(className) {
+    WmmVideo.#wmmClasses.forEach(cn =>
+      this.classList[cn == className ? 'add' : 'remove'](cn))
+  }
+
   addEventListener(name, action) {
     if (monetizeEvents.has(name)) {
       super.addEventListener(name, action)
@@ -49,14 +77,23 @@ class WmVideo extends HTMLElement {
     }
   }
 
+  removeEventListener(name, action) {
+    if (monetizeEvents.has(name)) {
+      super.removeEventListener(name, action)
+    } else {
+      this.#videoEl.removeEventListener(name, action)
+    }
+  }
+
+  // TODO removeEventListener
+  // TODO listen for class changes
+
   // static get observedAttributes() { return ['src', 'paymentUrl'] }
   // attributeChangedCallback (name, oldValue, newValue) {
   //   console.log('video attr changed', name, oldValue, newValue)
   // }
-  // disconnectedCallback () {
-  //   console.log('video removed from dom')
-  // }
+
 
 }
 
-window.customElements.define('wmm-video', WmVideo)
+window.customElements.define('wmm-video', WmmVideo)
