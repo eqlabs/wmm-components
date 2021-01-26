@@ -1,34 +1,29 @@
-module.exports = {
-  someSidebar: {
-    Demos: [
-      'wm-video',
-      {
-        type: 'link',
-        label: 'Web Monetization events',
-        href: 'http://127.0.0.1:8080/src/demos/monetizationEvents.html'
-      },
-      {
-        type: 'link',
-        label: 'Video with payment verification',
-        href: 'http://localhost:3009/'
-      },
-      'styleguide'],
-    Components: ['components', 'mdx'],
-  },
-};
-
-
-/*
-
-{
+const categoriesObj = {
+  "Web Monetized Media": ['intro', 'wallet'],
+  Examples: [
+    'video-example',
+  ],
+  Packages: ['wmm-video'],
+  Misc: [
+    'styleguide', 'components', 'mdx',
+    {
       type: 'link',
-      label: 'Web component demo',
-      href: '/webComponentDemo.html'
-    }
+      label: 'Web Monetization events',
+      href: 'http://127.0.0.1:8080/src/demos/monetizationEvents.html'
+    },
+  ]
+}
 
-{
-      type: 'ref',
-      id: '/webComponentDemo.html'
-    }
+const categories = []
+for (const [key, value] of Object.entries(categoriesObj)) {
+  categories.push({
+    type: 'category',
+    label: key,
+    items: value,
+    collapsed: false
+  })
+}
 
-    */
+module.exports = {
+  someSidebar: categories
+}
