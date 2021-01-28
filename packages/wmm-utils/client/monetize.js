@@ -6,13 +6,23 @@ export const monetizeEvents = new Set(
   ['monetizationStopped', 'monetized', 'monetizeFailed']
 )
 
-let activeMedia // video or audio that is currently being monetized
+/*
+  'activeMedia' is the reference to the component currently being monetized.
+  WM allows only one address to be monetized at a time, so in terms of
+  WMM components, this means that only one component can be monetized at a time.
+*/
+let activeMedia, mProgressAction, mediaOrigin
 
 function updateMedia(media) {
   if (activeMedia && activeMedia.paymentUrl !== media.paymentUrl)
     activeMedia.dispatchEvent(new CustomEvent('mediaMonetizationStopped',
                             {account: {paymentUrl: activeMedia.paymentUrl()}}))
   activeMedia = media
+  try {
+    mediaOrigin = (new URL(media.src)).origin
+  } catch (err) {
+    mediaOrigin = location.origin
+  }
 }
 
 export function initMediaMonetization(media, paymentUrl, skipBackendVerification) {
@@ -48,6 +58,10 @@ function setPaymentUrl(paymentUrl) {
   mTag.content = paymentUrl
 }
 
+// Save resources by not checking every receipt.
+// (backend still receives the correct amount, since recipe service combines all previous recipes)
+const waitBeforeNextRecipe = 600
+
 function pipeReceiptEventsToBackend() {
   if (!getMetaTag()) {
     throw Error("setPaymentUrl (payment address) before piping payment events")
@@ -55,12 +69,20 @@ function pipeReceiptEventsToBackend() {
   if (!userId) {
     throw Error("userId required to identify receipt owner")
   }
-  document.monetization.addEventListener('monetizationprogress', async (ev) => {
+
+  if (mProgressAction)
+    document.monetization.removeEventListener('monetizationprogress', mProgressAction)
+
+  let prevTime = null
+  document.monetization.addEventListener('monetizationprogress',
+                                         mProgressAction = async (ev) => {
+    if (prevTime + waitBeforeNextRecipe > Date.now()) return
+    prevTime = Date.now()
     if (!activeMedia) return // media removed from dom
     if (!ev.detail?.receipt)
       return console.log('No receipt fond, skips backend verification')
     ev.detail.userId = userId
-    const res = await fetch('/verifyReceipt', {
+    const res = await fetch(mediaOrigin + '/verifyReceipt', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(ev.detail)
