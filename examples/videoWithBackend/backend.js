@@ -3,9 +3,10 @@ import koaRouter from 'koa-router'
 import serve from 'koa-static'
 import mount from 'koa-mount'
 import bodyParser from 'koa-body-parser'
+import cors from '@koa/cors'
 import path from 'path'
 import * as config from './config.js'
-const { videoPath, publicFolders } = config
+const { videoPath, allowCORS } = config
 import { getVideoMeta, initVideoMeta,
          verifyReceipt,
          prepareStreamCtx, createStream, pipeVideoIntoStream  } from 'wmm-utils'
@@ -29,16 +30,15 @@ router.get('/videoFile', async ctx => {
   ctx.body = stream
 })
 
+if (allowCORS) app.use(cors())
+
 app
   .use(bodyParser())
   .use(router.routes())
-  // serve 'client' and 'common' folders to frontend
+  // serve root folder for index.html:
   .use(serve(path.resolve(__dirname, '.')))
-  // .use(serve(path.resolve(__dirname, './common')))
+  // static resource are served in relation to main package root, so that docusaurus is able to load them as well:
+  .use(serve(path.resolve(__dirname.replace('/examples/videoWithBackend', ''), '.')))
 
-// static folders from configs
-for (let [folder, folderPath] of Object.entries(publicFolders)) {
-  app.use(mount('/'+folder, serve(path.resolve(__dirname, folderPath))))
-}
 
 app.listen(process.env.PORT || 3009)

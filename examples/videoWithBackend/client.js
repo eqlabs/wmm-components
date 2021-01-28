@@ -1,20 +1,22 @@
-import '/wmm-web-components/videoComponent.js'
-import {fullPaymentUrl} from '/config.js'
-import { logEvent } from '/wmm-utils/client/index.js'
+import '../../packages/wmm-web-components/videoComponent.js'
+import { logEvent } from '../../packages/wmm-utils/client/index.js'
+import {fullPaymentUrl} from './config.js'
 
 const info = document.createElement('div')
 // Add video element to the dom
-const wmVideo = document.createElement('wmm-video')
-wmVideo.src = `videoFile`
-wmVideo.paymentUrl = fullPaymentUrl
-// wmVideo.setAttribute('skipVerification', true)
+const wmmVideo = document.createElement('wmm-video')
+wmmVideo.src = `http://localhost:3009/videoFile`
+wmmVideo.paymentUrl = fullPaymentUrl
+// wmmVideo.setAttribute('skipVerification', true)
 // Log events
-wmVideo.addEventListener('monetized', ({detail}) =>
+wmmVideo.addEventListener('monetized', ({detail}) =>
   logEvent(`Balance: ${detail.accountBalance}`, info))
-wmVideo.addEventListener('monetizeFailed', ({detail}) =>
+wmmVideo.addEventListener('monetizeFailed', ({detail}) =>
   logEvent(`Failed: ${detail}`, info))
-wmVideo.addEventListener('play', ev => console.log('play', ev))
+wmmVideo.addEventListener('play', ev => console.log('play', ev))
 
-
-document.body.appendChild(wmVideo)
-document.body.appendChild(info)
+setTimeout(() => {
+  const container = document.querySelector('#video-container')
+  container.textContent = ''
+  container.appendChild(wmmVideo)
+})

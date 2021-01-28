@@ -4,6 +4,33 @@
 
   <body>
     <h1>Monetized video</h1>
-    <script type="module" src="./client.js"></script>
+    <div id="video-container"></div>
+    <script type="module" src="/examples/videoWithBackend/client.js"></script>
+    <style>
+      wmm-video {
+        display: inline-block;
+        position: relative;
+      }
+      .data-ok:after, .data-stalled:after, .data-pending:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        border-radius: 1em;
+        top: 1em;
+        right: 1em;
+        /* background-color: green; */
+      }
+      wmm-video.data-ok:after {
+        background-color: green;
+      }
+      wmm-video.data-stalled:after {
+        background-color: red;
+      }
+      wmm-video.data-pending:after {
+        background-color: gray;
+      }
+    </style>
   </body>
 </html>
