@@ -2,12 +2,6 @@
 title: Video
 ---
 
-import '../../packages/wmm-web-components/videoComponent.js'
-
-<wmm-video src="../../../resources/dinosaur.mp4"
-           paymentURL="https://webmonetization.org/api/receipts/%24ilp.uphold.com%2F4m2d2Xn4EUyk"
-           backend="http://localhost:3009"></wmm-video>
-
 The easiest way to start monetizing your videos is to copy the ```examples/videoWithBackend``` as your base project. Here we go through some of the components being used, so you can modify them to better suit your application.
 
 ## Startup
@@ -15,6 +9,15 @@ The easiest way to start monetizing your videos is to copy the ```examples/video
 ```
 npm run videoExample
 ```
+
+## Example
+
+<div id="video-container">
+(reload this page after starting the videoExample backend with the command above)
+</div>
+
+import './../../examples/videoWithBackend/client.js'
+
 
 ## Frontend
 

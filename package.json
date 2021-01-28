@@ -3,11 +3,10 @@
   "version": "0.0.1",
   "description": "Web Monetization components",
   "scripts": {
-    "dev": "live-server --open=./packages --ignore=node_modules/**,temp/** .",
-    "devInstallGlobalDeps": "npm install live-server -g",
     "docs": "cd docs; npm run start",
-    "video": "cd packages/wmm-video; node backend.js",
-    "videoSetup": "cd packages/wmm-video; npm install"
+    "videoExample": "cd examples/videoWithBackend; npm install; node backend.js",
+    "dev": "live-server --open=./packages --ignore=node_modules/**,temp/** .",
+    "devInstallGlobalDeps": "npm install live-server -g"
   },
   "repository": {
     "type": "git",

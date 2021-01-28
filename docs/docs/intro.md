@@ -11,13 +11,13 @@ To receive money from the people viewing the website, you need to first set up a
 
 ##  Donation or payment?
 
-A common misunderstanding of Web Monetization is how to actually use it. It can be used both purely as a donation (the content is shown to everyone regardless if they pay or not) or as typical payment (only the people who pay can see any content).
+Web Monetization's purpose can seem somewhat ambiguous when you start using it. It can be used both purely as a donation (the content is shown to everyone regardless if they pay or not) or as a typical payment (only the people who pay can see any content).
 
 Still, using WM purely as a payment is somewhat problematic, since there are no API's for negotiating the price. If you're looking to sell single units of your product it may be more useful to look into the [Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API).
 
 On the otherhand, if you want an efortless way to profit from your content that doesn't disturb your users with recurring payment requests, Web Monetization can be a perfect match.
 
-The recommended way is to provide some content for all users, while providing the full experience only for monetized users. An easy way to do this, is to set up an inital account balance for all new users ("newAccountBalance" in config.js). This allows also non-paying users to consume a chosen amount of content, before they are prompted to set up a wallet to continue the experience.
+The recommended way of using WM, is to provide some content for all users, while revealing the full experience only for monetized users. One easy way to do this, is to set up an inital account balance for all new users ("newAccountBalance" in config.js). This allows also non-paying users to consume a chosen amount of content, before they are prompted to set up a wallet to continue the experience.
 
 ## Currency
 
