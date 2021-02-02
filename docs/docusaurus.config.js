@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Web Monetization components',
-  tagline: 'The tagline of my site',
+  title: 'Web Monetized Multimedia',
+  tagline: 'Monetize your media with ease',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -10,7 +10,7 @@ module.exports = {
   projectName: 'wmm-components', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Web Monetization components',
+      title: 'Web Monetized Multimedia',
       logo: {
         alt: 'My Site Logo',
         src: 'img/wm-icon.svg',
