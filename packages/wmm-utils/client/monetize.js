@@ -13,6 +13,7 @@ export const monetizeEvents = new Set(
 */
 let activeMedia, mProgressAction, mediaOrigin
 
+/** This is a description of updateMedia */
 function updateMedia(media) {
   if (activeMedia && activeMedia.paymentUrl !== media.paymentUrl)
     activeMedia.dispatchEvent(new CustomEvent('mediaMonetizationStopped',

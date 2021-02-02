@@ -1,5 +1,5 @@
-import '../../packages/wmm-web-components/videoComponent.js'
-import { logEvent } from '../../packages/wmm-utils/client/index.js'
+import '/packages/wmm-web-components/videoComponent.js'
+import { logEvent } from '/packages/wmm-utils/client/index.js'
 import {fullPaymentUrl} from './config.js'
 
 const info = document.createElement('div')

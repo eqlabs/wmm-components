@@ -12,10 +12,8 @@ import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-uti
 
 const wmmClasses = ['data-pending', 'data-ok', 'data-stalled']
 
+/** This is a description of WmmVideo Class */
 class WmmVideo extends HTMLElement {
-  // #videoEl
-  // #shadow
-
   get src() { return this.getAttribute('src') }
   set src(url) {
     if (url == this.getAttribute('src')) return
@@ -72,6 +70,11 @@ class WmmVideo extends HTMLElement {
       this.classList[cn == className ? 'add' : 'remove'](cn))
   }
 
+  /**
+   * Event listener for monetization and video events.
+   * @param {string} name - Event name
+   * @param {function} action - The action to execute on event.
+   */
   addEventListener(name, action) {
     if (monetizeEvents.has(name)) {
       super.addEventListener(name, action)

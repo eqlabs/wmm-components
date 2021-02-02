@@ -37,8 +37,8 @@ app
   .use(router.routes())
   // serve root folder for index.html:
   .use(serve(path.resolve(__dirname, '.')))
-  // static resource are served in relation to main package root, so that docusaurus is able to load them as well:
-  .use(serve(path.resolve(__dirname.replace('/examples/videoWithBackend', ''), '.')))
+  // serve packages as static assets:
+  .use(mount('/packages', serve(path.resolve(__dirname + '/../../packages'))))
 
 
 app.listen(process.env.PORT || 3009)
