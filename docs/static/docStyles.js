@@ -25,13 +25,13 @@ function styleIframe() {
   if (!iframe) return console.log('no iframe..')
   // Make room horizontally:
   const column = getParent(iframe, colClass)
-  column.nextSibling?.remove()
-  column.classList?.remove(colClass)
+  column?.nextSibling?.remove()
+  column?.classList?.remove(colClass)
   // Make room vertically:
   getParent(iframe,colContainerClass)?.classList.remove(colContainerClass)
   const article = iframe.parentElement.parentElement
-  article?.nextSibling.remove()
-  article?.nextSibling.remove()
+  article?.nextSibling?.remove()
+  article?.nextSibling?.remove()
   // Resize to container
   getParent(iframe, 'container')?.classList.remove('container', 'padding-vert--lg')
   // debugger
