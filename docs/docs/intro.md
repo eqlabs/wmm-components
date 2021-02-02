@@ -1,9 +1,10 @@
 ---
 id: intro
 title: Introduction
+slug: /
 ---
 
-Web Monetization (WM) is a new technology allowing content creators to easily receive money from their digital goods. This collection of components allows media creators (video, audio and text) to start using WM with a simple installation and configuration file, wihtout the need to dig too deeply in the weeds of a new technology and its constantly evolving implementation details.
+Web Monetization (WM) is a new technology allowing content creators to easily receive money from their digital goods. This collection of components allows media creators (video, audio and text) to start using WM with a simple installation and configuration file, wihtout the need to dig too deeply in the weeds of a new technology and its evolving implementation details.
 
 ## Quickstart
 

@@ -1,5 +1,6 @@
 ---
 title: Video Web Component
+sidebar_label: "wmm-web-components"
 ---
 
 ```<wmm-video>``` creates a video element with Web Monetization payments.

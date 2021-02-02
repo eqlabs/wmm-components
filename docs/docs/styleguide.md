@@ -1,8 +1,7 @@
 ---
 id: styleguide
 title: Style Guide
-sidebar_label: Style Guide
-slug: /
+sidebar_label: Style Guide sdfsdf
 ---
 
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
