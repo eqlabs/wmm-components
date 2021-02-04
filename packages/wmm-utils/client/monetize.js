@@ -26,9 +26,17 @@ function updateMedia(media) {
   }
 }
 
-export function initMediaMonetization(media, paymentUrl, skipBackendVerification) {
+/**
+ *
+ * @param {object} media WmmAudio or WmmVideo instance
+ */
+
+export function initMediaMonetization(media) {
+  if (!media.paymentUrl)
+      return console.error("Add paymentUrl attribute (<wmm-video paymentUrl='...'>)")
+  const skipBackendVerification = JSON.parse(media.getAttribute('skipVerification'))
   updateMedia(media)
-  setPaymentUrl(paymentUrl)
+  setPaymentUrl(media.paymentUrl)
   if (!skipBackendVerification)
     pipeReceiptEventsToBackend()
 }
