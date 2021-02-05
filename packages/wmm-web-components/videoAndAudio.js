@@ -1,24 +1,34 @@
 import { userId } from '../wmm-utils/client/user.js'
 
+/**
+ * @param {string} type - 'video' or 'audio'
+ */
+export function initMedia(wmm, type) {
+  wmm.media = document.createElement(type)
+  wmm.media.controls = true
+  wmm.media.autoplay = true
+  wmm.shadowRoot.appendChild(wmm.media)
+}
+
+export function initCssClasses(wmm) {
+  wmm.addEventListener('progress', ev => setClass(wmm, 'data-ok'))
+  wmm.addEventListener('stalled', ev => setClass(wmm, 'data-stalled'))
+}
+
 const wmmClasses = ['data-pending', 'data-ok', 'data-stalled']
 
-export function initCssClasses(element) {
-  element.addEventListener('progress', ev => setClass(element, 'data-ok'))
-  element.addEventListener('stalled', ev => setClass(element, 'data-stalled'))
-}
-
-export function setClass(element, className) {
+export function setClass(wmm, className) {
   wmmClasses.forEach(cn =>
-    element.classList[cn == className ? 'add' : 'remove'](cn))
+    wmm.classList[cn == className ? 'add' : 'remove'](cn))
 }
 
-export function setUrl(element, url) {
-  if (url == element.getAttribute('src')) return
+export function setUrl(wmm, url) {
+  if (url == wmm.getAttribute('src')) return
   // add userId as url parameter
   url = new URL(url, location.origin)
   if (!url.searchParams.has('userId'))
     url.searchParams.set('userId', userId)
   // start loading video file
-  element.setAttribute('src', url)
-  element.videoEl.src = url
+  wmm.setAttribute('src', url)
+  wmm.media.src = url
 }

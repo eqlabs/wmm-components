@@ -2,25 +2,18 @@ import fs from 'fs'
 import {spend, balance} from './accounts.js'
 import {sleep} from '../backend.js'
 
-export function prepareStreamCtx(ctx, meta) {
-  ctx.set('Content-Length', meta.fileSize)
-  ctx.set('Content-Type', `video/${meta.type}`)
-  ctx.socket.setTimeout(10*60*1000) // make video socket wait for 10 minutes before breaking (when waiting for payments)
-}
-
 export function createStream(fromPath) {
   return fs.createReadStream(fromPath, {
     highWaterMark: 64 * 1024 // default 64 * 1024
   })
 }
 
-export function pipeVideoIntoStream(meta, stream, config, userId) {
+export function pipeMediaIntoStream(meta, stream, config, userId) {
   stream.on('end', () => {
     console.log('stream ended')
   })
-
   stream.on('readable', () => {
-    pipeVideo(meta, stream, config, userId)
+    pipeStream(meta, stream, config, userId)
   })
 }
 
@@ -31,9 +24,9 @@ export function pipeVideoIntoStream(meta, stream, config, userId) {
   or async iterators could lead to unintuitive behavior."
 */
 
-async function pipeVideo(meta, stream, config, userId) {
+async function pipeStream(meta, stream, config, userId) {
   validateConfig(config)
-  console.log('pipeVideo') // TEMP
+  console.log('pipeStream') // TEMP
   while (stream.readableLength) {
     if (spend(userId, pricePerBytes(stream.readableLength, meta, config))) {
       stream.read()

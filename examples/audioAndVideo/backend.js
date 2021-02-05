@@ -6,13 +6,13 @@ import bodyParser from 'koa-body-parser'
 import cors from '@koa/cors'
 import path from 'path'
 import * as config from './config.js'
-const { videoPath, allowCORS } = config
-import { getVideoMeta, initVideoMeta,
+const { resourcesPath, allowCORS } = config
+import { initMeta, getMeta,
          verifyReceipt,
-         prepareStreamCtx, createStream, pipeVideoIntoStream  } from 'wmm-utils'
+         prepareStreamCtx, createStream, pipeMediaIntoStream  } from 'wmm-utils'
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
-initVideoMeta(config)
+initMeta(path.resolve(__dirname, config.resourcesPath) + '/')
 
 const app = new Koa()
 const router = koaRouter()
@@ -21,12 +21,12 @@ router.post('/verifyReceipt', async ctx => {
   ctx.body = await verifyReceipt(ctx.request.body, config)
 })
 
-router.get('/videoFile', async ctx => {
-  let vMeta = await getVideoMeta(videoPath)
-  prepareStreamCtx(ctx, vMeta)
-  const stream = createStream(vMeta.fullPath)
+router.get('/media/:file', async ctx => {
+  let mediaMeta = await getMeta(ctx.params.file)
+  prepareStreamCtx(ctx, mediaMeta)
+  const stream = createStream(mediaMeta.fullPath)
   // console.log('pricePerMB', ''+config.pricePerMB)
-  pipeVideoIntoStream(vMeta, stream, config, ctx.query.userId)
+  pipeMediaIntoStream(mediaMeta, stream, config, ctx.query.userId)
   ctx.body = stream
 })
 

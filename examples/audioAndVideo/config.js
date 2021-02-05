@@ -27,14 +27,14 @@ export const newAccountBalance = 0
 
 // Coil sends about 0.03 $ per minute (~ 0.01 XRP),
 // to keep video service smooth, keep the required amount below this value.
-export const pricePerMinute = 0.00005 // 0.1
+export const pricePerMinute = 0.0000001 // 0.1
 
 // Alternatively the price can be calculated in megabytes
 // (in this case set pricePerMinute as null).
 export const pricePerMB = null // 0.212 // 0.01,
 
 // TODO figure out how to parse this; now it's read from packages/wmm-utils/backend -folder
-export const videoPath = "../../../resources/dinosaur.mp4"
+export const resourcesPath = "./../../resources/" //"../../../resources/dinosaur.mp4"
 
 // If you are serving UI assets from different domain, allow CORS requests
 export const allowCORS = true

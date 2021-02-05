@@ -6,9 +6,8 @@
  *   skipVerification="if true, don't send receipts to backend for verifications">
  */
 
-
 import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-utils/client/monetize.js'
-import { setClass, initCssClasses, setUrl } from './videoAndAudio.js'
+import { initMedia, setClass, initCssClasses, setUrl } from './videoAndAudio.js'
 
 /** This is a description of WmmVideo Class */
 class WmmVideo extends HTMLElement {
@@ -20,29 +19,23 @@ class WmmVideo extends HTMLElement {
 
   constructor () {
     super()
-    this.shadow = this.attachShadow({ mode: 'open' })
-    this.initVideoEl()
+    this.attachShadow({ mode: 'open' })
+    initMedia(this, 'video')
   }
 
-  // Native events
+  // Events
+
   connectedCallback () { // element added to dom
     initMediaMonetization(this)
     initCssClasses(this)
     setClass(this, 'data-pending')
   }
-  disconnectedCallback () {
-    console.log('video removed from dom')
+  disconnectedCallback () { // element removed from dom
     mediaRemoved(this)
   }
 
   // Instance methods
-  initVideoEl() {
-    const videoEl = this.videoEl = document.createElement('video')
-    videoEl.controls = true
-    videoEl.autoplay = true
-    videoEl.volume = 0 // TEMP
-    this.shadow.appendChild(videoEl)
-  }
+
   /**
    * Event listener for monetization and video events.
    * @param {string} name - Event name
@@ -52,7 +45,7 @@ class WmmVideo extends HTMLElement {
     if (monetizeEvents.has(name)) {
       super.addEventListener(name, action)
     } else {
-      this.videoEl.addEventListener(name, action)
+      this.media.addEventListener(name, action)
     }
   }
 
@@ -60,7 +53,7 @@ class WmmVideo extends HTMLElement {
     if (monetizeEvents.has(name)) {
       super.removeEventListener(name, action)
     } else {
-      this.videoEl.removeEventListener(name, action)
+      this.media.removeEventListener(name, action)
     }
   }
 

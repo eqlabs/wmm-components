@@ -1,15 +1,37 @@
+import '/packages/wmm-web-components/audioComponent.js'
 import '/packages/wmm-web-components/videoComponent.js'
 import { logEvent } from '/packages/wmm-utils/client/index.js'
 import {fullPaymentUrl} from './config.js'
 
 const info = document.querySelector('#logs')
 
-// Add video element to the dom
-const wmmVideo = document.createElement('wmm-video')
-wmmVideo.src = `http://localhost:3009/videoFile`
-wmmVideo.paymentUrl = fullPaymentUrl
+export function showMedia(file) {
+  const type = file.split('.')[1]
+  // Add video element to the dom
+  const wmm = document.createElement('wmm-' + (type == 'mp3' ? 'audio' : 'video'))
+  wmm.src = `http://localhost:3009/media/` + file
+  wmm.paymentUrl = fullPaymentUrl
 
-const videoEvents = {
+  addStylesToMedia(wmm)
+  bindEvents(wmm)
+
+  // Use setTimeout to work well with docusaurus
+  setTimeout(() => {
+    const container = document.querySelector('#media-container')
+    container.textContent = ''
+    container.appendChild(wmm)
+  })
+}
+
+function addStylesToMedia(wmm) {
+  const style = document.createElement('style')
+  style.innerHTML = `
+    audio, video { outline: none; }
+  `
+  wmm.shadowRoot.appendChild(style)
+}
+
+const mediaEvents = {
   "monetized": ({detail}) =>
     logEvent(`Balance: ${detail.accountBalance}`, info),
   "monetizeFailed": ({detail}) =>
@@ -39,13 +61,8 @@ const videoEvents = {
   }
 }
 
-for (let [evName, action] of Object.entries(videoEvents)) {
-  wmmVideo.addEventListener(evName, action)
+function bindEvents(wmm) {
+  for (let [evName, action] of Object.entries(mediaEvents)) {
+    wmm.addEventListener(evName, action)
+  }
 }
-
-// Use setTimeout to work well with docusaurus
-setTimeout(() => {
-  const container = document.querySelector('#video-container')
-  container.textContent = ''
-  container.appendChild(wmmVideo)
-})

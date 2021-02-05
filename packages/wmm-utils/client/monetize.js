@@ -14,13 +14,13 @@ export const monetizeEvents = new Set(
 let activeMedia, mProgressAction, mediaOrigin
 
 /** This is a description of updateMedia */
-function updateMedia(media) {
-  if (activeMedia && activeMedia.paymentUrl !== media.paymentUrl)
+function updateMedia(wmm) {
+  if (activeMedia && activeMedia.paymentUrl !== wmm.paymentUrl)
     activeMedia.dispatchEvent(new CustomEvent('mediaMonetizationStopped',
                             {account: {paymentUrl: activeMedia.paymentUrl()}}))
-  activeMedia = media
+  activeMedia = wmm
   try {
-    mediaOrigin = (new URL(media.src)).origin
+    mediaOrigin = (new URL(wmm.src)).origin
   } catch (err) {
     mediaOrigin = location.origin
   }
@@ -28,21 +28,21 @@ function updateMedia(media) {
 
 /**
  *
- * @param {object} media WmmAudio or WmmVideo instance
+ * @param {object} wmm WmmAudio or WmmVideo instance
  */
 
-export function initMediaMonetization(media) {
-  if (!media.paymentUrl)
+export function initMediaMonetization(wmm) {
+  if (!wmm.paymentUrl)
       return console.error("Add paymentUrl attribute (<wmm-video paymentUrl='...'>)")
-  const skipBackendVerification = JSON.parse(media.getAttribute('skipVerification'))
-  updateMedia(media)
-  setPaymentUrl(media.paymentUrl)
+  const skipBackendVerification = JSON.parse(wmm.getAttribute('skipVerification'))
+  updateMedia(wmm)
+  setPaymentUrl(wmm.paymentUrl)
   if (!skipBackendVerification)
     pipeReceiptEventsToBackend()
 }
 
-export function mediaRemoved(media) {
-  if (media === activeMedia) {
+export function mediaRemoved(wmm) {
+  if (wmm === activeMedia) {
     document.querySelector("head meta[name='monetization']").remove()
     activeMedia = null
   }

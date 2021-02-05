@@ -8,7 +8,7 @@
 
 
 import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-utils/client/monetize.js'
-import { setClass, initCssClasses, setUrl } from './videoAndAudio.js'
+import { initMedia, setClass, initCssClasses, setUrl } from './videoAndAudio.js'
 
 /** This is a description of WmmAudio Class */
 class WmmAudio extends HTMLElement {
@@ -20,8 +20,8 @@ class WmmAudio extends HTMLElement {
 
   constructor () {
     super()
-    this.shadow = this.attachShadow({ mode: 'open' })
-    this.initAudioEl()
+    this.attachShadow({ mode: 'open' })
+    initMedia(this, 'audio')
   }
 
   // Native events
@@ -35,14 +35,6 @@ class WmmAudio extends HTMLElement {
     mediaRemoved(this)
   }
 
-  // Instance methods
-  initAudioEl() {
-    const audioEl = this.audioEl = document.createElement('audio')
-    audioEl.controls = true
-    audioEl.autoplay = true
-    audioEl.volume = 0 // TEMP
-    this.shadow.appendChild(audioEl)
-  }
   /**
    * Event listener for monetization and audio events.
    * @param {string} name - Event name
@@ -52,7 +44,7 @@ class WmmAudio extends HTMLElement {
     if (monetizeEvents.has(name)) {
       super.addEventListener(name, action)
     } else {
-      this.audioEl.addEventListener(name, action)
+      this.media.addEventListener(name, action)
     }
   }
 
@@ -60,7 +52,7 @@ class WmmAudio extends HTMLElement {
     if (monetizeEvents.has(name)) {
       super.removeEventListener(name, action)
     } else {
-      this.audioEl.removeEventListener(name, action)
+      this.media.removeEventListener(name, action)
     }
   }
 }

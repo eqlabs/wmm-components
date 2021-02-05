@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+
+  <body>
+    <h1>Monetized media</h1>
+    <div id="media-links">
+      <a href="#">dinosaur.mp4</a>
+      <a href="#">webmonetization.mp3</a>
+    </div>
+    <div id="media-container"></div>
+    <p>Monetization backend logs:</p>
+    <div id="logs"></div>
+    <!--script type="module" src=></script-->
+    <script type="module">
+      import {showMedia} from "/client.js"
+      document.querySelectorAll('#media-links a').forEach((el) => {
+        el.addEventListener('click', () => showMedia(el.textContent))
+      })
+    </script>
+    <style>
+      body {
+        font-family: arial;
+      }
+      #media-container {
+        margin: 1em 0;
+      }
+      wmm-video, wmm-audio {
+        display: inline-block;
+        position: relative;
+      }
+      .data-ok:after, .data-stalled:after, .data-pending:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        border-radius: 1em;
+        top: 1em;
+        right: 1em;
+      }
+      wmm-video.data-ok:after      { background-color: green; }
+      wmm-video.data-stalled:after { background-color: red; }
+      wmm-video.data-pending:after { background-color: gray; }
+      #logs {
+        overflow-y: auto;
+        height: 4em;
+        width: 20em;
+        background: rgba(0,0,0,0.2);
+        padding: 0 1em;
+        box-sizing: border-box;
+      }
+    </style>
+  </body>
+</html>
