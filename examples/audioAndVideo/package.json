@@ -3,7 +3,8 @@
   "main": "backend.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --inspect backend.js -w . -w ../../packages/wmm-utils",
+    "start": "node backend.js",
+    "dev": "nodemon --inspect -w . -w ../../packages/wmm-utils backend.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

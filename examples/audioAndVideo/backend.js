@@ -6,13 +6,13 @@ import bodyParser from 'koa-body-parser'
 import cors from '@koa/cors'
 import path from 'path'
 import * as config from './config.js'
-const { resourcesPath, allowCORS } = config
+const { mediaPath, allowCORS } = config
 import { initMeta, getMeta,
          verifyReceipt,
          prepareStreamCtx, createStream, pipeMediaIntoStream  } from 'wmm-utils'
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
-initMeta(path.resolve(__dirname, config.resourcesPath) + '/')
+initMeta(path.resolve(__dirname, mediaPath) + '/')
 
 const app = new Koa()
 const router = koaRouter()

@@ -5,8 +5,8 @@
 import {runIframeStyles} from "./../static/docStyles.js"
 
 <!--
-import {DynamicImport} from './utils'
-<DynamicImport url="./../static/docStyles.js"></DynamicImport>
+import {MediaImport} from './utils'
+<MediaImport url="./../static/docStyles.js"></MediaImport>
 
 -->
 

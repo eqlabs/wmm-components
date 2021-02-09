@@ -5,6 +5,7 @@ export function formattedAmout({amount, assetScale}) {
 }
 
 export function logEvent(text, target, append){
+  if (!target) return
   const pre = document.createElement('pre')
   pre.textContent = text
   if (append)

@@ -22,6 +22,7 @@ export function showMedia(file) {
     container.appendChild(wmm)
   })
 }
+window.showMedia = showMedia // to access from docs <script> import
 
 function addStylesToMedia(wmm) {
   const style = document.createElement('style')

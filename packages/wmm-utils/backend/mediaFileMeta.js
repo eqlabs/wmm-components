@@ -18,16 +18,16 @@ export async function getMeta(fileName) {
   return fileMeta.get(fileName)
 }
 
-export const initMeta = resourcesPath =>
-  metaRead = readMeta(resourcesPath)
+export const initMeta = mediaPath =>
+  metaRead = readMeta(mediaPath)
 
 // TODO: read all videos in given folder - now just 'videoPath'
-async function readMeta(resourcesPath) {
-  console.log('resourcesPath', resourcesPath)
-  const files = await fs.promises.readdir(resourcesPath)
+async function readMeta(mediaPath) {
+  console.log('mediaPath', mediaPath)
+  const files = await fs.promises.readdir(mediaPath)
   console.log('dir', files)
   const allRead = files.map(async function(file) {
-    const fullMediaPath = resourcesPath + file
+    const fullMediaPath = mediaPath + file
     const stats = await fs.promises.stat(fullMediaPath)
     const seconds = await getVideoDurationInSeconds(fullMediaPath)
     console.log(file + ' duration in seconds', seconds)

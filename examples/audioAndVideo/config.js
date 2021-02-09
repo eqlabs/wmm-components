@@ -34,7 +34,7 @@ export const pricePerMinute = 0.0000001 // 0.1
 export const pricePerMB = null // 0.212 // 0.01,
 
 // TODO figure out how to parse this; now it's read from packages/wmm-utils/backend -folder
-export const resourcesPath = "./../../resources/" //"../../../resources/dinosaur.mp4"
+export const mediaPath = "./media/" //"../../../resources/dinosaur.mp4"
 
 // If you are serving UI assets from different domain, allow CORS requests
 export const allowCORS = true

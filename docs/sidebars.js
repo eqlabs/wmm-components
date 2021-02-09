@@ -1,7 +1,7 @@
 const categoriesObj = {
   "Web Monetized Media": ['intro', 'wallet'],
   Examples: [
-    'video-example',
+    'examples-video', 'examples-audio', 'examples-streaming'
   ],
   'wmm-web-components': ['wmm-video', 'wmmvideo-html', 'wmmvideo-iframe', 'wmmvideo-jsdoc2md'],
   Misc: [
