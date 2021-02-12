@@ -1,7 +1,10 @@
+/** Utils for <wmm-video> and <wmm-audio> components. */
+
 import { userId } from '../wmm-utils/client/user.js'
 
 /**
- * @param {string} type - 'video' or 'audio'
+ * @param {object} wmm - wmm-video or wmm-audio component.
+ * @param {string} type - 'video' or 'audio'.
  */
 export function initMedia(wmm, type) {
   wmm.media = document.createElement(type)
@@ -10,6 +13,10 @@ export function initMedia(wmm, type) {
   wmm.shadowRoot.appendChild(wmm.media)
 }
 
+/**
+ * Init CSS of <wmm-video> or <wmm-audio> component.
+ * @param {object} wmm - 'video' or 'audio'
+ */
 export function initCssClasses(wmm) {
   wmm.addEventListener('progress', ev => setClass(wmm, 'data-ok'))
   wmm.addEventListener('stalled', ev => setClass(wmm, 'data-stalled'))

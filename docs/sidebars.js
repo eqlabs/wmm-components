@@ -3,7 +3,7 @@ const categoriesObj = {
   Examples: [
     'examples-video', 'examples-audio', 'examples-streaming'
   ],
-  'wmm-web-components': ['wmm-video', 'wmmvideo-html', 'wmmvideo-iframe', 'wmmvideo-jsdoc2md'],
+  'wmm-web-components': ['WmmAudio', 'WmmVideo'],
   Misc: [
     'styleguide', 'components', 'mdx',
     {

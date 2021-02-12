@@ -1,0 +1,476 @@
+/* @font-face {
+  font-family: 'Open Sans';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/OpenSans-Regular-webfont.eot');
+  src:
+      local('Open Sans'),
+      local('OpenSans'),
+      url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
+      url('../fonts/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans Light';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/OpenSans-Light-webfont.eot');
+  src:
+      local('Open Sans Light'),
+      local('OpenSans Light'),
+      url('../fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/OpenSans-Light-webfont.woff') format('woff'),
+      url('../fonts/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
+} */
+
+/* html
+{
+  overflow: auto;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+body
+{
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  color: #4d4e53;
+  background-color: white;
+} */
+
+#main {
+  top: -6em;
+  position: relative;
+  background: white;
+}
+
+#main a, #main a:visited, #main a:active {
+  color: #0095dd;
+  text-decoration: none;
+}
+
+#main a:hover {
+  text-decoration: underline;
+}
+
+#main header
+{
+  display: block;
+  padding: 0px 4px;
+}
+
+#main tt, #main code, #main kbd, #main samp {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+}
+
+#main .class-description {
+  font-size: 130%;
+  line-height: 140%;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+#main .class-description:empty {
+  margin: 0;
+}
+
+#main #main {
+  float: left;
+  width: 70%;
+}
+
+#main article dl {
+  margin-bottom: 40px;
+}
+
+#main article img {
+max-width: 100%;
+}
+
+#main section
+{
+  display: block;
+  background-color: #fff;
+  padding: 12px 24px 0 0;
+  /* border-bottom: 1px solid #ccc; */
+  margin-right: 30px;
+}
+
+#main .variation {
+  display: none;
+}
+
+#main .signature-attributes {
+  font-size: 60%;
+  color: #aaa;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+#main nav
+{
+  display: block;
+  float: right;
+  margin-top: 28px;
+  width: 30%;
+  box-sizing: border-box;
+  border-left: 1px solid #ccc;
+  padding-left: 16px;
+}
+
+#main nav ul {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
+  font-size: 100%;
+  line-height: 17px;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+#main nav ul a, #main nav ul a:visited, #main nav ul a:active {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  line-height: 18px;
+  color: #4D4E53;
+}
+
+#main nav h3 {
+  margin-top: 12px;
+}
+
+#main nav li {
+  margin-top: 6px;
+}
+
+#main footer {
+  display: block;
+  padding: 6px;
+  margin-top: 12px;
+  font-style: italic;
+  font-size: 90%;
+}
+
+#main h1, #main h2, #main h3, #main h4 {
+  font-weight: 200;
+  margin: 0;
+}
+
+#main h1
+{
+  font-family: 'Open Sans Light', sans-serif;
+  font-size: 48px;
+  letter-spacing: -2px;
+  margin: 12px 24px 20px 0;
+}
+
+#main h2, #main h3.subsection-title
+{
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+#main h3
+{
+  font-size: 24px;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+#main h4
+{
+  font-size: 18px;
+  letter-spacing: -0.33px;
+  margin-bottom: 12px;
+  color: #4d4e53;
+}
+
+#main h5, #main .container-overview .subsection-title
+{
+  font-size: 120%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 8px 0 3px 0;
+}
+
+#main h6
+{
+  font-size: 100%;
+  letter-spacing: -0.01em;
+  margin: 6px 0 3px 0;
+  font-style: italic;
+}
+
+#main table
+{
+  border-spacing: 0;
+  border: 0;
+  border-collapse: collapse;
+}
+
+#main td, #main th
+{
+  border: 1px solid #ddd;
+  margin: 0px;
+  text-align: left;
+  vertical-align: top;
+  padding: 4px 6px;
+  display: table-cell;
+}
+
+#main thead tr
+{
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+#main th { border-right: 1px solid #aaa; }
+#main tr > th:last-child { border-right: 1px solid #ddd; }
+
+#main .ancestors, #main .attribs { color: #999; }
+#main .ancestors a, #main .attribs a
+{
+  color: #999 !important;
+  text-decoration: none;
+}
+
+#main .clear
+{
+  clear: both;
+}
+
+#main .important
+{
+  font-weight: bold;
+  color: #950B02;
+}
+
+#main .yes-def {
+  text-indent: -1000px;
+}
+
+#main .type-signature {
+  color: #aaa;
+}
+
+#main .name, #main .signature {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+}
+
+#main .details { margin-top: 14px; border-left: 2px solid #DDD; }
+#main .details dt { width: 120px; float: left; padding-left: 10px;  padding-top: 6px; }
+#main .details dd { margin-left: 70px; }
+#main .details ul { margin: 0; }
+#main .details ul { list-style-type: none; }
+#main .details li { margin-left: 30px; padding-top: 6px; }
+#main .details pre.prettyprint { margin: 0 }
+#main .details .object-value { padding-top: 0; }
+
+#main .description {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+#main .code-caption
+{
+  font-style: italic;
+  font-size: 107%;
+  margin: 0;
+}
+
+#main .source
+{
+  border: 1px solid #ddd;
+  width: 80%;
+  overflow: auto;
+}
+
+#main .prettyprint.source {
+  width: inherit;
+}
+
+#main .source code
+{
+  font-size: 100%;
+  line-height: 18px;
+  display: block;
+  padding: 4px 12px;
+  margin: 0;
+  background-color: #fff;
+  color: #4D4E53;
+}
+
+#main .prettyprint code span.line
+{
+display: inline-block;
+}
+
+#main .prettyprint.linenums
+{
+padding-left: 70px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+#main .prettyprint.linenums ol
+{
+padding-left: 0;
+}
+
+#main .prettyprint.linenums li
+{
+border-left: 3px #ddd solid;
+}
+
+#main .prettyprint.linenums li.selected,
+.prettyprint.linenums li.selected *
+{
+background-color: lightyellow;
+}
+
+#main .prettyprint.linenums li *
+{
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+user-select: text;
+}
+
+#main .params .name, .props .name, .name code {
+  color: #4D4E53;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 100%;
+}
+
+#main .params td.description > p:first-child,
+.props td.description > p:first-child
+{
+  margin-top: 0;
+  padding-top: 0;
+}
+
+#main .params td.description > p:last-child,
+.props td.description > p:last-child
+{
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#main .disabled {
+  color: #454545;
+}
+
+/* JSDoc prettify.js theme */
+
+/* plain text */
+.pln {
+  color: #000000;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* string content */
+.str {
+  color: #006400;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* a keyword */
+.kwd {
+  color: #000000;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* a comment */
+.com {
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* a type name */
+.typ {
+  color: #000000;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* a literal value */
+.lit {
+  color: #006400;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* punctuation */
+.pun {
+  color: #000000;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* lisp open bracket */
+.opn {
+  color: #000000;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* lisp close bracket */
+.clo {
+  color: #000000;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* a markup tag name */
+.tag {
+  color: #006400;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* a markup attribute name */
+.atn {
+  color: #006400;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* a markup attribute value */
+.atv {
+  color: #006400;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* a declaration */
+.dec {
+  color: #000000;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* a variable name */
+.var {
+  color: #000000;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* a function name */
+.fun {
+  color: #000000;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0;
+}

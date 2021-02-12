@@ -8,7 +8,7 @@ Web Monetization (WM) is a new technology allowing content creators to easily re
 
 ## Quickstart
 
-To receive money from the people viewing the website, you need to first set up a [wallet](/docs/wallet). After that simply follow the instructions based on the type of content you want to show you your website: [video](/docs/video-example), [audio](/docs/audio-example) or [text](/docs/text-example).
+To receive money from the people viewing the website, you need to first set up a [wallet](/docs/wallet). After that simply follow the instructions based on the type of content you want to show you your website: [video](/docs/examples-video), [audio](/docs/examples-audio) or [text](/docs/examples-text).
 
 ##  Donation or payment?
 

@@ -7,7 +7,7 @@
     "streamExample": "cd examples/audioAndVideo; npm install; node backend.js",
     "dev": "live-server --open=./packages --ignore=node_modules/**,temp/** .",
     "devInstallGlobalDeps": "npm install live-server -g",
-    "updateDocs": "node updateDocs.js"
+    "updateDocs": "node --trace-warnings updateDocs.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,6 @@
     "url": "https://github.com/eqlabs/wmm-components/issues"
   },
   "devDependencies": {
-    "jsdoc": "^3.6.6",
-    "jsdoc-to-markdown": "^6.0.1"
+    "jsdoc": "^3.6.6"
   }
 }

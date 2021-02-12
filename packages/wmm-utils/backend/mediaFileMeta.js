@@ -11,6 +11,10 @@ const { getVideoDurationInSeconds } = videoDuration
 const fileMeta = new Map // filePath => metaObject
 var metaRead // a promise indicating if meta of all files has been read
 
+/**
+ * Get files  meta info.
+ * @param {string} fileName - file name
+ */
 export async function getMeta(fileName) {
   if (!metaRead)
     throw Error("call initMeta before calling getMeta")
