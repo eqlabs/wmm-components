@@ -1,5 +1,6 @@
-
-// takes monetization event's detail property as parameter
+/**
+ * @param {{amoun, assetScale}} monetization event's detail property
+ */
 export function formattedAmout({amount, assetScale}) {
   return (amount * Math.pow(10, -assetScale)).toFixed(assetScale)
 }

@@ -1,5 +1,9 @@
 
-// Accounts (TODO move to own file)
+/**
+ * @file Handles user specific accounts with **balance**s that increase
+ * with **deposit**s from receipt verified WebMonetization payments
+ * and are **deduct**ed when streaming media data to the client.
+ */
 
 const accounts = new Map() // userId:String => amount:Number
 

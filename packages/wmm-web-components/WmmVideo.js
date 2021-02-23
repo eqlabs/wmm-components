@@ -1,15 +1,15 @@
-/**
- * Web monetized video element. Usage:
- * <wmm-video
- *   src="video file source; if full URL is used, the recipe verification will use the same host for verification"
- *   paymentUrl="Payment pointer URL, can also include receipt service url"
- *   skipVerification="if true, don't send receipts to backend for verifications">
- */
+
 
 import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-utils/client/monetize.js'
 import { initMedia, setClass, initCssClasses, setUrl } from './videoAndAudio.js'
 
-/** This is a description of WmmVideo Class */
+/**
+ * Creates a web monetized video element. E.g.:
+ * <pre>&lt;wmm-video
+ *   src="video file source; if full URL is used, the recipe verification will use the same host for verification"
+ *   paymentUrl="Payment pointer URL, can also include receipt service url"
+ *   skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre>
+ */
 class WmmVideo extends HTMLElement {
   get src() { return this.getAttribute('src') }
   set src(url) { setUrl(this, url) }
@@ -57,14 +57,10 @@ class WmmVideo extends HTMLElement {
     }
   }
 
-  // TODO removeEventListener
-  // TODO listen for class changes
-
   // static get observedAttributes() { return ['src', 'paymentUrl'] }
   // attributeChangedCallback (name, oldValue, newValue) {
   //   console.log('video attr changed', name, oldValue, newValue)
   // }
-
 
 }
 

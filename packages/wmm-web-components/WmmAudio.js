@@ -1,16 +1,15 @@
-/**
- * Web monetized audio element. Usage:
- * <wmm-audio
- *   src="audio file source; if full URL is used, the recipe verification will use the same host for verification"
- *   paymentUrl="Payment pointer URL, can also include receipt service url"
- *   skipVerification="if true, don't send receipts to backend for verifications">
- */
 
 
 import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-utils/client/monetize.js'
 import { initMedia, setClass, initCssClasses, setUrl } from './videoAndAudio.js'
 
-/** This is a description of WmmAudio Class */
+/**
+ * Creates a web monetized audio element. E.g.:
+ * <pre>&lt;wmm-audio
+ *   src="audio file source; if full URL is used, the recipe verification will use the same host for verification"
+ *   paymentUrl="Payment pointer URL, can also include receipt service url"
+ *   skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre>
+ */
 class WmmAudio extends HTMLElement {
   get src() { return this.getAttribute('src') }
   set src(url) { setUrl(this, url) }

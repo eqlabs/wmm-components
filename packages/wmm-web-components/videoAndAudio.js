@@ -14,7 +14,7 @@ export function initMedia(wmm, type) {
 }
 
 /**
- * Init CSS of <wmm-video> or <wmm-audio> component.
+ * Init CSS of WmmVideo or WmmAudio component.
  * @param {object} wmm - 'video' or 'audio'
  */
 export function initCssClasses(wmm) {

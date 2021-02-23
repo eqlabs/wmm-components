@@ -2,6 +2,10 @@ import fs from 'fs'
 import {spend, balance} from './accounts.js'
 import {sleep} from '../backend.js'
 
+/**
+ * Creates readStream from a file.
+ * @param {sting} path to the file
+ */
 export function createStream(fromPath) {
   return fs.createReadStream(fromPath, {
     highWaterMark: 64 * 1024 // default 64 * 1024
@@ -17,12 +21,6 @@ export function pipeMediaIntoStream(meta, stream, config, userId) {
   })
 }
 
-/* From node.js docs:
-  "developers should choose one of the methods of consuming data and should
-  never use multiple methods to consume data from a single stream.
-  Specifically, using a combination of on('data'), on('readable'), pipe(),
-  or async iterators could lead to unintuitive behavior."
-*/
 
 async function pipeStream(meta, stream, config, userId) {
   validateConfig(config)

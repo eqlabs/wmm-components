@@ -1,5 +1,3 @@
-
-
 if (!localStorage.getItem('userId'))
   localStorage.setItem('userId', uuidv4())
 
@@ -9,4 +7,8 @@ function uuidv4() {
   )
 }
 
+/**
+ * userId is an unique (uuidv4) identifier for each user that is stored in localStorage.
+ * It is used to connect receipts and media data streams to same account.
+ */
 export const userId = localStorage.getItem('userId')

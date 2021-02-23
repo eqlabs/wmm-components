@@ -1,10 +1,17 @@
 import fetch from 'node-fetch'
 import {deposit} from '../backend.js'
 
-// assetScale can't be verified using receipt service (https://github.com/coilhq/receipt-verifier/issues/27)
-// so it is hard coded and assumed to be 9 (this is used by coil wallet)
+/**
+ * assetScale can't be verified using receipt service (https://github.com/coilhq/receipt-verifier/issues/27)
+ * so it is hard coded and assumed to be 9 (this is used by coil wallet)
+ */
 const assumedAssetScale = 9
 
+/**
+ * Verifies receipt by sending it to the recipt verifier service and modifying the users account balance accordigly.
+ * @param {*} 'monetizationprogress' event's detail property, with userId included.
+ * @param {*} backends JSON config
+ */
 export async function verifyReceipt({amount, paymentPointer, receipt, requestId, userId, assetScale},
                                     {receiptService}) {
   if (assetScale !== assumedAssetScale)
