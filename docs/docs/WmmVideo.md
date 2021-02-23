@@ -1,13 +1,17 @@
 ---
 id: WmmVideo
 ---
-<link type="text/css" rel="stylesheet" href="/jsDoc.css"></link>
+<!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
 <div id="main">
 <h1 class="page-title">Class: WmmVideo</h1>
 <section>
 <header>
 <h2><span class="attribs"><span class="type-signature"></span></span>WmmVideo<span class="signature">()</span><span class="type-signature"></span></h2>
-<div class="class-description">This is a description of WmmVideo Class</div>
+<div class="class-description">Creates a web monetized video element. E.g.:
+<pre>&lt;wmm-video
+src="video file source; if full URL is used, the recipe verification will use the same host for verification"
+paymentUrl="Payment pointer URL, can also include receipt service url"
+skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre></div>
 </header>
 <article>
 <div class="container-overview">
@@ -16,7 +20,7 @@ id: WmmVideo
 <dl class="details">
 <dt class="tag-source">Source:</dt>
 <dd class="tag-source"><ul class="dummy"><li>
-<a href="pathname:///jsdoc/videoComponent.js.html">videoComponent.js</a>, <a href="pathname:///jsdoc/videoComponent.js.html#line13">line 13</a>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line13">line 13</a>
 </li></ul></dd>
 </dl>
 </div>
@@ -54,7 +58,7 @@ Event listener for monetization and video events.
 <dl class="details">
 <dt class="tag-source">Source:</dt>
 <dd class="tag-source"><ul class="dummy"><li>
-<a href="pathname:///jsdoc/videoComponent.js.html">videoComponent.js</a>, <a href="pathname:///jsdoc/videoComponent.js.html#line44">line 44</a>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line44">line 44</a>
 </li></ul></dd>
 </dl>
 </article>

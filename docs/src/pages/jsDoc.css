@@ -40,7 +40,7 @@ body
 } */
 
 #main {
-  top: -6em;
+  /* top: -6em; */
   position: relative;
   background: white;
 }
@@ -81,7 +81,7 @@ body
 }
 
 #main article dl {
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 }
 
 #main article img {
@@ -92,7 +92,7 @@ max-width: 100%;
 {
   display: block;
   background-color: #fff;
-  padding: 12px 24px 0 0;
+  padding: 0 24px 0 0;
   /* border-bottom: 1px solid #ccc; */
   margin-right: 30px;
 }
@@ -160,7 +160,7 @@ max-width: 100%;
   font-family: 'Open Sans Light', sans-serif;
   font-size: 48px;
   letter-spacing: -2px;
-  margin: 12px 24px 20px 0;
+  margin: 12px 24px 10px 0;
 }
 
 #main h2, #main h3.subsection-title

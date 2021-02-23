@@ -1,9 +1,28 @@
-// import fs from 'fs'
+/**
+ * Updates docs package docs from source code to docusaurus.
+ *
+ * Execute with:
+ * npm run updateDocs
+ *
+ * With bigger refactoring some manual work may be required:
+ * - make sure `srcCodeFolders` includes all folders with documented code.
+ * - update docs/sidebar.js if module filenames chage (or new ones are added)
+ * - in class modules the filename should alway be the same as the name of the class.
+ *
+ * To test with one file, run:
+ * node updateDocs.js ./path/to/module/with/documentations.js
+ */
 
-const process = require('process')
+const srcCodeFolders = [
+  'wmm-utils/backend', 'wmm-utils/client',
+  'wmm-web-components'
+]
+
+const mdDocsPath = './docs/docs/'
+const jsDocsPath = './docs/static/jsdoc/'
+
 const { execSync } = require("child_process")
-const fs = require('fs').promises;
-const { fips } = require('crypto');
+const fs = require('fs').promises
 
 function execute(command) {
   console.log(command)
@@ -21,63 +40,64 @@ function execSilent(command) {
 }
 
 // remove old docs/static folders
-execSilent("rm -r docs/static/jsdoc/")
 execSilent("rm -r docs/static/packages/")
 execSilent("rm -r docs/static/examples/")
+execSilent("rm -r docs/static/jsdoc/")
 
 // copy packages and example to docs/static
 execute("cp -r ./packages docs/static")
 execute("cp -r ./examples docs/static")
 
-// create documentation from code
-
-const mdDocsPath = './docs/docs/'
-const jsDocsPath = './docs/static/jsdoc/'
-
 ;(async () => {
-  await createJsdocs()
-  jsdocsToMarkdown()
+  if (process.argv[2])
+    executeSingle(process.argv[2])
+  else
+    await createJsdocs()
 })()
 
-
-// TODO wmm-utils/backend & wmm-utils/client
-
 async function createJsdocs() {
-
-  for (const folder of ['wmm-utils', 'wmm-utils/backend', 'wmm-web-components']) {
+  for (const folder of srcCodeFolders) {
     const files = await fs.readdir('./packages/'+folder)
     var t = Date.now()
-    files.forEach(file => {
-      if (!file.match(/\w+\.js$/)) return
-      execute(`./node_modules/.bin/jsdoc packages/${folder}/${file} -d ${jsDocsPath}`)
-    })
+    for (const file of files) {
+      if (!file.match(/\w+\.js$/)) continue
+      await executeSingle(`packages/${folder}/${file}`)
+    }
   }
 }
 
-const skipFiles = new Set(['global.html', 'index.html'])
+async function executeSingle(modulePath) {
+  execSilent("rm docs/static/jsdoc/global.html")
+  execute(`./node_modules/.bin/jsdoc ${modulePath} -d ${jsDocsPath}`)
+  return await singeDocToMarkdown(modulePath.split('/').pop())
+}
 
-async function jsdocsToMarkdown() {
+async function singeDocToMarkdown(jsFile) {
+  console.log('jsFile', jsFile)
   const docsFiles = await fs.readdir(jsDocsPath)
-  for (const fName of docsFiles) {
-    const correct = fName.match(/\w+\.html$/)
-    if (!correct || correct[0] != fName) continue
-    if (skipFiles.has(fName)) continue
-    jsdocToMarkdown(jsDocsPath + fName)
+  const moduleName = jsFile.split('.')[0],
+        docFile = moduleName+'.html'
+
+  if (docsFiles.includes(docFile)) {
+    await jsdocToMarkdown(jsDocsPath+docFile, moduleName)
+  } else if (docsFiles.includes('global.html')) {
+    await jsdocToMarkdown(jsDocsPath+'global.html', moduleName)
+  } else {
+    console.log(jsFile + ' - no jsdocs found')
   }
 }
 
-async function jsdocToMarkdown(htmlDocPath) {
-  const fileName = htmlDocPath.match(/(\w+)\./)[1],
-        filePath = mdDocsPath+fileName+'.md'
+async function jsdocToMarkdown(htmlDocPath, moduleName) {
+  const filePath = mdDocsPath+moduleName+'.md'
   var docStr = (await fs.readFile(htmlDocPath)).toString()
   docStr = `---
-id: ${fileName}
+id: ${moduleName}
 ---
-<link type="text/css" rel="stylesheet" href="/jsDoc.css"></link>
+<!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
 ${parseJsDocHtml(docStr)}
 `
   console.log('about to write', filePath)
-  fs.writeFile(filePath, docStr)
+  return fs.writeFile(filePath, docStr)
 }
 
 function parseJsDocHtml(str) {
@@ -87,6 +107,8 @@ function parseJsDocHtml(str) {
   str = str.replace(/<br class="clear">/g, '<br class="clear" />')
   // remove head and footer
   str = str.substring(str.search('<div id="main">'), str.search("<nav>"))
+  // Remove "Global" header
+  str = str.replace(`<h1 class="page-title">Global</h1>`, '')
   // modify link paths
   str = str.replace(/<a href\="/g, '<a href="pathname:///jsdoc/')
   return str

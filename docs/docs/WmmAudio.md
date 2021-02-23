@@ -1,13 +1,17 @@
 ---
 id: WmmAudio
 ---
-<link type="text/css" rel="stylesheet" href="/jsDoc.css"></link>
+<!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
 <div id="main">
 <h1 class="page-title">Class: WmmAudio</h1>
 <section>
 <header>
 <h2><span class="attribs"><span class="type-signature"></span></span>WmmAudio<span class="signature">()</span><span class="type-signature"></span></h2>
-<div class="class-description">This is a description of WmmAudio Class</div>
+<div class="class-description">Creates a web monetized audio element. E.g.:
+<pre>&lt;wmm-audio
+src="audio file source; if full URL is used, the recipe verification will use the same host for verification"
+paymentUrl="Payment pointer URL, can also include receipt service url"
+skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre></div>
 </header>
 <article>
 <div class="container-overview">
@@ -16,7 +20,7 @@ id: WmmAudio
 <dl class="details">
 <dt class="tag-source">Source:</dt>
 <dd class="tag-source"><ul class="dummy"><li>
-<a href="pathname:///jsdoc/audioComponent.js.html">audioComponent.js</a>, <a href="pathname:///jsdoc/audioComponent.js.html#line14">line 14</a>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line13">line 13</a>
 </li></ul></dd>
 </dl>
 </div>
@@ -54,7 +58,7 @@ Event listener for monetization and audio events.
 <dl class="details">
 <dt class="tag-source">Source:</dt>
 <dd class="tag-source"><ul class="dummy"><li>
-<a href="pathname:///jsdoc/audioComponent.js.html">audioComponent.js</a>, <a href="pathname:///jsdoc/audioComponent.js.html#line43">line 43</a>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line42">line 42</a>
 </li></ul></dd>
 </dl>
 </article>
