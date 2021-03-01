@@ -40,7 +40,7 @@ Init CSS of WmmVideo or WmmAudio component.
 <dl class="details">
 <dt class="tag-source">Source:</dt>
 <dd class="tag-source"><ul class="dummy"><li>
-<a href="pathname:///jsdoc/videoAndAudio.js.html">videoAndAudio.js</a>, <a href="pathname:///jsdoc/videoAndAudio.js.html#line20">line 20</a>
+<a href="pathname:///jsdoc/videoAndAudio.js.html">videoAndAudio.js</a>, <a href="pathname:///jsdoc/videoAndAudio.js.html#line18">line 18</a>
 </li></ul></dd>
 </dl>
 <h4 class="name" id="initMedia"><span class="type-signature"></span>initMedia<span class="signature">(wmm, type)</span><span class="type-signature"></span></h4>
@@ -73,7 +73,7 @@ Init CSS of WmmVideo or WmmAudio component.
 <dl class="details">
 <dt class="tag-source">Source:</dt>
 <dd class="tag-source"><ul class="dummy"><li>
-<a href="pathname:///jsdoc/videoAndAudio.js.html">videoAndAudio.js</a>, <a href="pathname:///jsdoc/videoAndAudio.js.html#line9">line 9</a>
+<a href="pathname:///jsdoc/videoAndAudio.js.html">videoAndAudio.js</a>, <a href="pathname:///jsdoc/videoAndAudio.js.html#line7">line 7</a>
 </li></ul></dd>
 </dl>
 </article>

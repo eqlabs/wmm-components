@@ -6,7 +6,7 @@ import bodyParser from 'koa-body-parser'
 import cors from '@koa/cors'
 import path from 'path'
 import * as config from './config.js'
-const { mediaPath, allowCORS } = config
+const { mediaPath, allowCORS, receiptService } = config
 import { initMeta, getMeta,
          verifyReceipt,
          prepareStreamCtx, createStream, pipeMediaIntoStream  } from 'wmm-utils'
@@ -18,14 +18,13 @@ const app = new Koa()
 const router = koaRouter()
 
 router.post('/verifyReceipt', async ctx => {
-  ctx.body = await verifyReceipt(ctx.request.body, config)
+  ctx.body = await verifyReceipt(ctx.request.body, receiptService)
 })
 
 router.get('/media/:file', async ctx => {
   let mediaMeta = await getMeta(ctx.params.file)
   prepareStreamCtx(ctx, mediaMeta)
   const stream = createStream(mediaMeta.fullPath)
-  // console.log('pricePerMB', ''+config.pricePerMB)
   pipeMediaIntoStream(mediaMeta, stream, config, ctx.query.userId)
   ctx.body = stream
 })

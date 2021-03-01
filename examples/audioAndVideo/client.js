@@ -1,6 +1,6 @@
-import '/packages/wmm-web-components/audioComponent.js'
-import '/packages/wmm-web-components/videoComponent.js'
-import { logEvent } from '/packages/wmm-utils/client/index.js'
+import '/packages/wmm-web-components/WmmAudio.js'
+import '/packages/wmm-web-components/WmmVideo.js'
+import { logEvent } from '/packages/wmm-utils/client/client.js'
 import {fullPaymentUrl} from './config.js'
 
 const info = document.querySelector('#logs')

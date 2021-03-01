@@ -1,5 +1,5 @@
 ---
-id: pipeMedia
+id: streamingFileMeta
 ---
 <!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
 <div id="main">
@@ -14,9 +14,9 @@ id: pipeMedia
 </dl>
 </div>
 <h3 class="subsection-title">Methods</h3>
-<h4 class="name" id="createStream"><span class="type-signature"></span>createStream<span class="signature">(path)</span><span class="type-signature"></span></h4>
+<h4 class="name" id="getMeta"><span class="type-signature"></span>getMeta<span class="signature">(fileName)</span><span class="type-signature"></span></h4>
 <div class="description">
-Creates readStream from a file.
+Get files  meta info.
 </div>
 <h5>Parameters:</h5>
 <table class="params">
@@ -29,18 +29,18 @@ Creates readStream from a file.
 </thead>
 <tbody>
 <tr>
-<td class="name"><code>path</code></td>
+<td class="name"><code>fileName</code></td>
 <td class="type">
-<span class="param-type">sting</span>
+<span class="param-type">string</span>
 </td>
-<td class="description last">to the file</td>
+<td class="description last">file name</td>
 </tr>
 </tbody>
 </table>
 <dl class="details">
 <dt class="tag-source">Source:</dt>
 <dd class="tag-source"><ul class="dummy"><li>
-<a href="pathname:///jsdoc/pipeMedia.js.html">pipeMedia.js</a>, <a href="pathname:///jsdoc/pipeMedia.js.html#line9">line 9</a>
+<a href="pathname:///jsdoc/streamingFileMeta.js.html">streamingFileMeta.js</a>, <a href="pathname:///jsdoc/streamingFileMeta.js.html#line18">line 18</a>
 </li></ul></dd>
 </dl>
 </article>

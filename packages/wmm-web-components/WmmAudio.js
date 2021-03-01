@@ -1,7 +1,6 @@
-
-
 import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-utils/client/monetize.js'
-import { initMedia, setClass, initCssClasses, setUrl } from './videoAndAudio.js'
+import { initMedia, setClass, initCssClasses } from './videoAndAudio.js'
+import { setUrl } from './common.js'
 
 /**
  * Creates a web monetized audio element. E.g.:

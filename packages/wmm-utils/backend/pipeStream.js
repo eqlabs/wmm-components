@@ -21,10 +21,8 @@ export function pipeMediaIntoStream(meta, stream, config, userId) {
   })
 }
 
-
 async function pipeStream(meta, stream, config, userId) {
   validateConfig(config)
-  console.log('pipeStream') // TEMP
   while (stream.readableLength) {
     if (spend(userId, pricePerBytes(stream.readableLength, meta, config))) {
       stream.read()

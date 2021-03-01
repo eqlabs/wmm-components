@@ -13,7 +13,7 @@ const assumedAssetScale = 9
  * @param {*} backends JSON config
  */
 export async function verifyReceipt({amount, paymentPointer, receipt, requestId, userId, assetScale},
-                                    {receiptService}) {
+                                    receiptService) {
   if (assetScale !== assumedAssetScale)
     throw Error("unexpected assetScale")
   const spspEndpoint = decodeURIComponent(

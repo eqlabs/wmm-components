@@ -20,7 +20,7 @@ skipVerification="if true, don't send receipts to backend for verifications"&gt;
 <dl class="details">
 <dt class="tag-source">Source:</dt>
 <dd class="tag-source"><ul class="dummy"><li>
-<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line13">line 13</a>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line12">line 12</a>
 </li></ul></dd>
 </dl>
 </div>
@@ -58,7 +58,7 @@ Event listener for monetization and audio events.
 <dl class="details">
 <dt class="tag-source">Source:</dt>
 <dd class="tag-source"><ul class="dummy"><li>
-<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line42">line 42</a>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line41">line 41</a>
 </li></ul></dd>
 </dl>
 </article>
