@@ -1,8 +1,8 @@
 module.exports = {
   title: 'Web Monetized Multimedia',
   tagline: 'Monetize your media with ease',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  url: 'https://eqlabs.github.io/',
+  baseUrl: '/wmm-components/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/wm-icon.svg',
