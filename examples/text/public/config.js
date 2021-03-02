@@ -26,3 +26,7 @@ export const assetType = "XRP"
 export const newAccountBalance = 0
 
 export const mediaPath = "./media/"
+
+// Coil sends about 0.03 $ per minute (~ 0.01 XRP),
+// to keep video service smooth, keep the required amount below this value.
+export const pricePerWord = 0.000004

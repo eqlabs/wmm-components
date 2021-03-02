@@ -1,60 +1,55 @@
+// Koa
 import Koa from 'koa'
 import koaRouter from 'koa-router'
 import serve from 'koa-static'
 import mount from 'koa-mount'
 import bodyParser from 'koa-body-parser'
 import cors from '@koa/cors'
+
+// Node.js
 import path from 'path'
-
-import * as config from './public/config.js'
-const { mediaPath, receiptService } = config
-
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
+
+// App
+import { mediaPath, receiptService, pricePerWord } from './public/config.js'
+import {
+  verifyReceipt,    // receipts
+  spend, balance,   // accounting
+  initTexts, texts, // text file contents and meta
+  sleep             // general
+} from 'wmm-utils'
+
+initTexts(path.resolve(__dirname, mediaPath) + '/')
 
 const app = new Koa()
 const router = koaRouter()
 app.use(cors())
 
-// WMM-UTILS
-
-import fs from 'fs'
-
-const texts = {} // name => [paragrahps]
-
-;(async function() {
-  const dir = await fs.promises.readdir(mediaPath)
-  for (const file of dir) {
-    const cont = await fs.promises.readFile(mediaPath+file)
-    texts[file] = parseTextFile(await cont.toString())
-  }
-})()
-
-function parseTextFile(text) {
-  // could be markdown?
-  return text.split(/\n\n+/g)
-}
-
-// /WMM-UTILS
-
 router.post('/verifyReceipt', async ctx => {
   ctx.body = await verifyReceipt(ctx.request.body, receiptService)
 })
 
-router.get('/media/:file/:paragraph', async ctx => {
-  // TODO add accounting
-  const {file, paragraph} = ctx.params
-  var p
+router.get('/media/:file/:pInd', async ctx => {
+  let {file, pInd} = ctx.params
+  pInd = parseInt(pInd)
   if (!texts[file]) {
     ctx.response.status = 404
-    p = `No text '${file}' found.`
-  } else {
-    p = texts[file][parseInt(paragraph)]
+    return ctx.body = `No text '${file}' found.`
   }
-  if (!p) {
+  var {paragraphs, wordCount} = texts[file]
+  if (!paragraphs[pInd]) {
     ctx.response.status = 204
-    p = `No paragraph ${paragraph} found.`
+    return ctx.body = `No paragraph ${pInd} found.`
   }
-  ctx.body = p
+  // accounting
+  const cost = pricePerWord * wordCount[pInd],
+        {userId} = ctx.query
+  while (!spend(userId, cost)) {
+    console.log(`costs too much ${cost} > ${balance(userId)}`)
+    await sleep(400)
+  }
+  console.log(`payed ${cost}!`)
+  ctx.body = paragraphs[pInd]
 })
 
 

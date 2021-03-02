@@ -4,7 +4,7 @@
  * @param {object} wmm - wmm-video or wmm-audio component.
  * @param {string} type - 'video' or 'audio'.
  */
-export function initMedia(wmm, type) {
+export function initAudioOrVideo(wmm, type) {
   wmm.media = document.createElement(type)
   wmm.media.controls = true
   wmm.media.autoplay = true

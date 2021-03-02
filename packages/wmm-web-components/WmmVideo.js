@@ -1,5 +1,5 @@
 import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-utils/client/monetize.js'
-import { initMedia, setClass, initCssClasses } from './videoAndAudio.js'
+import { initAudioOrVideo, setClass, initCssClasses } from './videoAndAudio.js'
 import { setUrl } from './common.js'
 
 /**
@@ -19,7 +19,7 @@ class WmmVideo extends HTMLElement {
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
-    initMedia(this, 'video')
+    initAudioOrVideo(this, 'video')
   }
 
   // Events
@@ -37,6 +37,10 @@ class WmmVideo extends HTMLElement {
 
   /**
    * Event listener for monetization and video events.
+   * Binding to monetization events ('monetizationStopped', 'monetized', 'monetizeFailed')
+   * allows tracking of monetization state, while all other events are passed
+   * to the inner <video> element and can be used to track the state of the media.
+   * E.g. https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
    * @param {string} name - Event name
    * @param {function} action - The action to execute on event.
    */

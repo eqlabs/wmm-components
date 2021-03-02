@@ -41,9 +41,15 @@ class WmmText extends HTMLElement {
     `
   }
 
-  // Native events
-  connectedCallback () { // element added to dom
+  // Element added to dom
+  connectedCallback () {
+    initMediaMonetization(this)
     this.startLoadingText()
+  }
+  
+  // Element removed from dom
+  disconnectedCallback () {
+    mediaRemoved(this)
   }
 
   // Methods

@@ -4,3 +4,5 @@ export * from './backend/accounts.js'
 export * from './backend/receipt.js'
 export * from './backend/streamingFileMeta.js'
 export * from './backend/pipeStream.js'
+
+export * from './backend/text.js'

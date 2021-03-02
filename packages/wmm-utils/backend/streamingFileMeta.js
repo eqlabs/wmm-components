@@ -22,7 +22,7 @@ export async function getMeta(fileName) {
   return fileMeta.get(fileName)
 }
 
-export const initMeta = mediaPath =>
+export const initStreamingMeta = mediaPath =>
   metaRead = readMeta(mediaPath)
 
 // TODO: read all videos in given folder - now just 'videoPath'

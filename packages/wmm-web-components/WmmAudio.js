@@ -1,5 +1,5 @@
 import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-utils/client/monetize.js'
-import { initMedia, setClass, initCssClasses } from './videoAndAudio.js'
+import { initAudioOrVideo, setClass, initCssClasses } from './videoAndAudio.js'
 import { setUrl } from './common.js'
 
 /**
@@ -19,22 +19,28 @@ class WmmAudio extends HTMLElement {
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
-    initMedia(this, 'audio')
+    initAudioOrVideo(this, 'audio')
   }
 
-  // Native events
-  connectedCallback () { // element added to dom
+  // Element added to dom
+  connectedCallback () {
     initMediaMonetization(this)
     initCssClasses(this)
     setClass(this, 'data-pending')
   }
+
+  // Element removed from dom
   disconnectedCallback () {
     console.log('audio removed from dom')
     mediaRemoved(this)
   }
 
   /**
-   * Event listener for monetization and audio events.
+   * Event listener for monetization and video events.
+   * Binding to monetization events ('monetizationStopped', 'monetized', 'monetizeFailed')
+   * allows tracking of monetization state, while all other events are passed
+   * to the inner <audio> element and can be used to track the state of the media.
+   * E.g. https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
    * @param {string} name - Event name
    * @param {function} action - The action to execute on event.
    */
@@ -46,6 +52,11 @@ class WmmAudio extends HTMLElement {
     }
   }
 
+  /**
+   * Remove monetization or video element listener
+   * @param {string} name - Event name
+   * @param {function} action - The action to execute on event.
+   */
   removeEventListener(name, action) {
     if (monetizeEvents.has(name)) {
       super.removeEventListener(name, action)
