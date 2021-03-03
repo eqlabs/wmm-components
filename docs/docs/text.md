@@ -25,7 +25,7 @@ wordCount: [words per paragraph]
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/text.js.html">text.js</a>, <a href="pathname:///jsdoc/text.js.html#line11">line 11</a>
+<a href="pathname:///jsdoc/text.js.html">text.js</a>, <a href="pathname:///jsdoc/text.js.html#line10">line 10</a>
 </li></ul></dd>
 </dl>
 </article>
