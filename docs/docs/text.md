@@ -1,5 +1,5 @@
 ---
-id: user
+id: text
 ---
 <!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
 <div id="main">
@@ -14,15 +14,18 @@ id: user
 </dl>
 </div>
 <h3 className="subsection-title">Members</h3>
-<h4 className="name" id="userId"><span className="type-signature">(constant) </span>userId<span className="type-signature"></span></h4>
+<h4 className="name" id="texts"><span className="type-signature">(constant) </span>texts<span className="type-signature"></span></h4>
 <div className="description">
-userId is an unique (uuidv4) identifier for each user that is stored in localStorage.
-It is used to connect receipts and media data streams to same account.
+Text file content and word count as paragrapshs.
+filename => &#123;
+paragraphs: [paragraphs],
+wordCount: [words per paragraph]
+&#125;
 </div>
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/user.js.html">user.js</a>, <a href="pathname:///jsdoc/user.js.html#line14">line 14</a>
+<a href="pathname:///jsdoc/text.js.html">text.js</a>, <a href="pathname:///jsdoc/text.js.html#line11">line 11</a>
 </li></ul></dd>
 </dl>
 </article>

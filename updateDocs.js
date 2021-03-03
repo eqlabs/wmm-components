@@ -111,5 +111,9 @@ function parseJsDocHtml(str) {
   str = str.replace(`<h1 class="page-title">Global</h1>`, '')
   // modify link paths
   str = str.replace(/<a href\="/g, '<a href="pathname:///jsdoc/')
+  // cleanup comments to not trigger markdown parsing
+  str = str.replace(/\{/g, '&#123;').replace(/\}/g, '&#125;')
+  // class => className (to not cause jsx error)
+  str = str.replace(/ class="/g, ' className="')
   return str
 }

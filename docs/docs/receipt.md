@@ -9,56 +9,56 @@ id: receipt
 <h2></h2>
 </header>
 <article>
-<div class="container-overview">
-<dl class="details">
+<div className="container-overview">
+<dl className="details">
 </dl>
 </div>
-<h3 class="subsection-title">Members</h3>
-<h4 class="name" id="assumedAssetScale"><span class="type-signature">(constant) </span>assumedAssetScale<span class="type-signature"></span></h4>
-<div class="description">
+<h3 className="subsection-title">Members</h3>
+<h4 className="name" id="assumedAssetScale"><span className="type-signature">(constant) </span>assumedAssetScale<span className="type-signature"></span></h4>
+<div className="description">
 assetScale can't be verified using receipt service (https://github.com/coilhq/receipt-verifier/issues/27)
 so it is hard coded and assumed to be 9 (this is used by coil wallet)
 </div>
-<dl class="details">
-<dt class="tag-source">Source:</dt>
-<dd class="tag-source"><ul class="dummy"><li>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
 <a href="pathname:///jsdoc/receipt.js.html">receipt.js</a>, <a href="pathname:///jsdoc/receipt.js.html#line8">line 8</a>
 </li></ul></dd>
 </dl>
-<h3 class="subsection-title">Methods</h3>
-<h4 class="name" id="verifyReceipt"><span class="type-signature"></span>verifyReceipt<span class="signature">('monetizationprogress', backends)</span><span class="type-signature"></span></h4>
-<div class="description">
+<h3 className="subsection-title">Methods</h3>
+<h4 className="name" id="verifyReceipt"><span className="type-signature"></span>verifyReceipt<span className="signature">('monetizationprogress', backends)</span><span className="type-signature"></span></h4>
+<div className="description">
 Verifies receipt by sending it to the recipt verifier service and modifying the users account balance accordigly.
 </div>
 <h5>Parameters:</h5>
-<table class="params">
+<table className="params">
 <thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
-<th class="last">Description</th>
+<th className="last">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="name"><code>'monetizationprogress'</code></td>
-<td class="type">
-<span class="param-type">*</span>
+<td className="name"><code>'monetizationprogress'</code></td>
+<td className="type">
+<span className="param-type">*</span>
 </td>
-<td class="description last">event's detail property, with userId included.</td>
+<td className="description last">event's detail property, with userId included.</td>
 </tr>
 <tr>
-<td class="name"><code>backends</code></td>
-<td class="type">
-<span class="param-type">*</span>
+<td className="name"><code>backends</code></td>
+<td className="type">
+<span className="param-type">*</span>
 </td>
-<td class="description last">JSON config</td>
+<td className="description last">JSON config</td>
 </tr>
 </tbody>
 </table>
-<dl class="details">
-<dt class="tag-source">Source:</dt>
-<dd class="tag-source"><ul class="dummy"><li>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
 <a href="pathname:///jsdoc/receipt.js.html">receipt.js</a>, <a href="pathname:///jsdoc/receipt.js.html#line15">line 15</a>
 </li></ul></dd>
 </dl>

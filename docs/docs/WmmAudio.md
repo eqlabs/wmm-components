@@ -3,62 +3,102 @@ id: WmmAudio
 ---
 <!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
 <div id="main">
-<h1 class="page-title">Class: WmmAudio</h1>
+<h1 className="page-title">Class: WmmAudio</h1>
 <section>
 <header>
-<h2><span class="attribs"><span class="type-signature"></span></span>WmmAudio<span class="signature">()</span><span class="type-signature"></span></h2>
-<div class="class-description">Creates a web monetized audio element. E.g.:
+<h2><span className="attribs"><span className="type-signature"></span></span>WmmAudio<span className="signature">()</span><span className="type-signature"></span></h2>
+<div className="class-description">Creates a web monetized audio element. E.g.:
 <pre>&lt;wmm-audio
 src="audio file source; if full URL is used, the recipe verification will use the same host for verification"
 paymentUrl="Payment pointer URL, can also include receipt service url"
 skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre></div>
 </header>
 <article>
-<div class="container-overview">
+<div className="container-overview">
 <h2>Constructor</h2>
-<h4 class="name" id="WmmAudio"><span class="type-signature"></span>new WmmAudio<span class="signature">()</span><span class="type-signature"></span></h4>
-<dl class="details">
-<dt class="tag-source">Source:</dt>
-<dd class="tag-source"><ul class="dummy"><li>
+<h4 className="name" id="WmmAudio"><span className="type-signature"></span>new WmmAudio<span className="signature">()</span><span className="type-signature"></span></h4>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
 <a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line12">line 12</a>
 </li></ul></dd>
 </dl>
 </div>
-<h3 class="subsection-title">Methods</h3>
-<h4 class="name" id="addEventListener"><span class="type-signature"></span>addEventListener<span class="signature">(name, action)</span><span class="type-signature"></span></h4>
-<div class="description">
-Event listener for monetization and audio events.
+<h3 className="subsection-title">Methods</h3>
+<h4 className="name" id="addEventListener"><span className="type-signature"></span>addEventListener<span className="signature">(name, action)</span><span className="type-signature"></span></h4>
+<div className="description">
+Event listener for monetization and video events.
+Binding to monetization events ('monetizationStopped', 'monetized', 'monetizeFailed')
+allows tracking of monetization state, while all other events are passed
+to the inner &lt;audio&gt; element and can be used to track the state of the media.
+E.g. https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
 </div>
 <h5>Parameters:</h5>
-<table class="params">
+<table className="params">
 <thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
-<th class="last">Description</th>
+<th className="last">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="name"><code>name</code></td>
-<td class="type">
-<span class="param-type">string</span>
+<td className="name"><code>name</code></td>
+<td className="type">
+<span className="param-type">string</span>
 </td>
-<td class="description last">Event name</td>
+<td className="description last">Event name</td>
 </tr>
 <tr>
-<td class="name"><code>action</code></td>
-<td class="type">
-<span class="param-type">function</span>
+<td className="name"><code>action</code></td>
+<td className="type">
+<span className="param-type">function</span>
 </td>
-<td class="description last">The action to execute on event.</td>
+<td className="description last">The action to execute on event.</td>
 </tr>
 </tbody>
 </table>
-<dl class="details">
-<dt class="tag-source">Source:</dt>
-<dd class="tag-source"><ul class="dummy"><li>
-<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line41">line 41</a>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line47">line 47</a>
+</li></ul></dd>
+</dl>
+<h4 className="name" id="removeEventListener"><span className="type-signature"></span>removeEventListener<span className="signature">(name, action)</span><span className="type-signature"></span></h4>
+<div className="description">
+Remove monetization or video element listener
+</div>
+<h5>Parameters:</h5>
+<table className="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th className="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td className="name"><code>name</code></td>
+<td className="type">
+<span className="param-type">string</span>
+</td>
+<td className="description last">Event name</td>
+</tr>
+<tr>
+<td className="name"><code>action</code></td>
+<td className="type">
+<span className="param-type">function</span>
+</td>
+<td className="description last">The action to execute on event.</td>
+</tr>
+</tbody>
+</table>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line60">line 60</a>
 </li></ul></dd>
 </dl>
 </article>
