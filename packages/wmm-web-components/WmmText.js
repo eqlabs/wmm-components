@@ -1,14 +1,26 @@
-import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-utils/client/monetize.js'
+import { initMediaMonetization, mediaRemoved } from '../wmm-utils/client/monetize.js'
 import { setUrl } from './common.js'
 
-// How much of the last paragraph must be visible to start loading
-// next paragraph. 0 < threshold <= 0
+/**
+ * How much of the last paragraph must be visible to start loading
+ * next paragraph.
+ * Value must be between: 0 < threshold <= 1
+ * @type {number}
+ */
 const threshold = 0.1
+
 let observerOptions = {
   // root: node,
   rootMargin: '0px',
   threshold: threshold
 }
+
+/**
+ * Allowing HTML injection gives more power in the type of content that can be show,
+ * but can causes a security vulnerability unless the source of the text is controlled
+ * to reject harmful script tags.
+ */
+const allowHtmlInjection = true
 
 /**
  * Creates a monetized text component, that loads new paragraphs as the user scrolls the page.
@@ -46,7 +58,7 @@ class WmmText extends HTMLElement {
     initMediaMonetization(this)
     this.startLoadingText()
   }
-  
+
   // Element removed from dom
   disconnectedCallback () {
     mediaRemoved(this)
@@ -87,7 +99,10 @@ class WmmText extends HTMLElement {
     const pText = await res.text()
     // add to dom
     this.lastParagraph = document.createElement('p')
-    this.lastParagraph.textContent = pText
+    if (allowHtmlInjection)
+      this.lastParagraph.innerHTML = pText
+    else
+      this.lastParagraph.textContent = pText
     this.shadowRoot.appendChild(this.lastParagraph)
     this.observer.observe(this.lastParagraph)
   }
