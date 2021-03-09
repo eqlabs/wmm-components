@@ -5,15 +5,16 @@ import mount from 'koa-mount'
 import koaRouter from 'koa-router'
 import serve from 'koa-static'
 import path from 'path'
-import {
-  createStream, getMeta, initStreamingMeta,
-
-  pipeMediaIntoStream, prepareStreamCtx, verifyReceipt
-} from 'wmm-utils'
 import * as config from './config.js'
-const { mediaPath, allowCORS, receiptService } = config
+const { mediaPath, allowCORS, receiptService, newAccountBalance } = config
+import { initStreamingMeta, getMeta,
+         verifyReceipt,
+         prepareStreamCtx, createStream, pipeMediaIntoStream,
+         setInitialBalance } from 'wmm-utils'
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
+// Initialize libraries
+setInitialBalance(newAccountBalance)
 initStreamingMeta(path.resolve(__dirname, mediaPath) + '/')
 
 const app = new Koa()

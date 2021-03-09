@@ -1,6 +1,6 @@
 import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-utils/client/monetize.js'
 import { initAudioOrVideo, setClass, initCssClasses } from './videoAndAudio.js'
-import { setUrl } from './common.js'
+import { setUrl, bindNotifications } from './common.js'
 
 /**
  * Creates a web monetized audio element. E.g.:
@@ -20,6 +20,7 @@ class WmmAudio extends HTMLElement {
     super()
     this.attachShadow({ mode: 'open' })
     initAudioOrVideo(this, 'audio')
+    bindNotifications(this, this.querySelector('audio') || undefined)
   }
 
   // Element added to dom

@@ -7,8 +7,21 @@
 
 const accounts = new Map() // userId:String => amount:Number
 
+/**
+ * newAccountBalance has two functions:
+ * 1. Speed up the inital load of media by allowing some content to be loaded
+ *    before the wallet is ready to pay (this can take few seconds).
+ * 2. Create a "preview" mode where some content can be shown also to users
+ *    that don't have wallet set up, while instructing them to set up a wallet
+ *    once the initial balance has run out.
+ */
+var newAccountBalance = 0
+export const setInitialBalance = val => newAccountBalance = val
+
 export function balance(userId) {
-  return accounts.get(userId) || 0
+  if (!accounts.has(userId))
+    accounts.set(userId, newAccountBalance)
+  return accounts.get(userId)
 }
 function deduct(userId, amount) {
   accounts.set(userId, balance(userId) - amount)

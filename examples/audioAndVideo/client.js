@@ -40,6 +40,8 @@ const mediaEvents = {
   "play": ev =>
     console.log('play', ev),
   "stalled": () => {
+    // TODO remove this?
+    return
     // TODO create non intrusive info
     if (!document.monetization) {
       alert("Monetization failed in error state.")
@@ -56,9 +58,6 @@ const mediaEvents = {
           break;
       }
     }
-  },
-  "wallet but not enough payments": () => {
-    console.log()
   }
 }
 

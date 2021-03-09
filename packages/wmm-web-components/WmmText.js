@@ -1,5 +1,5 @@
 import { initMediaMonetization, mediaRemoved } from '../wmm-utils/client/monetize.js'
-import { setUrl } from './common.js'
+import { setUrl, bindNotifications } from './common.js'
 
 /**
  * How much of the last paragraph must be visible to start loading
@@ -73,7 +73,7 @@ class WmmText extends HTMLElement {
       alert('TODO unload previous observer before starting a new one')
       return
     }
-    this.shadowRootinnerHTML = ''
+    // this.shadowRoot.innerHTML = ''
     this.observer = new IntersectionObserver(entries => {
       var entry = entries[0] // only one entry (lastParagraph) expected
       if (entry.intersectionRatio < threshold) return
