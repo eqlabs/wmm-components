@@ -38,3 +38,7 @@ export const mediaPath = "./media/" //"../../../resources/dinosaur.mp4"
 
 // If you are serving UI assets from different domain, allow CORS requests
 export const allowCORS = true
+
+export const WMM_BACKEND_PORT = process.env.WMM_BACKEND_PORT || '3009'
+
+export const WMM_BACKEND_URL = process.env.WMM_BACKEND_URL || 'localhost'
