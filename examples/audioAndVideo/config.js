@@ -38,3 +38,7 @@ export const mediaPath = "./media/" //"../../../resources/dinosaur.mp4"
 
 // If you are serving UI assets from different domain, allow CORS requests
 export const allowCORS = true
+
+// Environment variables and defaults for backend location
+export const WMM_AUDIO_VIDEO_PORT = process.env.WMM_AUDIO_VIDEO_PORT || '3009'
+export const WMM_AUDIO_VIDEO_HOST = process.env.WMM_AUDIO_VIDEO_HOST || 'localhost'

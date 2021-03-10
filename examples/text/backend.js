@@ -1,23 +1,25 @@
 // Koa
+import cors from '@koa/cors'
 import Koa from 'koa'
+import bodyParser from 'koa-body-parser'
+import mount from 'koa-mount'
 import koaRouter from 'koa-router'
 import serve from 'koa-static'
-import mount from 'koa-mount'
-import bodyParser from 'koa-body-parser'
-import cors from '@koa/cors'
-
 // Node.js
 import path from 'path'
+import {
+  balance,
+  initTexts,
+  sleep // general
+  ,
+  spend,
+  texts, verifyReceipt
+} from 'wmm-utils'
+// App
+import { mediaPath, pricePerWord, receiptService } from './public/config.js'
+
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
-// App
-import { mediaPath, receiptService, pricePerWord } from './public/config.js'
-import {
-  verifyReceipt,    // receipts
-  spend, balance,   // accounting
-  initTexts, texts, // text file contents and meta
-  sleep             // general
-} from 'wmm-utils'
 
 initTexts(path.resolve(__dirname, mediaPath) + '/')
 
@@ -61,4 +63,4 @@ app
   // serve packages as static assets:
   .use(mount('/packages', serve(path.resolve(__dirname + '/../../packages'))))
 
-app.listen(process.env.PORT || 3008)
+app.listen(process.env.WMM_TEXT_PORT || 3008)

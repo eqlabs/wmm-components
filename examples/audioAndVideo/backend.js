@@ -1,15 +1,17 @@
+import cors from '@koa/cors'
 import Koa from 'koa'
+import bodyParser from 'koa-body-parser'
+import mount from 'koa-mount'
 import koaRouter from 'koa-router'
 import serve from 'koa-static'
-import mount from 'koa-mount'
-import bodyParser from 'koa-body-parser'
-import cors from '@koa/cors'
 import path from 'path'
+import {
+  createStream, getMeta, initStreamingMeta,
+
+  pipeMediaIntoStream, prepareStreamCtx, verifyReceipt
+} from 'wmm-utils'
 import * as config from './config.js'
 const { mediaPath, allowCORS, receiptService } = config
-import { initStreamingMeta, getMeta,
-         verifyReceipt,
-         prepareStreamCtx, createStream, pipeMediaIntoStream  } from 'wmm-utils'
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
 initStreamingMeta(path.resolve(__dirname, mediaPath) + '/')
@@ -40,4 +42,4 @@ app
   .use(mount('/packages', serve(path.resolve(__dirname + '/../../packages'))))
 
 
-app.listen(process.env.PORT || 3009)
+app.listen(config.WMM_AUDIO_VIDEO_PORT)
