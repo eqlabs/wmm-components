@@ -42,4 +42,4 @@ app
   .use(mount('/packages', serve(path.resolve(__dirname + '/../../packages'))))
 
 
-app.listen(process.env.WMM_BACKEND_PORT || 3009)
+app.listen(config.WMM_AUDIO_VIDEO_PORT)

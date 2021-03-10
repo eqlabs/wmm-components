@@ -1,7 +1,7 @@
+import { fullPaymentUrl, WMM_AUDIO_VIDEO_HOST, WMM_AUDIO_VIDEO_PORT } from './config.js'
+import { logEvent } from '/packages/wmm-utils/client/client.js'
 import '/packages/wmm-web-components/WmmAudio.js'
 import '/packages/wmm-web-components/WmmVideo.js'
-import { logEvent } from '/packages/wmm-utils/client/client.js'
-import {fullPaymentUrl} from './config.js'
 
 const info = document.querySelector('#logs')
 
@@ -9,7 +9,7 @@ export function showMedia(file) {
   const type = file.split('.')[1]
   // Add video element to the dom
   const wmm = document.createElement('wmm-' + (type == 'mp3' ? 'audio' : 'video'))
-  wmm.src = `http://localhost:3009/media/` + file
+  wmm.src = `http://${WMM_AUDIO_VIDEO_HOST}:${WMM_AUDIO_VIDEO_PORT}/media/` + file
   wmm.paymentUrl = fullPaymentUrl
 
   addStylesToMedia(wmm)

@@ -11,7 +11,7 @@ import {
   balance,
   initTexts,
   sleep // general
-  , // receipts
+  ,
   spend,
   texts, verifyReceipt
 } from 'wmm-utils'
@@ -63,4 +63,4 @@ app
   // serve packages as static assets:
   .use(mount('/packages', serve(path.resolve(__dirname + '/../../packages'))))
 
-app.listen(process.env.WMM_BACKEND_PORT || 3008)
+app.listen(process.env.WMM_TEXT_PORT || 3008)
