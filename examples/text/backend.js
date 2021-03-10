@@ -16,7 +16,8 @@ import {
   texts, verifyReceipt
 } from 'wmm-utils'
 // App
-import { mediaPath, pricePerWord, receiptService } from './public/config.js'
+import * as config from './config.js'
+const { mediaPath, pricePerWord, receiptService } = config
 
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
@@ -54,6 +55,16 @@ router.get('/media/:file/:pInd', async ctx => {
   ctx.body = paragraphs[pInd]
 })
 
+/**
+ * Pass config.js to frontend with parsed ENV variables.
+ * Could also filter backend specific configs from the frontend.
+ */
+router.get('/config.js', ctx => {
+  ctx.set('Content-Type', `application/javascript`)
+  ctx.body = Object.entries(config).map(([key, val]) =>
+    `export const ${key} = ${typeof val == 'string' ? '"'+val+'"' : val}`
+  ).join('\n')
+})
 
 app
   .use(bodyParser())

@@ -1,5 +1,5 @@
 import '../../../packages/wmm-web-components/wmmText.js'
-import {fullPaymentUrl} from './config.js'
+import {fullPaymentUrl} from '../config.js'
 
 // Add video element to the dom
 const wmm = document.createElement('wmm-text')

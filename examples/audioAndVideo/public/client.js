@@ -1,4 +1,4 @@
-import { fullPaymentUrl, WMM_AUDIO_VIDEO_HOST, WMM_AUDIO_VIDEO_PORT } from './config.js'
+import { fullPaymentUrl, WMM_AUDIO_VIDEO_HOST, WMM_AUDIO_VIDEO_PORT } from '../config.js'
 import { logEvent } from '/packages/wmm-utils/client/client.js'
 import '/packages/wmm-web-components/WmmAudio.js'
 import '/packages/wmm-web-components/WmmVideo.js'

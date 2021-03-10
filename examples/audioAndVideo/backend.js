@@ -32,13 +32,24 @@ router.get('/media/:file', async ctx => {
   ctx.body = stream
 })
 
+/**
+ * Pass config.js to frontend with parsed ENV variables.
+ * Could also filter backend specific configs from the frontend.
+ */
+router.get('/config.js', ctx => {
+  ctx.set('Content-Type', `application/javascript`)
+  ctx.body = Object.entries(config).map(([key, val]) =>
+    `export const ${key} = ${typeof val == 'string' ? '"'+val+'"' : val}`
+  ).join('\n')
+})
+
 if (allowCORS) app.use(cors())
 
 app
   .use(bodyParser())
   .use(router.routes())
   // serve root folder for index.html:
-  .use(serve(path.resolve(__dirname, '.')))
+  .use(serve(path.resolve(__dirname+'/public', '.')))
   // serve packages as static assets:
   .use(mount('/packages', serve(path.resolve(__dirname + '/../../packages'))))
 
