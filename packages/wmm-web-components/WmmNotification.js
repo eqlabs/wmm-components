@@ -8,8 +8,10 @@
  * @param {boolean} inside - adds notification inside the element as its last child
  */
 export function addNotificationTo(element, html, inside) {
-  if (inside && element.lastElementChild) {
-    elmenent = element.lastElementChild
+  if (inside && element.lastElementChild && element.lastElementChild.clientHeight) {
+    element = element.lastElementChild
+  } else {
+    inside = false
   }
   element.style.position = 'relative'
   const notif = document.createElement('wmm-notification')

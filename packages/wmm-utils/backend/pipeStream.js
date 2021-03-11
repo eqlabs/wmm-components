@@ -4,7 +4,7 @@ import {sleep} from '../backend.js'
 
 /**
  * Creates readStream from a file.
- * @param {sting} path to the file
+ * @param {string} path to the file
  */
 export function createStream(fromPath) {
   return fs.createReadStream(fromPath, {

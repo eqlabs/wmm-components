@@ -6,7 +6,7 @@ import koaRouter from 'koa-router'
 import serve from 'koa-static'
 import path from 'path'
 import * as config from './config.js'
-const { mediaPath, allowCORS, receiptService, newAccountBalance } = config
+const { mediaPath, allowCORS, receiptService, paywallThreshold } = config
 import { initStreamingMeta, getMeta,
          verifyReceipt,
          prepareStreamCtx, createStream, pipeMediaIntoStream,
@@ -14,7 +14,7 @@ import { initStreamingMeta, getMeta,
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
 // Initialize libraries
-setInitialBalance(newAccountBalance)
+setInitialBalance(paywallThreshold)
 initStreamingMeta(path.resolve(__dirname, mediaPath) + '/')
 
 const app = new Koa()

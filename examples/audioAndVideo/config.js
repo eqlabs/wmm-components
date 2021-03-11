@@ -20,14 +20,14 @@ export const assetType = "XRP"
 
 // Coil sends about 0.03 $ per minute (~ 0.01 XRP),
 // to keep video service smooth, keep the required amount below this value.
-export const pricePerMinute = 0.01 // 0.1
+export const pricePerMinute = 0.1
 
 // Alternatively the price can be calculated in megabytes
 // (in this case set pricePerMinute as null).
 export const pricePerMB = null // 0.212 // 0.01,
 
 // Two minutes of free media; more details in accounts.js
-export const newAccountBalance = 0 // 0.1 * pricePerMinute
+export const paywallThreshold = 0.1 * pricePerMinute
 
 // TODO figure out how to parse this; now it's read from packages/wmm-utils/backend -folder
 export const mediaPath = "./media/" //"../../../resources/dinosaur.mp4"

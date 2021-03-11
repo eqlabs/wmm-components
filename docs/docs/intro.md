@@ -18,7 +18,7 @@ Still, using WM purely as a payment is somewhat problematic, since there are no 
 
 On the otherhand, if you want an efortless way to profit from your content that doesn't disturb your users with recurring payment requests, Web Monetization can be a perfect match.
 
-The recommended way of using WM, is to provide some content for all users, while revealing the full experience only for monetized users. One easy way to do this, is to set up an inital account balance for all new users ("newAccountBalance" in config.js). This allows also non-paying users to consume a chosen amount of content, before they are prompted to set up a wallet to continue the experience.
+The recommended way of using WM, is to provide some content for all users, while revealing the full experience only for monetized users. One easy way to do this, is to set up an inital account balance for all new users ("paywallThreshold" in config.js). This allows also non-paying users to consume a chosen amount of content, before they are prompted to set up a wallet to continue the experience.
 
 ## Currency
 

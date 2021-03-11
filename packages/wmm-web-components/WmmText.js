@@ -36,26 +36,27 @@ class WmmText extends HTMLElement {
 
   constructor () {
     super()
-    this.attachShadow({ mode: 'open' })
     this.paragraph = -1
-    this.shadowRoot.innerHTML = `
+
+  }
+
+  // Element added to dom
+  connectedCallback () {
+    this.innerHTML = `
       <style>
-        :host {
+        wmm-text {
           display: block;
           height: 100%;
           /* background: red;*/
         }
-        p {
+        wmm-text p {
           margin: 0;
           padding: 1em 0 0 1em;
         }
       </style>
     `
-  }
-
-  // Element added to dom
-  connectedCallback () {
     initMediaMonetization(this)
+    this.initNotifications()
     this.startLoadingText()
   }
 
@@ -67,7 +68,7 @@ class WmmText extends HTMLElement {
   // Methods
 
   startLoadingText() {
-    if (!this.shadowRoot.host.clientHeight)
+    if (!this.clientHeight)
       return // no room for text; not added to dom yet?
     if (this.observer) {
       alert('TODO unload previous observer before starting a new one')
@@ -93,20 +94,37 @@ class WmmText extends HTMLElement {
     urlAndParams[0] += '/' + this.paragraph
     src = urlAndParams.join('?')
     // load from backend
+    this.dispatchEvent(new CustomEvent('paragraphLoading'))
     const res = await fetch(src)
     if (res.status === 204)
       return // end of article reached
     const pText = await res.text()
+    this.dispatchEvent(new CustomEvent('paragraphLoaded'))
     // add to dom
     this.lastParagraph = document.createElement('p')
     if (allowHtmlInjection)
       this.lastParagraph.innerHTML = pText
     else
       this.lastParagraph.textContent = pText
-    this.shadowRoot.appendChild(this.lastParagraph)
+    this.appendChild(this.lastParagraph)
     this.observer.observe(this.lastParagraph)
   }
 
+  /**
+   * Binds to default notifications.
+   * Shown on 'paragraphPending' event and hidden on 'paragraphLoaded' event.
+   */
+  initNotifications() {
+    bindNotifications(this, undefined, true)
+    const waitBeforeShowing = 600
+    let timeout
+    this.addEventListener('paragraphLoading', () =>
+      (timeout = setTimeout(() => {
+        this.dispatchEvent(new CustomEvent('paragraphPending'))
+      }, waitBeforeShowing))
+    )
+    this.addEventListener('paragraphLoaded', () => clearTimeout(timeout))
+  }
 }
 
 window.customElements.define('wmm-text', WmmText)

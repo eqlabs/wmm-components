@@ -22,32 +22,29 @@ export function setUrl(wmm, url) {
 
 function getErrorStateText() {
   if (!document.monetization) {
-    return "Install Coil wallet to continue watching the media."
+    return "Install <a href='https://coil.com/' target='_blank'>Coil wallet</a> for more media content."
   } else {
     switch (document.monetization.state) {
       case 'stopped':
-        return "Install Coil wallet to continue watching the media."
+        return "Install <a href='https://coil.com/' target='_blank'>Coil wallet</a> for more media content."
       case 'pending':
-        return "Failed to start monetization, even though wallet installed."
+        return "Starting monetization, please wait."
       case 'started':
         return "Monetization running, but not enough payments to show the media. Please wait."
     }
   }
 }
 
-function bindEvents(wmm) {
-  for (let [evName, action] of Object.entries(mediaEvents)) {
-    wmm.addEventListener(evName, action)
-  }
-}
+const errorEvents = ['stalled', 'paragraphPending'], // TODO: add error event for text
+      okEvents = ['play', 'canplaythrough', 'paragraphLoaded'] // TODO: add ok event for text // NOTE: play only works when autoplay=true
 
-const errorEvents = ['stalled'], // TODO: add error event for text
-      okEvents = ['play', 'canplaythrough'] // TODO: add ok event for text // NOTE: play only works when autoplay=true
-
-export function bindNotifications(wmm, el=wmm) {
+/**
+ * Binds monetization state notifications to given component.
+ */
+export function bindNotifications(wmm, el=wmm, inside) {
   for (const errorEv of errorEvents) {
     wmm.addEventListener(errorEv , () => {
-      wmm.notification = addNotificationTo(el, getErrorStateText())
+      wmm.notification = addNotificationTo(el, getErrorStateText(), inside)
     })
   }
   for (const okEv of okEvents) {
@@ -55,36 +52,6 @@ export function bindNotifications(wmm, el=wmm) {
       if (!wmm.notification) return
       wmm.notification.remove()
       delete wmm.notification
-      // wmm.notification = addNotificationTo(el, getErrorStateText())
     })
   }
 }
-
-/*
-const mediaEvents = {
-  "monetized": ({detail}) =>
-    logEvent(`Balance: ${detail.accountBalance}`, info),
-  "monetizeFailed": ({detail}) =>
-    logEvent(`Failed: ${detail}`, info),
-  "play": ev =>
-    console.log('play', ev),
-  "stalled": () => {
-    // TODO create non intrusive info
-    if (!document.monetization) {
-      alert("Monetization failed in error state.")
-    } else {
-      switch (document.monetization.state) {
-        case 'stopped':
-          alert("Install Coil wallet to start paying for video content to see more.")
-          break;
-        case 'pending':
-          alert("Failed to start monetization, even though wallet installed.")
-          break;
-        case 'started':
-          alert("Monetization running, but not enough payments to show the video.")
-          break;
-      }
-    }
-  }
-}
-*/

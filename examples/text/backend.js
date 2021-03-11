@@ -7,21 +7,21 @@ import koaRouter from 'koa-router'
 import serve from 'koa-static'
 // Node.js
 import path from 'path'
-import {
-  balance,
-  initTexts,
-  sleep // general
-  ,
-  spend,
-  texts, verifyReceipt
-} from 'wmm-utils'
 // App
+import {
+  spend, balance, setInitialBalance,  // accounting
+  verifyReceipt,                      // receipts
+  initTexts, texts,                   // text file contents and meta
+  sleep,                              // general
+} from 'wmm-utils'
 import * as config from './config.js'
-const { mediaPath, pricePerWord, receiptService } = config
+const { mediaPath, pricePerWord, receiptService, paywallThreshold } = config
 
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
 
+// Initialize libraries
+setInitialBalance(paywallThreshold)
 initTexts(path.resolve(__dirname, mediaPath) + '/')
 
 const app = new Koa()

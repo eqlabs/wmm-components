@@ -78,6 +78,9 @@ function pipeReceiptEventsToBackend() {
   if (!userId) {
     throw Error("userId required to identify receipt owner")
   }
+  if (!document.monetization) {
+    return console.warn("Monetization not supported by browser, install wallet.")
+  }
 
   if (mProgressAction)
     document.monetization.removeEventListener('monetizationprogress', mProgressAction)
