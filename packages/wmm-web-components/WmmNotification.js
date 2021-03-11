@@ -1,12 +1,23 @@
-
-export function addNotificationTo(element, text, onTop=true) {
+/**
+ * This is a simple UI component for showing notifications of the monetization
+ * state. You can modify this component or replace it with your own UI component
+ * to give notifications that suit better the style of your application.
+ *
+ * @param {Element} element
+ * @param {string} html
+ * @param {boolean} inside - adds notification inside the element as its last child
+ */
+export function addNotificationTo(element, html, inside) {
+  if (inside && element.lastElementChild) {
+    elmenent = element.lastElementChild
+  }
   element.style.position = 'relative'
   const notif = document.createElement('wmm-notification')
   notif.style.width  = `calc(${element.clientWidth}px - 2em)`
   notif.style.height = element.clientHeight + 'px'
   notif.style.top = element.getBoundingClientRect().top + 'px'
-  if (onTop) notif.classList.add('onTop')
-  notif.show(text)
+  if (!inside) notif.classList.add('onTop')
+  notif.show(html)
   element.parentNode.insertBefore(notif, element.nextSibling)
   return notif
 }
@@ -27,10 +38,6 @@ class WmmNotification extends HTMLElement {
         }
         :host(.onTop) {
           position: absolute;
-          /* top: 0;
-          // left: 0;
-          /* height: 100%;
-             width: 100%; */
           padding: 0 1em;
         }
       </style>
@@ -47,8 +54,6 @@ class WmmNotification extends HTMLElement {
     const el = this.shadowRoot.querySelector('#text')
     console.log('el t', el.textContent)
     console.log('el', el.style.opacity)
-    // el.style.opacity = 0
-    // debugger
     el.animate([
       {opacity: 1},
       {opacity: 0.6, offset: 0.36},
@@ -64,11 +69,7 @@ class WmmNotification extends HTMLElement {
   // "public" methods
 
   show(text) {
-    this.shadowRoot.querySelector('#text').textContent = text
-    // this.shadowRoot.host.style.display = 'block'
-  }
-  hide() {
-    this.shadowRoot.host.style.display = 'none'
+    this.shadowRoot.querySelector('#text').innerHTML = text
   }
 
 }
