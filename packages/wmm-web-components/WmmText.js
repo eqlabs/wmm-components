@@ -96,10 +96,10 @@ class WmmText extends HTMLElement {
     // load from backend
     this.dispatchEvent(new CustomEvent('paragraphLoading'))
     const res = await fetch(src)
+    this.dispatchEvent(new CustomEvent('paragraphLoaded'))
     if (res.status === 204)
       return // end of article reached
     const pText = await res.text()
-    this.dispatchEvent(new CustomEvent('paragraphLoaded'))
     // add to dom
     this.lastParagraph = document.createElement('p')
     if (allowHtmlInjection)

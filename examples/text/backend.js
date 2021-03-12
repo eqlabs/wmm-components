@@ -22,7 +22,7 @@ const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
 // Initialize libraries
 setInitialBalance(paywallThreshold)
-initTexts(path.resolve(__dirname, mediaPath) + '/')
+const mediaDir = initTexts(path.resolve(__dirname, mediaPath) + '/')
 
 const app = new Koa()
 const router = koaRouter()
@@ -66,6 +66,11 @@ router.get('/config.js', ctx => {
   ctx.body = Object.entries(config).map(([key, val]) =>
     `export const ${key} = ${typeof val == 'string' ? '"'+val+'"' : val}`
   ).join('\n')
+})
+
+router.get('/mediaFiles', async ctx => {
+  ctx.set('Content-Type', `application/javascript`)
+  ctx.body = 'export default ' + JSON.stringify(await mediaDir)
 })
 
 app

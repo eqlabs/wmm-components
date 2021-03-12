@@ -1,8 +1,29 @@
 import '../../../packages/wmm-web-components/wmmText.js'
 import {fullPaymentUrl} from '../config.js'
+import mediaFiles from './mediaFiles'
 
-// Add video element to the dom
-const wmm = document.createElement('wmm-text')
-wmm.src = `http://localhost:3008/media/post2.txt`
-wmm.paymentUrl = fullPaymentUrl
-document.body.appendChild(wmm)
+const linksEl = document.querySelector('#mediaLinks'),
+      mediaEl = document.querySelector('#mediaContent')
+
+async function initMediaLinks() {
+  console.log('mediaFiles', mediaFiles)
+  for (const fileName of mediaFiles) {
+    const a = document.createElement('a')
+    a.href = '#'
+    a.textContent = fileName.split('.')[0]
+    a.addEventListener('click', () => {
+      showMedia(fileName)
+    })
+    linksEl.appendChild(a )
+  }
+}
+
+initMediaLinks()
+
+function showMedia(fileName) {
+  mediaEl.innerHTML = ''
+  const wmm = document.createElement('wmm-text')
+  wmm.src = `http://localhost:3008/media/${fileName}`
+  wmm.paymentUrl = fullPaymentUrl
+  mediaEl.appendChild(wmm)
+}

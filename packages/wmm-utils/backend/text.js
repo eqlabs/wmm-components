@@ -17,6 +17,7 @@ export async function initTexts(mediaPath) {
     parseTextFile(file, await cont.toString())
     parseWordCount(file)
   }
+  return dir
 }
 
 function parseTextFile(file, text) {
