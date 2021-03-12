@@ -10,14 +10,9 @@ const categoriesObj = {
     'client', 'monetize', 'user'
   ],
   'wmm-web-components': ['WmmAudio', 'WmmVideo', 'videoAndAudio', 'WmmText'],
-  Misc: [
-    'styleguide', 'components', 'mdx',
-    {
-      type: 'link',
-      label: 'Web Monetization events',
-      href: 'http://127.0.0.1:8080/src/demos/monetizationEvents.html'
-    },
-  ]
+//   { type: 'link',
+//     label: 'Web Monetization events',
+//     href: 'http://127.0.0.1:8080/src/demos/monetizationEvents.html' }
 }
 
 const categories = []

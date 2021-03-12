@@ -2,6 +2,7 @@
 .vscode
 node_modules
 temp
+/docs/old
 /docs/static/packages
 /docs/static/examples
 /docs/static/jsdoc

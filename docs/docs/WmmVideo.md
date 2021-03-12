@@ -62,7 +62,7 @@ E.g. https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line47">line 47</a>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line49">line 49</a>
 </li></ul></dd>
 </dl>
 </article>

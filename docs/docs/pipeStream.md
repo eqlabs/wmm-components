@@ -17,6 +17,9 @@ id: pipeStream
 <h4 className="name" id="createStream"><span className="type-signature"></span>createStream<span className="signature">(path)</span><span className="type-signature"></span></h4>
 <div className="description">
 Creates readStream from a file.
+Change highWaterMark to change the size of data chuncks being sent,
+which also changes the frequency of payments.
+Smaller highWaterMark results in more frequent, but smaller data chucks and payments.
 </div>
 <h5>Parameters:</h5>
 <table className="params">
@@ -31,7 +34,7 @@ Creates readStream from a file.
 <tr>
 <td className="name"><code>path</code></td>
 <td className="type">
-<span className="param-type">sting</span>
+<span className="param-type">string</span>
 </td>
 <td className="description last">to the file</td>
 </tr>
@@ -40,7 +43,7 @@ Creates readStream from a file.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/pipeStream.js.html">pipeStream.js</a>, <a href="pathname:///jsdoc/pipeStream.js.html#line9">line 9</a>
+<a href="pathname:///jsdoc/pipeStream.js.html">pipeStream.js</a>, <a href="pathname:///jsdoc/pipeStream.js.html#line12">line 12</a>
 </li></ul></dd>
 </dl>
 </article>

@@ -24,6 +24,18 @@ skipVerification="if true, don't send receipts to backend for verifications"&gt;
 </li></ul></dd>
 </dl>
 </div>
+<h3 className="subsection-title">Methods</h3>
+<h4 className="name" id="initNotifications"><span className="type-signature"></span>initNotifications<span className="signature">()</span><span className="type-signature"></span></h4>
+<div className="description">
+Binds to default notifications.
+Shown on 'paragraphPending' event and hidden on 'paragraphLoaded' event.
+</div>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line117">line 117</a>
+</li></ul></dd>
+</dl>
 </article>
 </section>
 </div>
