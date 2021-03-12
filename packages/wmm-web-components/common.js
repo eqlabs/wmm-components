@@ -41,10 +41,10 @@ const errorEvents = ['stalled', 'paragraphPending'], // TODO: add error event fo
 /**
  * Binds monetization state notifications to given component.
  */
-export function bindNotifications(wmm, el=wmm, inside) {
+export function bindNotifications(wmm, inside) {
   for (const errorEv of errorEvents) {
     wmm.addEventListener(errorEv , () => {
-      wmm.notification = addNotificationTo(el, getErrorStateText(), inside)
+      wmm.notification = addNotificationTo(wmm, getErrorStateText(), inside)
     })
   }
   for (const okEv of okEvents) {

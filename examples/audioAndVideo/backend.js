@@ -27,7 +27,7 @@ router.post('/verifyReceipt', async ctx => {
 router.get('/media/:file', async ctx => {
   let mediaMeta = await getMeta(ctx.params.file)
   prepareStreamCtx(ctx, mediaMeta)
-  const stream = createStream(mediaMeta.fullPath)
+  const stream = createStream(mediaMeta.fullPath, ctx.socket)
   pipeMediaIntoStream(mediaMeta, stream, config, ctx.query.userId)
   ctx.body = stream
 })

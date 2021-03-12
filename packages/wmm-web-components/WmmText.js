@@ -115,7 +115,7 @@ class WmmText extends HTMLElement {
    * Shown on 'paragraphPending' event and hidden on 'paragraphLoaded' event.
    */
   initNotifications() {
-    bindNotifications(this, undefined, true)
+    bindNotifications(this, true)
     const waitBeforeShowing = 600
     let timeout
     this.addEventListener('paragraphLoading', () =>

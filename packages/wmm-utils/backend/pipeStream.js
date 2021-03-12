@@ -4,12 +4,17 @@ import {sleep} from '../backend.js'
 
 /**
  * Creates readStream from a file.
+ * Change highWaterMark to change the size of data chuncks being sent,
+ * which also changes the frequency of payments.
+ * Smaller highWaterMark results in more frequent, but smaller data chucks and payments.
  * @param {string} path to the file
  */
-export function createStream(fromPath) {
-  return fs.createReadStream(fromPath, {
-    highWaterMark: 64 * 1024 // default 64 * 1024
+export function createStream(fromPath, socket) {
+  const stream = fs.createReadStream(fromPath, {
+    highWaterMark: 64 * 1024
   })
+  socket.on('close', () => stream.close())
+  return stream
 }
 
 export function pipeMediaIntoStream(meta, stream, config, userId) {
@@ -23,7 +28,8 @@ export function pipeMediaIntoStream(meta, stream, config, userId) {
 
 async function pipeStream(meta, stream, config, userId) {
   validateConfig(config)
-  while (stream.readableLength) {
+
+  while (stream.readableLength && !stream.closed) {
     if (spend(userId, pricePerBytes(stream.readableLength, meta, config))) {
       stream.read()
       console.log('balance after spent', balance(userId))

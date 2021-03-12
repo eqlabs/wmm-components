@@ -1,5 +1,5 @@
 import { initMediaMonetization, monetizeEvents, mediaRemoved } from '../wmm-utils/client/monetize.js'
-import { initAudioOrVideo, setClass, initCssClasses } from './videoAndAudio.js'
+import { initAudioOrVideo, setClass, initCssClasses, unloadMedia } from './videoAndAudio.js'
 import { setUrl, bindNotifications } from './common.js'
 
 /**
@@ -20,7 +20,7 @@ class WmmVideo extends HTMLElement {
     super()
     this.attachShadow({ mode: 'open' })
     initAudioOrVideo(this, 'video')
-    bindNotifications(this, this.querySelector('video') || undefined)
+    bindNotifications(this)
   }
 
   // Events
@@ -32,6 +32,7 @@ class WmmVideo extends HTMLElement {
   }
   disconnectedCallback () { // element removed from dom
     mediaRemoved(this)
+    unloadMedia(this.shadowRoot.querySelector('video'))
   }
 
   // Instance methods

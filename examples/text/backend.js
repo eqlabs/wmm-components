@@ -49,6 +49,8 @@ router.get('/media/:file/:pInd', async ctx => {
         {userId} = ctx.query
   while (!spend(userId, cost)) {
     console.log(`costs too much ${cost} > ${balance(userId)}`)
+    if (ctx.socket.destroyed)
+      return ctx.body = 'disconnected'
     await sleep(400)
   }
   console.log(`payed ${cost}!`)

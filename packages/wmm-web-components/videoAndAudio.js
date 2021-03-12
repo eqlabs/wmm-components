@@ -26,3 +26,14 @@ export function setClass(wmm, className) {
   wmmClasses.forEach(cn =>
     wmm.classList[cn == className ? 'add' : 'remove'](cn))
 }
+
+/**
+ * Make sure video and audio elements release their resources when removed
+ * from DOM.
+ * @param {Element} mediaEl
+ */
+export function unloadMedia(mediaEl) {
+  mediaEl.pause()
+  mediaEl.removeAttribute('src')
+  mediaEl.load()
+}
