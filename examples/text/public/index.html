@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
+    <style type="text/css">
       html, body {
         /* margin: 0; */
         height: 100%;
@@ -10,12 +10,40 @@
       body {
         margin: 0;
       }
+      #mediaLinks {
+        display: flex;
+        max-width: 27em;
+        padding: 1em 0 1em calc(50vw - 27em/2);
+      }
+      #mediaLinks a {
+        display: block;
+        text-align: center;
+        flex-grow: 1;
+        border-right: 1px solid lightgray;
+      }
+      #mediaLinks a:last-child {
+        border: none;
+      }
+      a {
+        text-decoration: none;
+        color: hsl(200, 100%, 55%);
+      }
+      #footer {
+        text-align: center;
+        padding: 6em;
+        margin-top: 2em;
+        background: hsl(0, 0%, 70%);
+        color: white;
+      }
     </style>
   </head>
 
   <body>
     <div id="mediaLinks"></div>
-    <div id="mediaContent" style="height: 400px"></div>
+    <div id="mediaContent"></div>
+    <div id="footer">
+      Footer with some height, to make sure paragraph loading works even with content below it.
+    </div>
 
     <script type="module" src="./client.js"></script>
   </body>

@@ -10,7 +10,6 @@ import { setUrl, bindNotifications } from './common.js'
 const threshold = 0.1
 
 let observerOptions = {
-  // root: node,
   rootMargin: '0px',
   threshold: threshold
 }
@@ -46,7 +45,6 @@ class WmmText extends HTMLElement {
       <style>
         wmm-text {
           display: block;
-          height: 100%;
           /* background: red;*/
         }
         wmm-text p {
@@ -68,8 +66,8 @@ class WmmText extends HTMLElement {
   // Methods
 
   startLoadingText() {
-    if (!this.clientHeight)
-      return // no room for text; not added to dom yet?
+    if (!this.parentElement)
+      return // not added to dom yet
     if (this.observer) {
       alert('TODO unload previous observer before starting a new one')
       return
