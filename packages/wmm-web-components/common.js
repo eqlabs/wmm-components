@@ -36,7 +36,7 @@ function getErrorStateText() {
 }
 
 const errorEvents = ['stalled', 'paragraphPending'], // TODO: add error event for text
-      okEvents = ['play', 'canplaythrough', 'paragraphLoaded'] // TODO: add ok event for text // NOTE: play only works when autoplay=true
+      okEvents = ['play', 'playing', 'paragraphLoaded'] // TODO: add ok event for text // NOTE: play only works when autoplay=true
 
 /**
  * Binds monetization state notifications to given component.
@@ -44,6 +44,7 @@ const errorEvents = ['stalled', 'paragraphPending'], // TODO: add error event fo
 export function bindNotifications(wmm, inside) {
   for (const errorEv of errorEvents) {
     wmm.addEventListener(errorEv , () => {
+      wmm.notification?.remove() // replace previous if exists, possibly with new error state text
       wmm.notification = addNotificationTo(wmm, getErrorStateText(), inside)
     })
   }

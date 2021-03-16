@@ -54,8 +54,6 @@ class WmmNotification extends HTMLElement {
   // methods
   startAnimation() {
     const el = this.shadowRoot.querySelector('#text')
-    console.log('el t', el.textContent)
-    console.log('el', el.style.opacity)
     el.animate([
       {opacity: 1},
       {opacity: 0.6, offset: 0.36},
