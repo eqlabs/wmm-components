@@ -31,6 +31,8 @@ async function readMeta(mediaPath) {
   const files = await fs.promises.readdir(mediaPath)
   console.log('dir', files)
   const allRead = files.map(async function(file) {
+    if (file.slice(0,1) == '.')
+      return // skip .DS_Store etc
     const fullMediaPath = mediaPath + file
     const stats = await fs.promises.stat(fullMediaPath)
     const seconds = await getVideoDurationInSeconds(fullMediaPath)
