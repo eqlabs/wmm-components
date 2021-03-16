@@ -30,7 +30,7 @@ export const pricePerMB = null // 0.212 // 0.01,
 export const paywallThreshold = 0.1 * pricePerMinute
 
 // TODO figure out how to parse this; now it's read from packages/wmm-utils/backend -folder
-export const mediaPath = "./media/" //"../../../resources/dinosaur.mp4"
+export const mediaPath = "./media/"
 
 // If you are serving UI assets from different domain, allow CORS requests
 export const allowCORS = true
