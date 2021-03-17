@@ -22,11 +22,13 @@ export async function getMeta(fileName) {
   return fileMeta.get(fileName)
 }
 
-export const initStreamingMeta = mediaPath =>
-  metaRead = readMeta(mediaPath)
+export const initStreamingMeta = (mediaPath, config) =>
+  metaRead = readMeta(mediaPath, config)
 
 // TODO: read all videos in given folder - now just 'videoPath'
-async function readMeta(mediaPath) {
+async function readMeta(mediaPath, config) {
+  validateConfig(config)
+
   console.log('mediaPath', mediaPath)
   const files = await fs.promises.readdir(mediaPath)
   console.log('dir', files)
@@ -45,11 +47,31 @@ async function readMeta(mediaPath) {
             type: type,
             mime: mime.lookup(type),
             fileSize: stats.size,
+            pricePerByte: pricePerByte(seconds, stats.size, config),
           }
-    // console.log('price of full film', pricePerBytes(meta.fileSize, meta))
+
+    console.log(meta)
     fileMeta.set(file, meta)
   })
   await Promise.all(allRead)
+}
+
+function pricePerByte(seconds, fileSize,
+                      {pricePerMB, pricePerMinute}) {
+  if (pricePerMB)
+    return pricePerMB / 10**6
+  if (!pricePerMinute)
+    throw Error("pricePerMinute or pricePerMB required in configs")
+
+  const pricePerSecond = pricePerMinute/60,
+        bytesInSecond = fileSize / seconds,
+        pricePerByte = pricePerSecond / bytesInSecond
+  return pricePerByte
+}
+
+function validateConfig({pricePerMB, pricePerMinute}) {
+  if (pricePerMB && pricePerMinute)
+    throw Error("Price can be defined only in minutes or in megabytes, set the other one as null.")
 }
 
 export function prepareStreamCtx(ctx, meta) {

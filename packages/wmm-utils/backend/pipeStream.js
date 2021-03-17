@@ -11,50 +11,31 @@ import {sleep} from '../backend.js'
  */
 export function createStream(fromPath, socket) {
   const stream = fs.createReadStream(fromPath, {
-    highWaterMark: 64 * 1024
+    highWaterMark: 12 * 1024
   })
   socket.on('close', () => stream.close())
   return stream
 }
 
-export function pipeMediaIntoStream(meta, stream, config, userId) {
+export function pipeMediaIntoStream(meta, stream, userId) {
   stream.on('end', () => {
     console.log('stream ended')
   })
   stream.on('readable', () => {
-    pipeStream(meta, stream, config, userId)
+    pipeStream(meta, stream, userId)
   })
 }
 
-async function pipeStream(meta, stream, config, userId) {
-  validateConfig(config)
+async function pipeStream(meta, stream, userId) {
 
   while (stream.readableLength && !stream.closed) {
-    if (spend(userId, pricePerBytes(stream.readableLength, meta, config))) {
+    const chunkPrice = stream.readableLength * meta.pricePerByte
+    if (spend(userId, chunkPrice)) {
       stream.read()
-      console.log('balance after spent', balance(userId))
+      console.log(userId.slice(0,4) + ' balance after spent', balance(userId))
     } else {
-      console.log(`unable to spend enough (${balance(userId).toFixed(4)} / ${pricePerBytes(stream.readableLength, meta, config).toFixed(4)})`)
+      console.log(`${userId.slice(0,4)} unable to spend enough (${balance(userId).toFixed(4)} / ${chunkPrice.toFixed(4)})`)
       await sleep(400)
     }
   }
-}
-
-function pricePerBytes(bytes,
-                       {seconds, fileSize},
-                       {pricePerMB, pricePerMinute}) {
-  if (pricePerMB)
-    return bytes * pricePerMB / 10**6
-  if (!pricePerMinute)
-    throw Error("pricePerMinute or pricePerMB required in configs")
-
-  const pricePerSecond = pricePerMinute/60,
-        bytesInSecond = fileSize / seconds,
-        pricePerByte = pricePerSecond / bytesInSecond
-  return pricePerByte * bytes
-}
-
-function validateConfig({pricePerMB, pricePerMinute}) {
-  if (pricePerMB && pricePerMinute)
-    throw Error("Price can be defined only in minutes or in megabytes, set the other one as null.")
 }

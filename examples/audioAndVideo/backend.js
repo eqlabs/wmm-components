@@ -15,7 +15,7 @@ const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
 // Initialize libraries
 setInitialBalance(paywallThreshold)
-initStreamingMeta(path.resolve(__dirname, mediaPath) + '/')
+initStreamingMeta(path.resolve(__dirname, mediaPath) + '/', config)
 
 const app = new Koa()
 const router = koaRouter()
@@ -28,7 +28,7 @@ router.get('/media/:file', async ctx => {
   let mediaMeta = await getMeta(ctx.params.file)
   prepareStreamCtx(ctx, mediaMeta)
   const stream = createStream(mediaMeta.fullPath, ctx.socket)
-  pipeMediaIntoStream(mediaMeta, stream, config, ctx.query.userId)
+  pipeMediaIntoStream(mediaMeta, stream, ctx.query.userId)
   ctx.body = stream
 })
 

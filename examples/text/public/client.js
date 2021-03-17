@@ -6,7 +6,6 @@ const linksEl = document.querySelector('#mediaLinks'),
       mediaEl = document.querySelector('#mediaContent')
 
 async function initMediaLinks() {
-  console.log('mediaFiles', mediaFiles)
   for (const fileName of mediaFiles) {
     const a = document.createElement('a')
     a.href = '#'
