@@ -22,14 +22,13 @@ export const assetType = "XRP"
 // to keep video service smooth, keep the required amount below this value.
 export const pricePerMinute = 0.1
 
+// Two minutes of free media; more details in accounts.js
+export const paywallThreshold = 4 * pricePerMinute
+
 // Alternatively the price can be calculated in megabytes
 // (in this case set pricePerMinute as null).
-export const pricePerMB = null // 0.212 // 0.01,
+export const pricePerMB = null
 
-// Two minutes of free media; more details in accounts.js
-export const paywallThreshold = 0.1 * pricePerMinute
-
-// TODO figure out how to parse this; now it's read from packages/wmm-utils/backend -folder
 export const mediaPath = "./media/"
 
 // If you are serving UI assets from different domain, allow CORS requests

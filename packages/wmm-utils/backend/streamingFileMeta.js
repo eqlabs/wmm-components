@@ -28,18 +28,13 @@ export const initStreamingMeta = (mediaPath, config) =>
 // TODO: read all videos in given folder - now just 'videoPath'
 async function readMeta(mediaPath, config) {
   validateConfig(config)
-
-  console.log('mediaPath', mediaPath)
   const files = await fs.promises.readdir(mediaPath)
-  console.log('dir', files)
   const allRead = files.map(async function(file) {
     if (file.slice(0,1) == '.')
       return // skip .DS_Store etc
     const fullMediaPath = mediaPath + file
     const stats = await fs.promises.stat(fullMediaPath)
     const seconds = await getVideoDurationInSeconds(fullMediaPath)
-    console.log(file + ' duration in seconds', seconds)
-
     const type = file.split('.')[1],  // e.g. 'mp4'
           meta = {
             seconds,
@@ -49,8 +44,7 @@ async function readMeta(mediaPath, config) {
             fileSize: stats.size,
             pricePerByte: pricePerByte(seconds, stats.size, config),
           }
-
-    console.log(meta)
+    console.log(file, meta)
     fileMeta.set(file, meta)
   })
   await Promise.all(allRead)
@@ -72,10 +66,4 @@ function pricePerByte(seconds, fileSize,
 function validateConfig({pricePerMB, pricePerMinute}) {
   if (pricePerMB && pricePerMinute)
     throw Error("Price can be defined only in minutes or in megabytes, set the other one as null.")
-}
-
-export function prepareStreamCtx(ctx, meta) {
-  ctx.set('Content-Length', meta.fileSize)
-  ctx.set('Content-Type', `${meta.mime}`)
-  ctx.socket.setTimeout(10*60*1000) // make file socket wait for 10 minutes before breaking (when waiting for payments)
 }
