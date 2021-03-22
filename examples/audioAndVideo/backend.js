@@ -6,6 +6,7 @@ import koaRouter from 'koa-router'
 import serve from 'koa-static'
 import path from 'path'
 import range from 'koa-range'
+import fs from 'fs'
 import * as config from './config.js'
 const { mediaPath, allowCORS, receiptService, paywallThreshold } = config
 import { initStreamingMeta, getMeta,
@@ -42,6 +43,17 @@ router.get('/config.js', ctx => {
   ctx.body = Object.entries(config).map(([key, val]) =>
     `export const ${key} = ${typeof val == 'string' ? '"'+val+'"' : val}`
   ).join('\n')
+})
+
+/**
+ * Serve styles that are also used in docs and text -example.
+ */
+router.get('/styles.css', async ctx => {
+  ctx.set('Content-Type', `text/css`)
+  const {readFile} = fs.promises,
+        base = await readFile("../../docs/node_modules/@docusaurus/core/lib/webpack/mincss_clean.css"),
+        custom = await readFile("../../docs/src/css/custom.css")
+  ctx.body = base + "\n\n" + custom
 })
 
 if (allowCORS) app.use(cors())

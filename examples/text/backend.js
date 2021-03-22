@@ -7,6 +7,7 @@ import koaRouter from 'koa-router'
 import serve from 'koa-static'
 // Node.js
 import path from 'path'
+import fs from 'fs'
 // App
 import {
   spend, balance, setInitialBalance,  // accounting
@@ -72,6 +73,18 @@ router.get('/mediaFiles', async ctx => {
   ctx.set('Content-Type', `application/javascript`)
   ctx.body = 'export default ' + JSON.stringify(await mediaDir)
 })
+
+/**
+ * Serve styles that are also used in docs and audioAndVideo -example.
+ */
+router.get('/styles.css', async ctx => {
+  ctx.set('Content-Type', `text/css`)
+  const {readFile} = fs.promises,
+        base = await readFile("../../docs/node_modules/@docusaurus/core/lib/webpack/mincss_clean.css"),
+        custom = await readFile("../../docs/src/css/custom.css")
+  ctx.body = base + "\n\n" + custom
+})
+
 
 app
   .use(bodyParser())

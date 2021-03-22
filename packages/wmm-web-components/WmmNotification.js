@@ -15,7 +15,7 @@ export function addNotificationTo(element, html, inside) {
   }
   element.style.position = 'relative'
   const notif = document.createElement('wmm-notification')
-  notif.style.width  = `calc(${element.clientWidth}px - 2em)`
+  notif.style.width  = element.clientWidth + 'px'
   notif.style.height = element.clientHeight + 'px'
   notif.style.top = element.getBoundingClientRect().top + 'px'
   if (!inside) notif.classList.add('onTop')

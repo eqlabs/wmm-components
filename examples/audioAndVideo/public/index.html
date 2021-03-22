@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+  <head>
+    <link rel="stylesheet" href="/styles.css"></link>
+  </head>
 
   <body>
+    
     <h1>Monetized media</h1>
     <div id="media-links">
       <a href="#">ElephantsDream.mp4</a>
@@ -11,19 +14,20 @@
     <div id="media-container"></div>
     <p>Monetization backend logs:</p>
     <div id="logs"></div>
-    <!--script type="module" src=></script-->
+
     <script type="module">
       import {showMedia} from "/client.js"
       document.querySelectorAll('#media-links a').forEach((el) => {
         el.addEventListener('click', () => showMedia(el.textContent))
       })
     </script>
+
     <style>
       body {
-        font-family: arial;
+        margin: 1em;
       }
       #media-container {
-        margin: 1em 0;
+        margin: 1em 0 2em;
       }
       wmm-video, wmm-audio {
         display: inline-block;
@@ -43,11 +47,12 @@
       wmm-video.data-stalled:after { background-color: red; }
       wmm-video.data-pending:after { background-color: gray; }
       #logs {
+        display: inline-block;
         overflow-y: auto;
         height: 4em;
-        width: 20em;
+        min-width: 20em;
         background: rgba(0,0,0,0.2);
-        padding: 0 1em;
+        padding: 0.6em 1em 0;
         box-sizing: border-box;
       }
     </style>
