@@ -9,7 +9,12 @@ export function showMedia(file) {
   const type = file.split('.')[1]
   // Add video element to the dom
   const wmm = document.createElement('wmm-' + (type == 'mp3' ? 'audio' : 'video'))
+
+  // NOTE: You may set the 'src' to any video/audio url in the web,
+  // though in that case you may want to also set skipVerification as true,
+  // so that the component don't try to verify the recipes on the host that serves the media.
   wmm.src = `http://${WMM_AUDIO_VIDEO_HOST}:${WMM_AUDIO_VIDEO_PORT}/media/` + file
+  // wmm.setAttribute('skipVerification', true)
   wmm.paymentUrl = fullPaymentUrl
 
   addStylesToMedia(wmm)

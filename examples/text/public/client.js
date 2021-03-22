@@ -24,5 +24,6 @@ function showMedia(fileName) {
   const wmm = document.createElement('wmm-text')
   wmm.src = `http://localhost:3008/media/${fileName}`
   wmm.paymentUrl = fullPaymentUrl
+  // wmm.setAttribute('media', "Some text.\n\nFoo bar.")
   mediaEl.appendChild(wmm)
 }

@@ -26,6 +26,7 @@ const allowHtmlInjection = true
  * <pre>&lt;wmm-text
  *   src="enpoint for retrieving the paragraphs"
  *   paymentUrl="Payment pointer URL, can also include receipt service url"
+ *   media="The text can be also passed in media attribute, which don't require a backend at all, but is not secure as it is directly accessible from the browser"
  *   skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre>
  */
 
@@ -53,6 +54,7 @@ class WmmText extends HTMLElement {
         }
       </style>
     `
+    this.parseMedia()
     initMediaMonetization(this)
     this.initNotifications()
     this.startLoadingText()
@@ -61,6 +63,16 @@ class WmmText extends HTMLElement {
   // Element removed from dom
   disconnectedCallback () {
     mediaRemoved(this)
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name == 'media') this.parseMedia()
+  }
+
+  parseMedia() {
+    const media = this.getAttribute('media')
+    this.setAttribute('skipVerification', !!media)
+    this.paragraphs = media?.split(/\n\n+/g)
   }
 
   // Methods
@@ -91,13 +103,22 @@ class WmmText extends HTMLElement {
     const urlAndParams = src.split('?')
     urlAndParams[0] += '/' + this.paragraph
     src = urlAndParams.join('?')
-    // load from backend
-    this.dispatchEvent(new CustomEvent('paragraphLoading'))
-    const res = await fetch(src)
-    this.dispatchEvent(new CustomEvent('paragraphLoaded'))
-    if (res.status === 204)
-      return // end of article reached
-    const pText = await res.text()
+    // get paragraph
+    var pText
+    if (this.paragraphs) {
+      // text given as attribute
+      pText = this.paragraphs.pop()
+      if (typeof pText != 'string')
+        return // end of article reached
+    } else {
+      // load from backend
+      this.dispatchEvent(new CustomEvent('paragraphLoading'))
+      const res = await fetch(src)
+      this.dispatchEvent(new CustomEvent('paragraphLoaded'))
+      if (res.status === 204)
+        return // end of article reached
+      pText = await res.text()
+    }
     // add to dom
     this.lastParagraph = document.createElement('p')
     if (allowHtmlInjection)
