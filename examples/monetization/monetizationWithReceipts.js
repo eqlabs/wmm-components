@@ -1,8 +1,6 @@
-import { setPaymentUrl } from '../utils.js'
-
 // Initialize monetization meta tag with payment pointer and receipt service
-setPaymentUrl("$ilp.uphold.com/4m2d2Xn4EUyk",
-          "https://webmonetization.org/api/receipts/")
+setPaymentPointerWithReceiptService("$ilp.uphold.com/4m2d2Xn4EUyk",
+                                    "https://webmonetization.org/api/receipts/")
 
 // Toggle logging
 var logging = true
@@ -29,4 +27,15 @@ if (!document.monetization) {
       logEvent(evName + ': ' + JSON.stringify(ev.detail))
     })
   })
+}
+
+function setPaymentPointerWithReceiptService(paymentPointer, receiptService) {
+  setPaymentUrl(receiptService + encodeURIComponent(paymentPointer))
+}
+
+function setPaymentUrl(paymentUrl) {
+  var mTag = document.createElement('meta')
+  mTag.name = "monetization"
+  mTag.content = paymentUrl
+  document.head.appendChild(mTag)
 }

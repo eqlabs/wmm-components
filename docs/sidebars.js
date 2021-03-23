@@ -3,13 +3,17 @@ const categoriesObj = {
   Examples: [
     'examples-video', 'examples-audio', 'examples-streaming'
   ],
+  'wmm-web-components': [
+    'WmmAudio', 'WmmVideo', 'videoAndAudio',
+    'WmmText',
+    'common', 'WmmNotification'
+  ],
   'wmm-utils': [
     'accounts', 'receipt',
     'streamingFileMeta', 'pipeStream',
     'text',
     'client', 'monetize', 'user'
   ],
-  'wmm-web-components': ['WmmAudio', 'WmmVideo', 'videoAndAudio', 'WmmText', 'common', 'WmmNotification'],
 //   { type: 'link',
 //     label: 'Web Monetization events',
 //     href: 'http://127.0.0.1:8080/src/demos/monetizationEvents.html' }

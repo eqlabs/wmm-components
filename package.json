@@ -5,8 +5,6 @@
   "scripts": {
     "docs": "cd docs; npm run start",
     "streamExample": "cd examples/audioAndVideo; npm install; node backend.js",
-    "dev": "live-server --open=./packages --ignore=node_modules/**,temp/** .",
-    "devInstallGlobalDeps": "npm install live-server -g",
     "updateDocs": "node --trace-warnings updateDocs.js"
   },
   "repository": {
