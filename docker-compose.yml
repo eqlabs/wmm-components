@@ -8,27 +8,27 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     network_mode: none
-    restart: always
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   audio_and_video:
     image: eqlabs/wmm-backend
-    command: node ./audioAndVideo/backend.js
+    command: node audioAndVideo/backend.js
     env_file:
-      - ./.env
+      - .env
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     ports:
       - "3009:3009"
-    restart: always
+    restart: unless-stopped
   text:
     image: eqlabs/wmm-backend
-    command: node ./text/backend.js
+    command: node text/backend.js
     env_file:
-      - ./.env
+      - .env
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     ports:
       - "3008:3008"
-    restart: always
+    restart: unless-stopped
 
