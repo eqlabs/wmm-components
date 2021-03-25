@@ -15,11 +15,6 @@
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
-
-  /* monetization logs in audioAndVideo example: */
-  --ifm-pre-padding: 0;
-  --ifm-pre-background: none;
-  --ifm-pre-line-height: 1em;
 }
 
 .docusaurus-highlight-code-line {
@@ -29,19 +24,7 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
-/* JSDocs: */
-
-#main h4.name {
-  margin-top: 2em;
-  font-weight: bold;
-  color: #333;
-}
-
-#main section article h5 {
-  font-weight: normal;
-  margin-bottom: 0.3em;
-}
-
-#main h5 ~ table thead th {
-  font-weight: normal;
+article a, article a:visited, article a:active, article a:hover {
+  color: #0095dd;
+  text-decoration: none;
 }

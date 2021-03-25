@@ -1,4 +1,4 @@
-import '../../../packages/wmm-web-components/wmmText.js'
+import '../../../packages/wmm-web-components/WmmText.js'
 import {fullPaymentUrl} from '../config.js'
 import mediaFiles from './mediaFiles'
 

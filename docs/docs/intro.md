@@ -4,11 +4,13 @@ title: Introduction
 slug: /
 ---
 
-Web Monetization (WM) is a new technology allowing content creators to easily receive money from their digital goods. This collection of components allows media creators (video, audio and text) to start using WM with a simple installation and configuration file, wihtout the need to dig too deeply in the weeds of a new technology and its evolving implementation details.
+Web Monetization (WM) is a new technology allowing content creators to easily receive money from their digital goods. [wmm-components](https://github.com/eqlabs/wmm-components) includes a collection of components, that allow creators of media (whether video, audio or text) to start using WM with a simple installation and configuration file, without the need to dig too deeply in the weeds of a new technology and its evolving implementation details.
 
 ## Quickstart
 
-To receive money from the people viewing the website, you need to first set up a [wallet](/docs/wallet). After that simply follow the instructions based on the type of content you want to show you your website: [video](/docs/examples-video), [audio](/docs/examples-audio) or [text](/docs/examples-text).
+To receive money from the people viewing the website, you need to first set up a [receiving wallet](/docs/wallet). After that simply follow the instructions based on the type of content you want to show on your website: [video](/docs/examples-video), [audio](/docs/examples-audio) or [text](/docs/examples-text).
+
+If you'd like to learn more on the technical specifics of how Web Monetization works, you can try out the [Monetization API demos](/docs/monetizationDemos).
 
 ##  Donation or payment?
 
@@ -18,17 +20,8 @@ Still, using WM purely as a payment is somewhat problematic, since there are no 
 
 On the otherhand, if you want an efortless way to profit from your content that doesn't disturb your users with recurring payment requests, Web Monetization can be a perfect match.
 
-The recommended way of using WM, is to provide some content for all users, while revealing the full experience only for monetized users. One easy way to do this, is to set up an inital account balance for all new users ("paywallThreshold" in config.js). This allows also non-paying users to consume a chosen amount of content, before they are prompted to set up a wallet to continue the experience.
+**wmm-components** takes a midway approach of providing some content for all users, while revealing the full experience only for monetized users. This is achieved by setting up a *paywallThreshold* (in config.js), which allows all users to consume a chosen amount of content, before they are prompted to set up a wallet to continue the experience.
 
 ## Currency
 
-While WM is aiming to become a web stardard and the API is agnostic of the specific currencry being used, in its current state of development XRP is the currency with best support. Still, the [wallets](/docs/wallet) also function as exchanges, where you can easily swap your revenue to an another currency, if you so choose to.
-
-## Browser support
-
-...
-
-
-## License
-
-...
+While WM is aiming to become a web stardard and the API is agnostic of the specific currencry being used, in its current state of development XRP is the currency with best support. Still, the [receiving wallets](/docs/wallet) also function as exchanges, where you can easily swap your revenue to an another currency, if you so choose to.
