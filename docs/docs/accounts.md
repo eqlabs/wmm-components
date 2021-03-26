@@ -1,7 +1,10 @@
 ---
 id: accounts
+title: accounts.js
 ---
-<!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
+
+<!-- DO NOT EDIT - this is generated from source code using updateDocs.js -->
+
 <div id="main">
 
 <section>
@@ -28,6 +31,147 @@ once the initial balance has run out.
 <dd className="tag-source"><ul className="dummy"><li>
 <a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line18">line 18</a>
 </li></ul></dd>
+</dl>
+<h3 className="subsection-title">Methods</h3>
+<h4 className="name" id="balance"><span className="type-signature"></span>balance<span className="signature">(userId)</span><span className="type-signature"> &rarr; &#123;number&#125;</span></h4>
+<div className="description">
+Get users specific account balance. Creates and returns
+initial amount for new users ("paywallThreshold"),
+if user don't exist.
+</div>
+<h5>Parameters:</h5>
+<table className="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th className="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td className="name"><code>userId</code></td>
+<td className="type">
+<span className="param-type">string</span>
+</td>
+<td className="description last"></td>
+</tr>
+</tbody>
+</table>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line28">line 28</a>
+</li></ul></dd>
+</dl>
+<h5>Returns:</h5>
+<div className="param-desc">
+users balance
+</div>
+<dl>
+<dt>
+Type
+</dt>
+<dd>
+<span className="param-type">number</span>
+</dd>
+</dl>
+<h4 className="name" id="deposit"><span className="type-signature"></span>deposit<span className="signature">(userId, amount)</span><span className="type-signature"> &rarr; &#123;number&#125;</span></h4>
+<div className="description">
+Increments user specific account with given amount.
+</div>
+<h5>Parameters:</h5>
+<table className="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th className="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td className="name"><code>userId</code></td>
+<td className="type">
+<span className="param-type">string</span>
+</td>
+<td className="description last"></td>
+</tr>
+<tr>
+<td className="name"><code>amount</code></td>
+<td className="type">
+<span className="param-type">number</span>
+</td>
+<td className="description last"></td>
+</tr>
+</tbody>
+</table>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line40">line 40</a>
+</li></ul></dd>
+</dl>
+<h5>Returns:</h5>
+<div className="param-desc">
+users balance after the deposit.
+</div>
+<dl>
+<dt>
+Type
+</dt>
+<dd>
+<span className="param-type">number</span>
+</dd>
+</dl>
+<h4 className="name" id="spend"><span className="type-signature"></span>spend<span className="signature">(userId, amount)</span><span className="type-signature"> &rarr; &#123;boolean&#125;</span></h4>
+<div className="description">
+Deducts given amount from users account, if the accounts balance is
+equal or larger to the given amount.
+</div>
+<h5>Parameters:</h5>
+<table className="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th className="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td className="name"><code>userId</code></td>
+<td className="type">
+<span className="param-type">string</span>
+</td>
+<td className="description last"></td>
+</tr>
+<tr>
+<td className="name"><code>amount</code></td>
+<td className="type">
+<span className="param-type">number</span>
+</td>
+<td className="description last">to be spent</td>
+</tr>
+</tbody>
+</table>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line52">line 52</a>
+</li></ul></dd>
+</dl>
+<h5>Returns:</h5>
+<div className="param-desc">
+true for succesfull action, false for failure.
+</div>
+<dl>
+<dt>
+Type
+</dt>
+<dd>
+<span className="param-type">boolean</span>
+</dd>
 </dl>
 </article>
 </section>

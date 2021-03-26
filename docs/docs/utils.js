@@ -1,6 +1,7 @@
 // import { showMedia } from "../../examples/audioAndVideo/client";
 
 export const MediaImport = ({url, media}) => {
+  debugger
   if (typeof document == 'undefined') return null
   const script = document.createElement("script");
   script.type = 'module'
@@ -12,7 +13,7 @@ export const MediaImport = ({url, media}) => {
   script.addEventListener('load', () => {
     showMedia(media)
   })
-  
+
 
   return null
 }

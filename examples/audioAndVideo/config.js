@@ -20,10 +20,12 @@ export const assetType = "XRP"
 
 // Coil sends about 0.03 $ per minute (~ 0.01 XRP),
 // to keep video service smooth, keep the required amount below this value.
-export const pricePerMinute = 0.01
+export const pricePerMinute = 0.001
 
-// Two minutes of free media; more details in accounts.js
-export const paywallThreshold = 2.0 * pricePerMinute
+// Setup a paywallThreshold to give all users some access to the media
+// (more details in accounts.js). By default this is set to zero, to make
+// it easer to set a proper pricePerMinute value first.
+export const paywallThreshold = 0 * pricePerMinute
 
 // Alternatively the price can be calculated in megabytes
 // (in this case set pricePerMinute as null).

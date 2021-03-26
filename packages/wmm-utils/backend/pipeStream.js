@@ -26,13 +26,8 @@ export function prepareStreamCtx(ctx, meta) {
 }
 
 export function pipeMediaIntoStream(meta, stream, userId) {
-  // var total = 0
-  // stream.on('end', () => {
-  //   console.log('stream ended')
-  //   console.log('total', total)
-  // })
+  // stream.on('end', () => { console.log('stream ended') })
   stream.on('readable', () => {
-    // total += stream.readableLength
     if (stream.readableLength) {
       pipeStream(meta, stream, userId)
     } else {
@@ -49,7 +44,7 @@ async function pipeStream(meta, stream, userId) {
       stream.read()
       // console.log(userId.slice(0,4) + ' balance after spent', balance(userId))
     } else {
-      console.log(`${userId.slice(0,4)} unable to spend enough (${balance(userId).toFixed(4)} / ${chunkPrice.toFixed(4)})`)
+      console.log(`${userId.slice(0,4)} unable to spend enough (${balance(userId).toFixed(8)} / ${chunkPrice.toFixed(8)})`)
       await sleep(400)
     }
   }

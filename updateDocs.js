@@ -92,8 +92,11 @@ async function jsdocToMarkdown(htmlDocPath, moduleName) {
   var docStr = (await fs.readFile(htmlDocPath)).toString()
   docStr = `---
 id: ${moduleName}
+title: ${moduleName}.js
 ---
-<!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
+
+<!-- DO NOT EDIT - this is generated from source code using updateDocs.js -->
+
 ${parseJsDocHtml(docStr)}
 `
   console.log('about to write', filePath)

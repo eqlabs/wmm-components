@@ -2,11 +2,12 @@
 title: Video
 ---
 
-The easiest way to start monetizing your videos is to copy the [examples/audioAndVideo](https://github.com/eqlabs/wmm-components/tree/main/examples/audioAndVideo) as your base project. Here we go through some of the components being used, so you can modify them to better suit your application.
+First, startup the [streaming backend](/docs/examples-streaming). This is used by both video and audio examples. You can try out both by either choosing .mp4 file for video or .mp3 file for audio.
 
-## Startup
+In this article we will look into WmmVideo Web Component in more detail.
 
-    > npm run streamExample
+TODO make urls work...
+
 
 ## Example
 
@@ -17,7 +18,7 @@ The easiest way to start monetizing your videos is to copy the [examples/audioAn
 
 import {MediaImport} from './utils.js'
 
-<MediaImport url="/examples/audioAndVideo/client.js" media="ElephantsDream.mp4"></MediaImport>
+<MediaImport url="/wmm-components/examples/audioAndVideo/client.js" media="ElephantsDream.mp4"></MediaImport>
 
 ## Frontend
 
@@ -32,7 +33,7 @@ Import the web component from HTML:
 Or from JS:
 
 ```
-import './packages/wmm-web-components/videoComponent.js'
+import '/wmm-components/packages/wmm-web-components/videoComponent.js'
 ```
 
 

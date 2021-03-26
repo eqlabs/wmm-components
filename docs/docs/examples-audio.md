@@ -2,6 +2,12 @@
 title: Audio
 ---
 
+First, startup the [streaming backend](/docs/examples-streaming). This is used by both audio and video examples. You can try out both by either choosing .mp3 file for audio or .mp4 file for video.
+
+
+
+.....
+
 Audio components are great for playing music, podcast or any audo file you'd like present to your audience. Audio web components can be easily included into any existing Javascript framework you might be using and work on all modern browsers.
 
 ## Example

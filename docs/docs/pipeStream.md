@@ -1,7 +1,10 @@
 ---
 id: pipeStream
+title: pipeStream.js
 ---
-<!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
+
+<!-- DO NOT EDIT - this is generated from source code using updateDocs.js -->
+
 <div id="main">
 
 <section>
@@ -17,9 +20,11 @@ id: pipeStream
 <h4 className="name" id="createStream"><span className="type-signature"></span>createStream<span className="signature">(path)</span><span className="type-signature"></span></h4>
 <div className="description">
 Creates readStream from a file.
-Change highWaterMark to change the size of data chuncks being sent,
-which also changes the frequency of payments.
-Smaller highWaterMark results in more frequent, but smaller data chucks and payments.
+'highWaterMark' determines the size of data (and payment) chunks.
+For audio streaming it's recommended to keep it small (2**13),
+since big chunks can cause errors in payment calculation.
+On the other hand for video streaming bigger chunks (e.g. 2**16),
+can speed up the stream loading.
 </div>
 <h5>Parameters:</h5>
 <table className="params">
@@ -43,7 +48,7 @@ Smaller highWaterMark results in more frequent, but smaller data chucks and paym
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/pipeStream.js.html">pipeStream.js</a>, <a href="pathname:///jsdoc/pipeStream.js.html#line12">line 12</a>
+<a href="pathname:///jsdoc/pipeStream.js.html">pipeStream.js</a>, <a href="pathname:///jsdoc/pipeStream.js.html#line14">line 14</a>
 </li></ul></dd>
 </dl>
 </article>

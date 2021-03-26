@@ -20,9 +20,10 @@ export const assetType = "XRP"
 
 export const mediaPath = "./media/"
 
-// Coil sends about 0.03 $ per minute (~ 0.01 XRP),
-// to keep video service smooth, keep the required amount below this value.
+// Coil sends about 0.03 $ per minute (~ 0.01 XRP).
 export const pricePerWord = 0.000004
 
-// paywallThreshold explained in accounts.js
-export const paywallThreshold = 400 * pricePerWord
+// Setup a paywallThreshold to give all users some access to the media
+// (more details in accounts.js). By default this is set to zero, to make
+// it easer to set a proper pricePerWord value first.
+export const paywallThreshold = 0 * pricePerWord

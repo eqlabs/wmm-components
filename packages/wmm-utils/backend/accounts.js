@@ -16,25 +16,47 @@ const accounts = new Map() // userId:String => amount:Number
  *    once the initial balance has run out.
  */
 var paywallThreshold = 0
-export const setInitialBalance = val => paywallThreshold = val
+export const setPaywallThreshold = val => paywallThreshold = val
 
+/**
+ * Get users specific account balance. Creates and returns
+ * initial amount for new users ("paywallThreshold"),
+ * if user don't exist.
+ * @param {string} userId
+ * @returns {number} users balance
+ */
 export function balance(userId) {
   if (!accounts.has(userId))
     accounts.set(userId, paywallThreshold)
   return accounts.get(userId)
 }
-function deduct(userId, amount) {
-  accounts.set(userId, balance(userId) - amount)
-}
 
+/**
+ * Increments user specific account with given amount.
+ * @param {string} userId
+ * @param {number} amount
+ * @returns {number} users balance after the deposit.
+ */
 export function deposit(userId, amount) {
   accounts.set(userId, balance(userId) + amount)
   return balance(userId)
 }
+
+/**
+ * Deducts given amount from users account, if the accounts balance is
+ * equal or larger to the given amount.
+ * @param {string} userId
+ * @param {number} amount to be spent
+ * @returns {boolean} true for succesfull action, false for failure.
+ */
 export function spend(userId, amount) {
   if (balance(userId) > amount) {
     deduct(userId, amount)
     return true
   }
   return false
+}
+
+function deduct(userId, amount) {
+  accounts.set(userId, balance(userId) - amount)
 }

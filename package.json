@@ -4,7 +4,8 @@
   "description": "Web Monetization components",
   "scripts": {
     "docs": "cd docs; npm run start",
-    "streamExample": "cd examples/audioAndVideo; npm install; node backend.js",
+    "exampleStreaming": "cd examples/audioAndVideo; npm install; node backend.js",
+    "exampleText": "cd examples/text; npm install; node backend.js",
     "updateDocs": "node --trace-warnings updateDocs.js"
   },
   "repository": {

@@ -150,7 +150,18 @@ max-width: 100%;
   font-size: 110%;
   font-weight: bold;
   letter-spacing: -0.01em;
-  margin: 8px 0 3px 0;
+
+  display: inline-block;
+  /* margin: 8px 0 3px 0; */
+  margin: 0 1em 0 0;
+}
+
+#main dl {
+  margin: 0
+}
+
+.param-desc {
+  display: inline-block;
 }
 
 #main section article h5 {
@@ -217,8 +228,9 @@ html[data-theme='light'] #main thead tr {
   font-size: 0.85em;
 }
 
-#main td span.param-type {
+#main .param-type {
   font-family: monospace;
+  font-size: 1.1em;
 }
 
 #main th { border-right: 1px solid #aaa; }
@@ -254,18 +266,21 @@ html[data-theme='light'] #main thead tr {
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
 }
 
+#main dd { margin-left: 70px; }
+#main ul { margin: 0; }
+#main ul { list-style-type: none; }
+#main li { margin-left: 30px; padding-top: 6px; }
+#main pre.prettyprint { margin: 0 }
+#main .object-value { padding-top: 0; }
+
+#main dt { float: left; width: 5.2em }
+
+#main .details dt { width: 120px; padding-left: 10px;  padding-top: 6px; }
 #main .details { margin-top: 14px; border-left: 2px solid #DDD; }
-#main .details dt { width: 120px; float: left; padding-left: 10px;  padding-top: 6px; }
-#main .details dd { margin-left: 70px; }
-#main .details ul { margin: 0; }
-#main .details ul { list-style-type: none; }
-#main .details li { margin-left: 30px; padding-top: 6px; }
-#main .details pre.prettyprint { margin: 0 }
-#main .details .object-value { padding-top: 0; }
 
 #main .description {
-  margin-bottom: 1em;
   margin-top: 1em;
+  margin-bottom: 0;
 }
 
 #main .code-caption

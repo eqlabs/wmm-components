@@ -12,11 +12,11 @@ const { mediaPath, allowCORS, receiptService, paywallThreshold } = config
 import { initStreamingMeta, getMeta,
          verifyReceipt,
          prepareStreamCtx, createStream, pipeMediaIntoStream,
-         setInitialBalance } from 'wmm-utils'
+         setPaywallThreshold } from 'wmm-utils'
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
 // Initialize libraries
-setInitialBalance(paywallThreshold)
+setPaywallThreshold(paywallThreshold)
 initStreamingMeta(path.resolve(__dirname, mediaPath) + '/', config)
 
 const app = new Koa()

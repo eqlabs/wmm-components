@@ -1,7 +1,10 @@
 ---
 id: WmmNotification
+title: WmmNotification.js
 ---
-<!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
+
+<!-- DO NOT EDIT - this is generated from source code using updateDocs.js -->
+
 <div id="main">
 
 <section>

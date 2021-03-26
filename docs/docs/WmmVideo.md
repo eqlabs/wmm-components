@@ -1,7 +1,10 @@
 ---
 id: WmmVideo
+title: WmmVideo.js
 ---
-<!--link type="text/css" rel="stylesheet" href="/jsDoc.css"></link-->
+
+<!-- DO NOT EDIT - this is generated from source code using updateDocs.js -->
+
 <div id="main">
 <h1 className="page-title">Class: WmmVideo</h1>
 <section>

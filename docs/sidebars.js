@@ -4,11 +4,13 @@ const categoriesObj = {
     'examples-video', 'examples-audio', 'examples-streaming', 'monetizationDemos'
   ],
   'wmm-web-components': [
+    'web-components-readme',
     'WmmAudio', 'WmmVideo', 'videoAndAudio',
     'WmmText',
     'common', 'WmmNotification'
   ],
   'wmm-utils': [
+    'utils-readme',
     'accounts', 'receipt',
     'streamingFileMeta', 'pipeStream',
     'text',

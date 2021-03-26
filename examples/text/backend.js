@@ -10,7 +10,7 @@ import path from 'path'
 import fs from 'fs'
 // App
 import {
-  spend, balance, setInitialBalance,  // accounting
+  spend, balance, setPaywallThreshold,  // accounting
   verifyReceipt,                      // receipts
   initTexts, texts,                   // text file contents and meta
   sleep,                              // general
@@ -22,7 +22,7 @@ const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf("/"))
 
 
 // Initialize libraries
-setInitialBalance(paywallThreshold)
+setPaywallThreshold(paywallThreshold)
 const mediaDir = initTexts(path.resolve(__dirname, mediaPath) + '/')
 
 const app = new Koa()
@@ -94,4 +94,7 @@ app
   // serve packages as static assets:
   .use(mount('/packages', serve(path.resolve(__dirname + '/../../packages'))))
 
-app.listen(process.env.WMM_TEXT_PORT || 3008)
+const port = process.env.WMM_TEXT_PORT || 3008
+app.listen(port)
+
+console.log("Open broser at ")
