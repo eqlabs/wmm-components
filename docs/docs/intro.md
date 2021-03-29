@@ -20,7 +20,7 @@ The packages are further divided into general [Utils](/docs/utils-readme) module
 
 ## Basic idea
 
-**wmm-components** keep track of user specific [accounts](/docs/accounts) incrementing them according to [payments made by users](/docs/wallet-sending) and decrementing them according to the ammount of [media](/docs/web-components-readme) consumed by users.
+**wmm-components** keep track of user specific [accounts](/docs/accounts) incrementing them according to [payments made by users](/docs/wallet-sending) and decrementing them according to the amount of [media](/docs/web-components-readme) consumed by users. When the balance reaches zero, the media is paused until new payments have been made.
 
 ##  Donation or payment?
 

@@ -10,10 +10,10 @@ import path from 'path'
 import fs from 'fs'
 // App
 import {
-  spend, balance, setPaywallThreshold,  // accounting
-  verifyReceipt,                      // receipts
-  initTexts, texts,                   // text file contents and meta
-  sleep,                              // general
+  spend, balance, setPaywallThreshold, // accounting
+  verifyReceipt,                       // receipts
+  initTexts, texts,                    // text file contents and meta
+  sleep,                               // general
 } from 'wmm-utils'
 import * as config from './config.js'
 const { mediaPath, pricePerWord, receiptService, paywallThreshold } = config
@@ -97,4 +97,4 @@ app
 const port = process.env.WMM_TEXT_PORT || 3008
 app.listen(port)
 
-console.log("Open broser at ")
+console.log(`Open browser at http://localhost:${port}`)

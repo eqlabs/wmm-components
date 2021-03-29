@@ -26,8 +26,7 @@ const allowHtmlInjection = true
  * <pre>&lt;wmm-text
  *   src="enpoint for retrieving the paragraphs"
  *   paymentUrl="Payment pointer URL, can also include receipt service url"
- *   media="The text can be also passed in media attribute, which don't require a backend at all, but is not secure as it is directly accessible from the browser"
- *   skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre>
+ *   media="The text can be also passed in media attribute, which don't require a backend at all, but is not secure as it is directly accessible from the browser"&gt;</pre>
  */
 
 class WmmText extends HTMLElement {

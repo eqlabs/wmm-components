@@ -72,3 +72,5 @@ app
 
 
 app.listen(config.WMM_AUDIO_VIDEO_PORT)
+
+console.log(`Open browser at http://localhost:${config.WMM_AUDIO_VIDEO_PORT}`)

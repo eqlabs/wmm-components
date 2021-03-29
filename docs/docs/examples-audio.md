@@ -2,37 +2,45 @@
 title: Audio
 ---
 
-First, startup the [streaming backend](/docs/examples-streaming). This is used by both audio and video examples. You can try out both by either choosing .mp3 file for audio or .mp4 file for video.
+First, make sure you have a [sending wallet](/docs/wallet-sending) installed. With the wallet, you can try out the [online audio demo](http://138.68.84.249:3009/). Click the webmonetization.mp3 link to open an ```<wmm-audio>``` element.
+
+To install the demo locally on your computer, install the [streaming backend](/docs/examples-streaming).
+
+In this document we will look more deeply into ```<wmm-audio>``` component and how it interacts with the backend.
+
+## Syntax
+
+```
+<wmm-audio
+  src="audio file source; if full URL is used, the recipe verification will use the same host for verification"
+  paymentUrl="Payment pointer URL, can also include receipt service url"
+  skipVerification="if true, don't send receipts to backend for verifications">
+</wmm-audio>
+```
+
+## Interaction
+
+```<wmm-audio>``` component includes a native ```<audio>``` element, which, in accordance to HTML5 specs, loads and creates an audio player.
+
+```<wmm-audio>``` adds Web Monetization features around the ```<audio>``` by sending payments to address defined in **paymentUrl** attribute.
+
+The audio is loaded from an URL defined by **src** attribute. The same [server](/docs/examples-streaming) hosting the audio also tracks payments made to the *paymentUrl* address.
+
+These payments are tracked using a [receipt service](/docs/monetizationDemos#monetizationwithrecipeshtml). And when [adequate amount](/docs/examples-streaming#config) of payments have been made, the backend [streams](/docs/pipeStream) the media to browser.
 
 
+## Without receipts
 
-.....
+When **skipVerification** attribute is set to **true**, the UI component won't send **receipt**s to the backend. The assumption here is that the backend is willing to stream the media without verifying payments using receipt service.
 
-Audio components are great for playing music, podcast or any audo file you'd like present to your audience. Audio web components can be easily included into any existing Javascript framework you might be using and work on all modern browsers.
-
-## Example
-
-<div id="media-container">
-(execute __npm run streamExample__ at the root of ___wmm-components___ project to show example audio here)
-</div>
-
-import {MediaImport} from './utils.js'
-
-<MediaImport url="/examples/audioAndVideo/client.js" media="webmonetization.mp3"></MediaImport>
-
-
-## Startup
-
-(instructions on the easiest way to create a new project with streamingExample as the base)
-
-
+In this mode the media can be loaded from any typical server hosting video files and the payments can still be sent to the *paymentAddress*. But in this mode the backend is unable to verify if the payments have actually been made.
 
 ## Frontend
 
 Import the web component from HTML:
 
 ```HTML
-<script src="packages/wmm-web-components/audioComponent.js"
+<script src="packages/wmm-web-components/WmmAudio.js"
         type="module">
 </script>
 ```
@@ -40,15 +48,7 @@ Import the web component from HTML:
 Or from JS:
 
 ```
-import './packages/wmm-web-components/audioComponent.js'
+import 'packages/wmm-web-components/WmmAudio.js'
 ```
 
-
-And insert it into a HTML page:
-
-```
-<wmm-audio src="[audio source url]"
-           paymentURL="[recipe service url with payment pointer]">
-</wmm-audio>
-```
-
+And add ```<wmm-audio>``` element into the DOM.

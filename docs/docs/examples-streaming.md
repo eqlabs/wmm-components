@@ -23,16 +23,16 @@ Running the server with **nodemon** will make it restart on every file change, s
 
 ## New project
 
-When starting a new project you have two options: either to use the current example project and continue modifying it, or creating a new project from scratch.
+When starting a new project you have two options: either to use the current example project and morph it into your own project, or create another backend for your project and use the *audioAndVideo* backend only for streaming the media files and checking Web Monetization receipts.
 
-The code in 
+In the latter case you can delete the files in the *public* folder and you may also want to limit the CORS requests to only your own servers (by default all CORS requests are allowed).
 
 ## Tasks
 
 The backend has three main tasks:
-- Verifies receipts that it receives from the frontend.
-- Serves the video and audio file streams to the frontend.
-- Handles a user specific account, where valid receipts increase the balance and streaming data to the frontend deducts from it.
+- Verifies [receipts](/docs/receipt) that it receives from the frontend.
+- Serves the video and audio files [streams](/docs/pipeStream) located in */media* -folder to the frontend.
+- Handles a user specific [account](/docs/accounts), where valid receipts increase the balance and streaming data to the frontend deducts from it.
 
 When balance is close to zero, it waits for new receipts before serving the data to the frontend.
 
