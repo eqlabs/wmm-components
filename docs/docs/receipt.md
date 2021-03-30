@@ -29,7 +29,7 @@ so it is hard coded and assumed to be 9 (this is used by coil wallet)
 </li></ul></dd>
 </dl>
 <h3 className="subsection-title">Methods</h3>
-<h4 className="name" id="verifyReceipt"><span className="type-signature"></span>verifyReceipt<span className="signature">('monetizationprogress', backends)</span><span className="type-signature"></span></h4>
+<h4 className="name" id="verifyReceipt"><span className="type-signature"></span>verifyReceipt<span className="signature">('monetizationprogress', receiptService)</span><span className="type-signature"></span></h4>
 <div className="description">
 Verifies receipt by sending it to the recipt verifier service and modifying the users account balance accordigly.
 </div>
@@ -46,16 +46,16 @@ Verifies receipt by sending it to the recipt verifier service and modifying the 
 <tr>
 <td className="name"><code>'monetizationprogress'</code></td>
 <td className="type">
-<span className="param-type">*</span>
+<span className="param-type">object</span>
 </td>
 <td className="description last">event's detail property, with userId included.</td>
 </tr>
 <tr>
-<td className="name"><code>backends</code></td>
+<td className="name"><code>receiptService</code></td>
 <td className="type">
-<span className="param-type">*</span>
+<span className="param-type">string</span>
 </td>
-<td className="description last">JSON config</td>
+<td className="description last">receiptService URL</td>
 </tr>
 </tbody>
 </table>

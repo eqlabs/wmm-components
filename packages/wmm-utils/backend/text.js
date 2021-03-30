@@ -9,6 +9,12 @@ import fs from 'fs'
  */
 export const texts = {}
 
+/**
+ * Reads all text files in *mediaPath* and caches their *paragraphs*
+ * and *wordCount*s.
+ * @param {string} mediaPath path to folder storing text files.
+ * @returns array of filenames found in mediaPath folder.
+ */
 export async function initTexts(mediaPath) {
   const dir = await fs.promises.readdir(mediaPath)
   for (const file of dir) {

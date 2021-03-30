@@ -1,9 +1,3 @@
-/**
- * @param {{amoun, assetScale}} monetization event's detail property
- */
-export function formattedAmout({amount, assetScale}) {
-  return (amount * Math.pow(10, -assetScale)).toFixed(assetScale)
-}
 
 export function logEvent(text, target, append){
   if (!target) return
@@ -15,5 +9,13 @@ export function logEvent(text, target, append){
     target.insertBefore(pre, target.firstChild)
 }
 
-export const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+/**
+ * Util function that 'sleep's a given time. Use with await, e.g.:
+ * await sleep(1000);
+ * @param {number} ms milliseconds to sleep
+ * @returns Promise that resolves in given time.
+ */
+export function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
 

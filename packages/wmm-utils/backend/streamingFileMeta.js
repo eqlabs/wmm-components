@@ -12,7 +12,8 @@ const fileMeta = new Map // filePath => metaObject
 var metaRead // a promise indicating if meta of all files has been read
 
 /**
- * Get files  meta info.
+ * Get cached file meta info. Includes following properties:
+ * seconds, fullPath, type, mime, fileSize and pricePerByte.
  * @param {string} fileName - file name
  */
 export async function getMeta(fileName) {
@@ -22,8 +23,16 @@ export async function getMeta(fileName) {
   return fileMeta.get(fileName)
 }
 
-export const initStreamingMeta = (mediaPath, config) =>
+/**
+ * Reads all media files in *mediaPath* and caches their meta information,
+ * such has fileSize, media length in seconds, pricePerByte, etc.
+ * @param {string} mediaPath path to folder where media files are stored.
+ * @param {object} config including *pricePerMinute* or *pricePerMB* property.
+ * @returns Promise indicating if meta information has been read.
+ */
+export function initStreamingMeta(mediaPath, config) {
   metaRead = readMeta(mediaPath, config)
+}
 
 // TODO: read all videos in given folder - now just 'videoPath'
 async function readMeta(mediaPath, config) {

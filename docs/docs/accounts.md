@@ -17,6 +17,18 @@ title: accounts.js
 </dl>
 </div>
 <h3 className="subsection-title">Members</h3>
+<h4 className="name" id="accounts"><span className="type-signature">(constant) </span>accounts<span className="type-signature"></span></h4>
+<div className="description">
+Handles user specific accounts with **balance**s that increase
+with **deposit**s from receipt verified WebMonetization payments
+and are **deduct**ed when streaming media data to the client.
+</div>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line7">line 7</a>
+</li></ul></dd>
+</dl>
 <h4 className="name" id="paywallThreshold"><span className="type-signature"></span>paywallThreshold<span className="type-signature"></span></h4>
 <div className="description">
 paywallThreshold has two functions:
@@ -29,7 +41,7 @@ once the initial balance has run out.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line18">line 18</a>
+<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line17">line 17</a>
 </li></ul></dd>
 </dl>
 <h3 className="subsection-title">Methods</h3>
@@ -61,7 +73,7 @@ if user don't exist.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line28">line 28</a>
+<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line27">line 27</a>
 </li></ul></dd>
 </dl>
 <h5>Returns:</h5>
@@ -102,14 +114,14 @@ Increments user specific account with given amount.
 <td className="type">
 <span className="param-type">number</span>
 </td>
-<td className="description last"></td>
+<td className="description last">amount to be deposited</td>
 </tr>
 </tbody>
 </table>
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line40">line 40</a>
+<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line39">line 39</a>
 </li></ul></dd>
 </dl>
 <h5>Returns:</h5>
@@ -158,7 +170,7 @@ equal or larger to the given amount.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line52">line 52</a>
+<a href="pathname:///jsdoc/accounts.js.html">accounts.js</a>, <a href="pathname:///jsdoc/accounts.js.html#line51">line 51</a>
 </li></ul></dd>
 </dl>
 <h5>Returns:</h5>

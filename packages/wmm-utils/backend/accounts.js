@@ -1,6 +1,5 @@
-
 /**
- * @file Handles user specific accounts with **balance**s that increase
+ * Handles user specific accounts with **balance**s that increase
  * with **deposit**s from receipt verified WebMonetization payments
  * and are **deduct**ed when streaming media data to the client.
  */
@@ -34,7 +33,7 @@ export function balance(userId) {
 /**
  * Increments user specific account with given amount.
  * @param {string} userId
- * @param {number} amount
+ * @param {number} amount amount to be deposited
  * @returns {number} users balance after the deposit.
  */
 export function deposit(userId, amount) {

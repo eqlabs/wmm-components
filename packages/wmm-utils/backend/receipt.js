@@ -9,8 +9,8 @@ const assumedAssetScale = 9
 
 /**
  * Verifies receipt by sending it to the recipt verifier service and modifying the users account balance accordigly.
- * @param {*} 'monetizationprogress' event's detail property, with userId included.
- * @param {*} backends JSON config
+ * @param {object} 'monetizationprogress' event's detail property, with userId included.
+ * @param {string} receiptService receiptService URL
  */
 export async function verifyReceipt({amount, paymentPointer, receipt, requestId, userId, assetScale},
                                     receiptService) {

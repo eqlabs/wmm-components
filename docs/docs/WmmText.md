@@ -14,8 +14,7 @@ title: WmmText.js
 <pre>&lt;wmm-text
 src="enpoint for retrieving the paragraphs"
 paymentUrl="Payment pointer URL, can also include receipt service url"
-media="The text can be also passed in media attribute, which don't require a backend at all, but is not secure as it is directly accessible from the browser"
-skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre></div>
+media="The text can be also passed in media attribute, which don't require a backend at all, but is not secure as it is directly accessible from the browser"&gt;</pre></div>
 </header>
 <article>
 <div className="container-overview">
@@ -24,7 +23,7 @@ skipVerification="if true, don't send receipts to backend for verifications"&gt;
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line33">line 33</a>
+<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line32">line 32</a>
 </li></ul></dd>
 </dl>
 </div>
@@ -37,7 +36,7 @@ Shown on 'paragraphPending' event and hidden on 'paragraphLoaded' event.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line136">line 136</a>
+<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line135">line 135</a>
 </li></ul></dd>
 </dl>
 </article>

@@ -19,12 +19,24 @@ export function createStream(fromPath, socket) {
   return stream
 }
 
+/**
+ * Set request headers and longer than default timeout for wainting payments.
+ * @param {object} ctx node.js request context
+ * @param {object} meta streamingFileMeta, including *fileSize* and *mime* properties
+ */
 export function prepareStreamCtx(ctx, meta) {
   ctx.set('Content-Length', meta.fileSize)
   ctx.set('Content-Type', `${meta.mime}`)
   ctx.socket.setTimeout(2*60*1000, () => console.log('socket TIMEDOUT')) // make file socket wait for 2 minutes before breaking (when waiting for payments)
 }
 
+/**
+ * Listen to file stream *readable* event for piping the data, and close the stream
+ * when no more data to be read.
+ * @param {object} meta streamingFileMeta, including *pricePerByte* property
+ * @param {object} stream node.js Readable stream
+ * @param {string} userId
+ */
 export function pipeMediaIntoStream(meta, stream, userId) {
   // stream.on('end', () => { console.log('stream ended') })
   stream.on('readable', () => {
@@ -37,6 +49,13 @@ export function pipeMediaIntoStream(meta, stream, userId) {
   })
 }
 
+/**
+ * Calculates cost of data stream chunk and pipes the stream if is able to pay
+ * that cost. Otherwise waits for new payments and retries in 400ms.
+ * @param {object} meta streamingFileMeta, including *pricePerByte* property
+ * @param {object} stream node.js Readable stream
+ * @param {string} userId
+ */
 async function pipeStream(meta, stream, userId) {
   while (stream.readableLength && !stream.closed) {
     const chunkPrice = stream.readableLength * meta.pricePerByte

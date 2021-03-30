@@ -2,6 +2,10 @@ import {userId} from './user.js'
 
 const getMetaTag = () => document.querySelector("head meta[name=monetization]")
 
+/**
+ * A Set including names of all events that Web Monetization API
+ * (document.monetization) emits.
+ */
 export const monetizeEvents = new Set(
   ['monetizationStopped', 'monetized', 'monetizeFailed']
 )
@@ -27,7 +31,13 @@ function updateMedia(wmm) {
 }
 
 /**
- *
+ * Initializes monetization of WmmAudio or WmmVideo instance.
+ * Monetization is started when the instance in inserted in DOM and only
+ * one media can be monetizad at a time (limit of WM API).
+ * For this reason, the monetize.js module tracks the currently active
+ * media, and emits a 'mediaMonetizationStopped' event on the previously
+ * active media, when a new media takes its place a the actively monetized
+ * media.
  * @param {object} wmm WmmAudio or WmmVideo instance
  */
 
