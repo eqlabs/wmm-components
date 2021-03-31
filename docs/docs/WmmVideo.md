@@ -10,11 +10,11 @@ title: WmmVideo.js
 <section>
 <header>
 <h2><span className="attribs"><span className="type-signature"></span></span>WmmVideo<span className="signature">()</span><span className="type-signature"></span></h2>
-<div className="class-description">Creates a web monetized video element. E.g.:
-<pre>&lt;wmm-video
-src="video file source; if full URL is used, the recipe verification will use the same host for verification"
-paymentUrl="Payment pointer URL, can also include receipt service url"
-skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre></div>
+<div className="class-description">Creates a web monetized video element. &lt;wmm-video&gt;<br/>
+Attributes:<br/>
+* src: video file source; if full URL is used, the recipe verification will use the same host for verification.<br/>
+* paymentUrl: Payment pointer URL, can also include receipt service url.<br/>
+* skipVerification: if true, don't send receipts to backend for verifications.<br/></div>
 </header>
 <article>
 <div className="container-overview">
@@ -27,6 +27,18 @@ skipVerification="if true, don't send receipts to backend for verifications"&gt;
 </li></ul></dd>
 </dl>
 </div>
+<h3 className="subsection-title">Members</h3>
+<h4 className="name" id="src"><span className="type-signature"></span>src<span className="type-signature"></span></h4>
+<div className="description">
+Synchronise wmm-video elements *src* attribute
+with inner video -elements *src* attrubute.
+</div>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line17">line 17</a>
+</li></ul></dd>
+</dl>
 <h3 className="subsection-title">Methods</h3>
 <h4 className="name" id="addEventListener"><span className="type-signature"></span>addEventListener<span className="signature">(name, action)</span><span className="type-signature"></span></h4>
 <div className="description">
@@ -65,7 +77,65 @@ E.g. https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line49">line 49</a>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line58">line 58</a>
+</li></ul></dd>
+</dl>
+<h4 className="name" id="connectedCallback"><span className="type-signature"></span>connectedCallback<span className="signature">()</span><span className="type-signature"></span></h4>
+<div className="description">
+Initializes monetization and styles
+when component is inserted into DOM.
+</div>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line34">line 34</a>
+</li></ul></dd>
+</dl>
+<h4 className="name" id="disconnectedCallback"><span className="type-signature"></span>disconnectedCallback<span className="signature">()</span><span className="type-signature"></span></h4>
+<div className="description">
+Stops monetization and disconnects the media stream
+when component is removed from DOM.
+</div>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line44">line 44</a>
+</li></ul></dd>
+</dl>
+<h4 className="name" id="removeEventListener"><span className="type-signature"></span>removeEventListener<span className="signature">(name, action)</span><span className="type-signature"></span></h4>
+<div className="description">
+Remove monetization or video element listener
+</div>
+<h5>Parameters:</h5>
+<table className="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th className="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td className="name"><code>name</code></td>
+<td className="type">
+<span className="param-type">string</span>
+</td>
+<td className="description last">Event name</td>
+</tr>
+<tr>
+<td className="name"><code>action</code></td>
+<td className="type">
+<span className="param-type">function</span>
+</td>
+<td className="description last">The action to execute on event.</td>
+</tr>
+</tbody>
+</table>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line71">line 71</a>
 </li></ul></dd>
 </dl>
 </article>

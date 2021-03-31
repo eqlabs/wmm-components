@@ -3,13 +3,17 @@ import { initAudioOrVideo, setClass, initCssClasses, unloadMedia } from './video
 import { setUrl, bindNotifications } from './common.js'
 
 /**
- * Creates a web monetized audio element. E.g.:
- * <pre>&lt;wmm-audio
- *   src="audio file source; if full URL is used, the recipe verification will use the same host for verification"
- *   paymentUrl="Payment pointer URL, can also include receipt service url"
- *   skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre>
+ * Creates a web monetized audio element &lt;wmm-audio&gt;<br/>
+ * Attributes:<br/>
+ * * src: audio file source; if full URL is used, the recipe verification will use the same host for verification.<br/>
+ * * paymentUrl: Payment pointer URL, can also include receipt service url.<br/>
+ * * skipVerification: if true, don't send receipts to backend for verifications.<br/>
  */
 class WmmAudio extends HTMLElement {
+  /**
+   * Synchronise wmm-audio elements *src* attribute
+   * with inner audio -elements *src* attrubute.
+   */
   get src() { return this.getAttribute('src') }
   set src(url) { setUrl(this, url) }
 
@@ -23,16 +27,20 @@ class WmmAudio extends HTMLElement {
     bindNotifications(this)
   }
 
-  // Element added to dom
+  /**
+   * Initializes monetization and styles when component is inserted into DOM.
+   */
   connectedCallback () {
     initMediaMonetization(this)
     initCssClasses(this)
     setClass(this, 'data-pending')
   }
 
-  // Element removed from dom
-  disconnectedCallback () {
-    console.log('audio removed from dom')
+  /**
+   * Stops monetization and disconnects the media stream
+   * when component is removed from DOM.
+   */
+   disconnectedCallback () {
     mediaRemoved(this)
     unloadMedia(this.shadowRoot.querySelector('audio'))
   }

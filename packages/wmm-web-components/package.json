@@ -1,5 +1,8 @@
 {
   "name": "wmm-web-components",
   "version": "1.0.0",
-  "description": "Web Monetized Multimefia Web Components"
+  "description": "Web Monetized Multimefia Web Components",
+  "dependencies": {
+    "wmm-utils": "file:../wmm-utils"
+  }
 }

@@ -22,6 +22,9 @@ title: WmmNotification.js
 This is a simple UI component for showing notifications of the monetization
 state. You can modify this component or replace it with your own UI component
 to give notifications that suit better the style of your application.
+This notification is positioned on top of the media element in case of
+video and audio components, and *inside*, at the bottom of the component
+in case of text.
 </div>
 <h5>Parameters:</h5>
 <table className="params">
@@ -59,7 +62,7 @@ to give notifications that suit better the style of your application.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmNotification.js.html">WmmNotification.js</a>, <a href="pathname:///jsdoc/WmmNotification.js.html#line10">line 10</a>
+<a href="pathname:///jsdoc/WmmNotification.js.html">WmmNotification.js</a>, <a href="pathname:///jsdoc/WmmNotification.js.html#line14">line 14</a>
 </li></ul></dd>
 </dl>
 </article>

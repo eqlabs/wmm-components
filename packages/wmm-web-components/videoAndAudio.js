@@ -1,7 +1,7 @@
 /** Utils for <wmm-video> and <wmm-audio> components. */
 
 /**
- * @param {object} wmm - wmm-video or wmm-audio component.
+ * @param {object} wmm - WmmAudio or WmmVideo instance.
  * @param {string} type - 'video' or 'audio'.
  */
 export function initAudioOrVideo(wmm, type) {
@@ -13,7 +13,7 @@ export function initAudioOrVideo(wmm, type) {
 
 /**
  * Init CSS of WmmVideo or WmmAudio component.
- * @param {object} wmm - 'video' or 'audio'
+ * @param {object} wmm - WmmAudio or WmmVideo instance.
  */
 export function initCssClasses(wmm) {
   wmm.addEventListener('progress', ev => setClass(wmm, 'data-ok'))

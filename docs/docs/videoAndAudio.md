@@ -33,7 +33,7 @@ title: videoAndAudio.js
 <td className="type">
 <span className="param-type">object</span>
 </td>
-<td className="description last">wmm-video or wmm-audio component.</td>
+<td className="description last">WmmAudio or WmmVideo instance.</td>
 </tr>
 <tr>
 <td className="name"><code>type</code></td>
@@ -69,7 +69,7 @@ Init CSS of WmmVideo or WmmAudio component.
 <td className="type">
 <span className="param-type">object</span>
 </td>
-<td className="description last">'video' or 'audio'</td>
+<td className="description last">WmmAudio or WmmVideo instance.</td>
 </tr>
 </tbody>
 </table>

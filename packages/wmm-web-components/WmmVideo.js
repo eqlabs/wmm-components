@@ -3,13 +3,17 @@ import { initAudioOrVideo, setClass, initCssClasses, unloadMedia } from './video
 import { setUrl, bindNotifications } from './common.js'
 
 /**
- * Creates a web monetized video element. E.g.:
- * <pre>&lt;wmm-video
- *   src="video file source; if full URL is used, the recipe verification will use the same host for verification"
- *   paymentUrl="Payment pointer URL, can also include receipt service url"
- *   skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre>
+ * Creates a web monetized video element. &lt;wmm-video&gt;<br/>
+ * Attributes:<br/>
+ * * src: video file source; if full URL is used, the recipe verification will use the same host for verification.<br/>
+ * * paymentUrl: Payment pointer URL, can also include receipt service url.<br/>
+ * * skipVerification: if true, don't send receipts to backend for verifications.<br/>
  */
 class WmmVideo extends HTMLElement {
+  /**
+   * Synchronise wmm-video elements *src* attribute
+   * with inner video -elements *src* attrubute.
+   */
   get src() { return this.getAttribute('src') }
   set src(url) { setUrl(this, url) }
 
@@ -23,19 +27,24 @@ class WmmVideo extends HTMLElement {
     bindNotifications(this)
   }
 
-  // Events
-
-  connectedCallback () { // element added to dom
+  /**
+   * Initializes monetization and styles
+   * when component is inserted into DOM.
+   */
+   connectedCallback () { // element added to dom
     initMediaMonetization(this)
     initCssClasses(this)
     setClass(this, 'data-pending')
   }
+
+  /**
+   * Stops monetization and disconnects the media stream
+   * when component is removed from DOM.
+   */
   disconnectedCallback () { // element removed from dom
     mediaRemoved(this)
     unloadMedia(this.shadowRoot.querySelector('video'))
   }
-
-  // Instance methods
 
   /**
    * Event listener for monetization and video events.
@@ -54,19 +63,18 @@ class WmmVideo extends HTMLElement {
     }
   }
 
-  removeEventListener(name, action) {
+  /**
+   * Remove monetization or video element listener
+   * @param {string} name - Event name
+   * @param {function} action - The action to execute on event.
+   */
+   removeEventListener(name, action) {
     if (monetizeEvents.has(name)) {
       super.removeEventListener(name, action)
     } else {
       this.media.removeEventListener(name, action)
     }
   }
-
-  // static get observedAttributes() { return ['src', 'paymentUrl'] }
-  // attributeChangedCallback (name, oldValue, newValue) {
-  //   console.log('video attr changed', name, oldValue, newValue)
-  // }
-
 }
 
 window.customElements.define('wmm-video', WmmVideo)

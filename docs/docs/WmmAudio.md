@@ -10,11 +10,11 @@ title: WmmAudio.js
 <section>
 <header>
 <h2><span className="attribs"><span className="type-signature"></span></span>WmmAudio<span className="signature">()</span><span className="type-signature"></span></h2>
-<div className="class-description">Creates a web monetized audio element. E.g.:
-<pre>&lt;wmm-audio
-src="audio file source; if full URL is used, the recipe verification will use the same host for verification"
-paymentUrl="Payment pointer URL, can also include receipt service url"
-skipVerification="if true, don't send receipts to backend for verifications"&gt;</pre></div>
+<div className="class-description">Creates a web monetized audio element &lt;wmm-audio&gt;<br/>
+Attributes:<br/>
+* src: audio file source; if full URL is used, the recipe verification will use the same host for verification.<br/>
+* paymentUrl: Payment pointer URL, can also include receipt service url.<br/>
+* skipVerification: if true, don't send receipts to backend for verifications.<br/></div>
 </header>
 <article>
 <div className="container-overview">
@@ -27,6 +27,18 @@ skipVerification="if true, don't send receipts to backend for verifications"&gt;
 </li></ul></dd>
 </dl>
 </div>
+<h3 className="subsection-title">Members</h3>
+<h4 className="name" id="src"><span className="type-signature"></span>src<span className="type-signature"></span></h4>
+<div className="description">
+Synchronise wmm-audio elements *src* attribute
+with inner audio -elements *src* attrubute.
+</div>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line17">line 17</a>
+</li></ul></dd>
+</dl>
 <h3 className="subsection-title">Methods</h3>
 <h4 className="name" id="addEventListener"><span className="type-signature"></span>addEventListener<span className="signature">(name, action)</span><span className="type-signature"></span></h4>
 <div className="description">
@@ -65,7 +77,28 @@ E.g. https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line49">line 49</a>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line57">line 57</a>
+</li></ul></dd>
+</dl>
+<h4 className="name" id="connectedCallback"><span className="type-signature"></span>connectedCallback<span className="signature">()</span><span className="type-signature"></span></h4>
+<div className="description">
+Initializes monetization and styles when component is inserted into DOM.
+</div>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line33">line 33</a>
+</li></ul></dd>
+</dl>
+<h4 className="name" id="disconnectedCallback"><span className="type-signature"></span>disconnectedCallback<span className="signature">()</span><span className="type-signature"></span></h4>
+<div className="description">
+Stops monetization and disconnects the media stream
+when component is removed from DOM.
+</div>
+<dl className="details">
+<dt className="tag-source">Source:</dt>
+<dd className="tag-source"><ul className="dummy"><li>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line43">line 43</a>
 </li></ul></dd>
 </dl>
 <h4 className="name" id="removeEventListener"><span className="type-signature"></span>removeEventListener<span className="signature">(name, action)</span><span className="type-signature"></span></h4>
@@ -101,7 +134,7 @@ Remove monetization or video element listener
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line62">line 62</a>
+<a href="pathname:///jsdoc/WmmAudio.js.html">WmmAudio.js</a>, <a href="pathname:///jsdoc/WmmAudio.js.html#line70">line 70</a>
 </li></ul></dd>
 </dl>
 </article>

@@ -3,6 +3,10 @@
  * state. You can modify this component or replace it with your own UI component
  * to give notifications that suit better the style of your application.
  *
+ * This notification is positioned on top of the media element in case of
+ * video and audio components, and *inside*, at the bottom of the component
+ * in case of text.
+ *
  * @param {Element} element
  * @param {string} html
  * @param {boolean} inside - adds notification inside the element as its last child
@@ -51,7 +55,10 @@ class WmmNotification extends HTMLElement {
     this.startAnimation()
   }
 
-  // methods
+  /**
+   * Make a repaeting face-in-and-out animation
+   * when the notification is visible.
+   */
   startAnimation() {
     const el = this.shadowRoot.querySelector('#text')
     el.animate([
@@ -65,8 +72,6 @@ class WmmNotification extends HTMLElement {
       iterations: Infinity
     })
   }
-
-  // "public" methods
 
   show(text) {
     this.shadowRoot.querySelector('#text').innerHTML = text

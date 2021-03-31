@@ -79,15 +79,15 @@ async function singeDocToMarkdown(jsFile) {
         docFile = moduleName+'.html'
 
   if (docsFiles.includes(docFile)) {
-    await jsdocToMarkdown(jsDocsPath+docFile, moduleName)
+    await jsdocToDocusaurusDoc(jsDocsPath+docFile, moduleName)
   } else if (docsFiles.includes('global.html')) {
-    await jsdocToMarkdown(jsDocsPath+'global.html', moduleName)
+    await jsdocToDocusaurusDoc(jsDocsPath+'global.html', moduleName)
   } else {
     console.log(jsFile + ' - no jsdocs found')
   }
 }
 
-async function jsdocToMarkdown(htmlDocPath, moduleName) {
+async function jsdocToDocusaurusDoc(htmlDocPath, moduleName) {
   const filePath = mdDocsPath+moduleName+'.md'
   var docStr = (await fs.readFile(htmlDocPath)).toString()
   docStr = `---

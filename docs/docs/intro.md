@@ -4,7 +4,7 @@ title: Introduction
 slug: /
 ---
 
-Web Monetization (WM) is a new technology allowing content creators to easily receive money from their digital goods. **[wmm-components](https://github.com/eqlabs/wmm-components)** includes a collection of components, that allow creators of media (whether video, audio or text) to start using WM with a simple installation and configuration file, without the need to dig too deeply in the weeds of a new technology and its evolving implementation details.
+Web Monetization (WM) is a new technology allowing content creators to easily receive money from their digital goods. **[wmm-components](https://github.com/eqlabs/wmm-components)** includes a **collection of components**, that allow creators of media (whether **video**, **audio** or **text**) to start receiving money with a simple installation and configuration file.
 
 ## Quickstart
 

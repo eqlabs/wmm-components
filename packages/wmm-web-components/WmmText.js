@@ -22,11 +22,13 @@ let observerOptions = {
 const allowHtmlInjection = true
 
 /**
- * Creates a monetized text component, that loads new paragraphs as the user scrolls the page.
- * <pre>&lt;wmm-text
- *   src="enpoint for retrieving the paragraphs"
- *   paymentUrl="Payment pointer URL, can also include receipt service url"
- *   media="The text can be also passed in media attribute, which don't require a backend at all, but is not secure as it is directly accessible from the browser"&gt;</pre>
+ * Creates a monetized text component &lt;wmm-text&gt;<br/>
+ * This component loads new paragraphs with scrolling<br/>
+ * (i.e. when there is room to show more text).<br/>
+ * Attributes:<br/>
+ * * src: enpoint for retrieving the paragraphs.<br/>
+ * * paymentUrl: Payment pointer URL, can also include receipt service url.<br/>
+ * * media: The text can be also passed in media attribute, which don't require a backend at all, but is not secure as it is directly accessible from the browser.<br/>
  */
 
 class WmmText extends HTMLElement {
@@ -39,13 +41,14 @@ class WmmText extends HTMLElement {
 
   }
 
-  // Element added to dom
+  /**
+   * Initializes component when inserted into DOM.
+   */
   connectedCallback () {
     this.innerHTML = `
       <style>
         wmm-text {
           display: block;
-          /* background: red;*/
         }
         wmm-text p {
           margin: 0;
@@ -59,31 +62,42 @@ class WmmText extends HTMLElement {
     this.startLoadingText()
   }
 
-  // Element removed from dom
+  /**
+   * Stops monetization when component is removed from DOM.
+   */
   disconnectedCallback () {
     mediaRemoved(this)
   }
 
+  /**
+   * Native event that fires when element attribute changes.
+   * Handle 'media' attribute when changed.
+   */
   attributeChangedCallback(name, oldValue, newValue) {
     if (name == 'media') this.parseMedia()
   }
 
+  /**
+   * Initialize frontend mode, if 'media' attribute exists.
+   * In frontend mode the text is parsed from 'media' attribute,
+   * and not loaded from the backend.
+   */
   parseMedia() {
     const media = this.getAttribute('media')
     this.setAttribute('skipVerification', !!media)
     this.paragraphs = media?.split(/\n\n+/g)
   }
 
-  // Methods
-
+  /**
+   * Creates an IntersectionObserver, that calls loadParagraph()
+   * when the last paragragh is visible on the screen.
+   */
   startLoadingText() {
     if (!this.parentElement)
       return // not added to dom yet
     if (this.observer) {
-      alert('TODO unload previous observer before starting a new one')
-      return
+      throw Error("observer already initialised in startLoadingText()")
     }
-    // this.shadowRoot.innerHTML = ''
     this.observer = new IntersectionObserver(entries => {
       var entry = entries[0] // only one entry (lastParagraph) expected
       if (entry.intersectionRatio < threshold) return
@@ -92,6 +106,12 @@ class WmmText extends HTMLElement {
     this.loadParagraph() // "load" first paragraph
   }
 
+  /**
+   * Load the next paragragh, add it to DOM and start observing when it becomes visible
+   * (which will cause another paragraph to be loaded).
+   * When paragrah is loaded from backend, 'paragraphLoading' and 'paragraphLoaded'
+   * events will be emitted.
+   */
   async loadParagraph() {
     this.lastParagraph && this.observer.unobserve(this.lastParagraph)
     let src = this.getAttribute('src')
