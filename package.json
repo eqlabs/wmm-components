@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "Web Monetization components",
   "scripts": {
-    "docs": "cd docs; npm run start",
     "exampleStreaming": "cd examples/audioAndVideo; npm install; node backend.js",
     "exampleText": "cd examples/text; npm install; node backend.js",
+    "docs": "cd docs; npm run start",
     "updateDocs": "node --trace-warnings updateDocs.js"
   },
   "repository": {

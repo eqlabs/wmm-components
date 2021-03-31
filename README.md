@@ -1,21 +1,14 @@
-web-monetized-multimedia - **A Web Component Library for Web Monetization**
+## A Web Component Library for Web Monetization**
 
-There are several ways for adding a simple **Web Monetization** for your website but building a more complex platform with a video-sharing platform or scientific document library  requires additional logic and more custom approach.
+Web Monetization (WM) is a new technology allowing content creators to easily receive money from their digital goods. **wmm-components** includes a collection of components, that allow creators of media (whether **video**, **audio** or **text**) to start receiving money with a simple installation and configuration file.
 
-*web-monetized-multimedia* project focus is to deliver a **Web Component Library** that enables to build multimedia content platform with new possibilities for monetizing various types of content.
+## [Documentation](https://eqlabs.github.io/wmm-components/)
+## Quickstart
 
-## Run development environment
+Run **video** and **audio** example:
 
-```
-npm run installGlobalDevDeps
-npm run dev
-```
+    npm run exampleStreaming
 
-## Run docs locally
+Run **text** example:
 
-```
-cd docs
-npm run start
-```
-
-Open browser at http://localhost:3000 and update docs by modifying files in /docs/docs etc.
+    npm run exampleText
