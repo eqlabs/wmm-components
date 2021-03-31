@@ -7,9 +7,9 @@
  * video and audio components, and *inside*, at the bottom of the component
  * in case of text.
  *
- * @param {Element} element
- * @param {string} html
- * @param {boolean} inside - adds notification inside the element as its last child
+ * @param {Element} element - the component in which the notification is attached.
+ * @param {string} html - the notification HTML that is shown.
+ * @param {boolean} inside - adds notification inside the element as its last child.
  */
 export function addNotificationTo(element, html, inside) {
   if (inside && element.lastElementChild && element.lastElementChild.clientHeight) {

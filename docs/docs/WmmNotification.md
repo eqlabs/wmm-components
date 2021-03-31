@@ -41,21 +41,21 @@ in case of text.
 <td className="type">
 <span className="param-type">Element</span>
 </td>
-<td className="description last"></td>
+<td className="description last">the component in which the notification is attached.</td>
 </tr>
 <tr>
 <td className="name"><code>html</code></td>
 <td className="type">
 <span className="param-type">string</span>
 </td>
-<td className="description last"></td>
+<td className="description last">the notification HTML that is shown.</td>
 </tr>
 <tr>
 <td className="name"><code>inside</code></td>
 <td className="type">
 <span className="param-type">boolean</span>
 </td>
-<td className="description last">adds notification inside the element as its last child</td>
+<td className="description last">adds notification inside the element as its last child.</td>
 </tr>
 </tbody>
 </table>
