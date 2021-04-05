@@ -1,0 +1,34 @@
+# For running the examples backends
+version: "3"
+
+services:
+  watchtower:
+    command: --label-enable --cleanup --interval 300
+    image: containrrr/watchtower
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    network_mode: none
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  audio_and_video:
+    image: eqlabs/wmm-backend
+    command: node audioAndVideo/backend.js
+    env_file:
+      - .env
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "3009:3009"
+    restart: unless-stopped
+  text:
+    image: eqlabs/wmm-backend
+    command: node text/backend.js
+    env_file:
+      - .env
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "3008:3008"
+    restart: unless-stopped
+
