@@ -14,6 +14,10 @@ WORKDIR /home/node/app/packages/wmm-web-components
 
 RUN npm install
 
+WORKDIR /home/node/app/docs
+
+RUN npm install
+
 WORKDIR /home/node/app/examples/audioAndVideo
 
 RUN npm install
