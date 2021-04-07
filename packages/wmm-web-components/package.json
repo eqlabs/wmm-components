@@ -1,8 +1,8 @@
 {
-  "name": "wmm-web-components",
+  "name": "@eqlabs/wmm-web-components",
   "version": "1.0.0",
-  "description": "Web Monetized Multimefia Web Components",
+  "description": "Web Monetized Multimedia Web Components",
   "dependencies": {
-    "wmm-utils": "file:../wmm-utils"
+    "wmm-utils": "@eqlabs/wmm-utils"
   }
 }
