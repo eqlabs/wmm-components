@@ -20,6 +20,7 @@
     "url": "https://github.com/eqlabs/wmm-components/issues"
   },
   "devDependencies": {
-    "jsdoc": "^3.6.6"
+    "jsdoc": "^3.6.6",
+    "lerna": "^4.0.0"
   }
 }
