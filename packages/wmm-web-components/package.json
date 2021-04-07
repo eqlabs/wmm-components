@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Web Monetized Multimedia Web Components",
   "dependencies": {
-    "wmm-utils": "@eqlabs/wmm-utils"
+    "wmm-utils": "^1.0.0"
   }
 }
