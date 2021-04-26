@@ -38,7 +38,7 @@ Handle 'media' attribute when changed.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line76">line 76</a>
+<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line80">line 80</a>
 </li></ul></dd>
 </dl>
 <h4 className="name" id="connectedCallback"><span className="type-signature"></span>connectedCallback<span className="signature">()</span><span className="type-signature"></span></h4>
@@ -48,7 +48,7 @@ Initializes component when inserted into DOM.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line47">line 47</a>
+<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line51">line 51</a>
 </li></ul></dd>
 </dl>
 <h4 className="name" id="disconnectedCallback"><span className="type-signature"></span>disconnectedCallback<span className="signature">()</span><span className="type-signature"></span></h4>
@@ -58,7 +58,7 @@ Stops monetization when component is removed from DOM.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line68">line 68</a>
+<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line72">line 72</a>
 </li></ul></dd>
 </dl>
 <h4 className="name" id="initNotifications"><span className="type-signature"></span>initNotifications<span className="signature">()</span><span className="type-signature"></span></h4>
@@ -69,7 +69,7 @@ Shown on 'paragraphPending' event and hidden on 'paragraphLoaded' event.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line155">line 155</a>
+<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line160">line 160</a>
 </li></ul></dd>
 </dl>
 <h4 className="name" id="loadParagraph"><span className="type-signature">(async) </span>loadParagraph<span className="signature">()</span><span className="type-signature"></span></h4>
@@ -82,7 +82,7 @@ events will be emitted.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line115">line 115</a>
+<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line119">line 119</a>
 </li></ul></dd>
 </dl>
 <h4 className="name" id="parseMedia"><span className="type-signature"></span>parseMedia<span className="signature">()</span><span className="type-signature"></span></h4>
@@ -94,7 +94,7 @@ and not loaded from the backend.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line85">line 85</a>
+<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line89">line 89</a>
 </li></ul></dd>
 </dl>
 <h4 className="name" id="startLoadingText"><span className="type-signature"></span>startLoadingText<span className="signature">()</span><span className="type-signature"></span></h4>
@@ -105,7 +105,7 @@ when the last paragragh is visible on the screen.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line95">line 95</a>
+<a href="pathname:///jsdoc/WmmText.js.html">WmmText.js</a>, <a href="pathname:///jsdoc/WmmText.js.html#line99">line 99</a>
 </li></ul></dd>
 </dl>
 </article>

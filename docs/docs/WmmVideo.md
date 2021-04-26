@@ -77,7 +77,7 @@ E.g. https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line58">line 58</a>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line59">line 59</a>
 </li></ul></dd>
 </dl>
 <h4 className="name" id="connectedCallback"><span className="type-signature"></span>connectedCallback<span className="signature">()</span><span className="type-signature"></span></h4>
@@ -99,7 +99,7 @@ when component is removed from DOM.
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line44">line 44</a>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line45">line 45</a>
 </li></ul></dd>
 </dl>
 <h4 className="name" id="removeEventListener"><span className="type-signature"></span>removeEventListener<span className="signature">(name, action)</span><span className="type-signature"></span></h4>
@@ -135,7 +135,7 @@ Remove monetization or video element listener
 <dl className="details">
 <dt className="tag-source">Source:</dt>
 <dd className="tag-source"><ul className="dummy"><li>
-<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line71">line 71</a>
+<a href="pathname:///jsdoc/WmmVideo.js.html">WmmVideo.js</a>, <a href="pathname:///jsdoc/WmmVideo.js.html#line72">line 72</a>
 </li></ul></dd>
 </dl>
 </article>
