@@ -8,7 +8,11 @@ Web Monetization (WM) is a new technology allowing content creators to easily re
 
 ## Quickstart
 
-To receive money from the people viewing the website, you need to first set up a [receiving wallet](/docs/wallet). After that simply follow the instructions based on the type of content you want to show on your website: [video](/docs/examples-video), [audio](/docs/examples-audio) or [text](/docs/examples-text).
+To receive money from the people viewing the website, you need to first set up a [receiving wallet](/docs/wallet).
+
+After that you can try out installing the media components [without backend](/docs/examples-without-backend) verification.
+
+For a full fledged server with payment verification and price of media included, look into [video](/docs/examples-video)-, [audio](/docs/examples-audio)- and [text](/docs/examples-text) examples.
 
 If you'd like to learn more on the technical specifics of how Web Monetization works, you can try out the [Monetization API demos](/docs/monetizationDemos).
 
@@ -18,7 +22,7 @@ If you'd like to learn more on the technical specifics of how Web Monetization w
 
 The packages are further divided into general [Utils](/docs/utils-readme) modules (for both backend and frontend code) and UI specific [Web Components](/docs/web-components-readme).
 
-## Basic idea
+## Media price
 
 **wmm-components** keep track of user specific [accounts](/docs/accounts) incrementing them according to [payments made by users](/docs/wallet-sending) and decrementing them according to the amount of [media](/docs/web-components-readme) consumed by users. When the balance reaches zero, the media is paused until new payments have been made.
 
