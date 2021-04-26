@@ -53,7 +53,6 @@ async function readMeta(mediaPath, config) {
             fileSize: stats.size,
             pricePerByte: pricePerByte(seconds, stats.size, config),
           }
-    console.log(file, meta)
     fileMeta.set(file, meta)
   })
   await Promise.all(allRead)

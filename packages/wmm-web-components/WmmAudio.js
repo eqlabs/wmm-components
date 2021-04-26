@@ -34,6 +34,7 @@ class WmmAudio extends HTMLElement {
     initMediaMonetization(this)
     initCssClasses(this)
     setClass(this, 'data-pending')
+    setUrl(this, this.src)
   }
 
   /**

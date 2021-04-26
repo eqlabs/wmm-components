@@ -32,8 +32,12 @@ const allowHtmlInjection = true
  */
 
 class WmmText extends HTMLElement {
+  
   get src() { return this.getAttribute('src') }
   set src(url) { setUrl(this, url) }
+
+  get paymentUrl() { return this.getAttribute('paymentUrl') }
+  set paymentUrl(url) { this.setAttribute('paymentUrl', url) }
 
   constructor () {
     super()
@@ -114,14 +118,6 @@ class WmmText extends HTMLElement {
    */
   async loadParagraph() {
     this.lastParagraph && this.observer.unobserve(this.lastParagraph)
-    let src = this.getAttribute('src')
-    if (!src)
-      throw Error("'src' property missing in <wmm-text>")
-    this.paragraph++
-    // add paragraph number to url
-    const urlAndParams = src.split('?')
-    urlAndParams[0] += '/' + this.paragraph
-    src = urlAndParams.join('?')
     // get paragraph
     var pText
     if (this.paragraphs) {
@@ -130,7 +126,16 @@ class WmmText extends HTMLElement {
       if (typeof pText != 'string')
         return // end of article reached
     } else {
-      // load from backend
+      // backend mode
+      let src = this.getAttribute('src')
+      if (!src)
+        throw Error("'src' property missing in <wmm-text>")
+      this.paragraph++
+      // add paragraph number to url
+      const urlAndParams = src.split('?')
+      urlAndParams[0] += '/' + this.paragraph
+      src = urlAndParams.join('?')
+      // start loading
       this.dispatchEvent(new CustomEvent('paragraphLoading'))
       const res = await fetch(src)
       this.dispatchEvent(new CustomEvent('paragraphLoaded'))

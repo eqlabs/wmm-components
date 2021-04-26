@@ -10,7 +10,7 @@ import { addNotificationTo } from './WmmNotification.js'
  * @param {string} url - URL or
  */
 export function setUrl(wmm, url) {
-  if (url == wmm.getAttribute('src')) return
+  if (url == wmm.media?.src) return
   // add userId as url parameter
   url = new URL(url, location.origin)
   if (!url.searchParams.has('userId'))
