@@ -5,6 +5,12 @@
  * and scoped locally.
  */
 
+body {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
@@ -22,6 +28,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.button,
+.button--outline,
+.button--secondary,
+.button--lg {
+  border-color: black;
 }
 
 .features {
