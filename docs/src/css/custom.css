@@ -18,6 +18,7 @@
   --ifm-hero-background-color: white;
   --ifm-hero-text-color: black;
   --ifm-background-color: white;
+  --well-background: #f1f1f1;
 }
 
 html[data-theme="dark"] {
@@ -25,6 +26,7 @@ html[data-theme="dark"] {
   --ifm-hero-background-color: #1a1a1a;
   --ifm-hero-text-color: white;
   --ifm-background-color: #1a1a1a;
+  --well-background: #000;
 }
 
 .navbar__link {
@@ -56,8 +58,31 @@ h3 {
 }
 
 @media screen and (min-width: 966px) {
-  font-size: 2.8rem;
-  line-height: 3.7rem;
+  .hero__subtitle {
+    font-size: 2.8rem;
+    line-height: 3.7rem;
+  }
+}
+
+.get-started-steps {
+  text-align: left;
+  background: var(--well-background);
+  padding: 1.2rem 1rem 1.5rem 3rem;
+  font-family: monospace;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+.get-started-steps li {
+  margin-bottom: 0.5rem;
+}
+@media screen and (min-width: 966px) {
+  .get-started-steps {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
 }
 
 article a,
@@ -73,7 +98,12 @@ article a:hover {
 }
 .logo-text {
   fill: var(--ifm-color-primary);
-  stroke: var(--ifm-color-primary);
+}
+
+.eq-logo {
+  display: inline-block;
+  margin-left: 0.5rem;
+  vertical-align: middle;
 }
 
 .button,
@@ -86,4 +116,27 @@ article a:hover {
   margin: 0.5rem;
   border-color: var(--ifm-color-primary);
   box-shadow: 0 3px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+footer h2 {
+  font-weight: normal;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+footer h3 {
+  font-size: 1.3rem;
+  text-decoration: underline;
+}
+
+.footer-content {
+  margin: 3rem 0;
+}
+.community-logo {
+  margin-bottom: 1.5rem;
+}
+
+.subfooter {
+  border-top: 1px solid var(--ifm-color-primary);
+  padding: 1rem 0;
+  margin-top: 1rem;
 }

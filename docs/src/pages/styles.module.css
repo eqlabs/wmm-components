@@ -51,6 +51,13 @@ body {
   font-size: 1.6rem;
 }
 
+.footerButtons {
+  margin-bottom: 2rem;
+}
+.footerButton {
+  font-size: 1.2rem;
+}
+
 .getStarted svg {
   margin-left: 0.5rem;
 }
@@ -63,8 +70,16 @@ body {
 
 .feature h3,
 .feature p {
-  max-width: 20rem;
+  max-width: 32rem;
   margin: 0 auto 1rem;
+}
+
+@media screen and (min-width: 966px) {
+  .feature h3,
+  .feature p {
+    max-width: 20rem;
+    margin: 0 auto 1rem;
+  }
 }
 
 .features {
@@ -89,4 +104,8 @@ body {
     margin-bottom: 1.8rem;
     margin-top: 0;
   }
+}
+
+.subfooter {
+  border-top: 1px solid red;
 }
