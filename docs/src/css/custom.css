@@ -15,8 +15,21 @@
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
+  --ifm-hero-background-color: white;
+  --ifm-hero-text-color: black;
+  --ifm-background-color: white;
 }
 
+html[data-theme="dark"] {
+  --ifm-color-primary: white;
+  --ifm-hero-background-color: #1a1a1a;
+  --ifm-hero-text-color: white;
+  --ifm-background-color: #1a1a1a;
+}
+
+.navbar__link {
+  text-decoration: underline;
+}
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
@@ -24,13 +37,27 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
+.navbar {
+  border-bottom: 1px solid var(--ifm-color-primary);
+  box-shadow: none;
+  background-color: var(--ifm-background-color);
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 1.6rem;
+}
+
 .hero__subtitle {
   text-transform: uppercase;
 
-  font-size: 2.8rem;
-  line-height: 3.7rem;
   margin: 2rem auto;
   max-width: 42rem;
+}
+
+@media screen and (min-width: 966px) {
+  font-size: 2.8rem;
+  line-height: 3.7rem;
 }
 
 article a,
@@ -41,6 +68,14 @@ article a:hover {
   text-decoration: none;
 }
 
+.button-arrow {
+  stroke: var(--ifm-color-primary);
+}
+.logo-text {
+  fill: var(--ifm-color-primary);
+  stroke: var(--ifm-color-primary);
+}
+
 .button,
 .button--outline,
 .button--secondary,
@@ -49,5 +84,6 @@ article a:hover {
   font-weight: 400;
   padding: 0.8rem 1.2rem;
   margin: 0.5rem;
+  border-color: var(--ifm-color-primary);
   box-shadow: 0 3px 0px 0px rgba(0, 0, 0, 0.2);
 }
