@@ -34,9 +34,11 @@ body {
   background: var(--ifm-background-color);
   margin-top: -1rem;
   position: absolute;
+  width: 80%;
   margin-left: 50%;
   transform: translateX(-50%);
   padding: 0 2rem;
+  max-width: 280px;
   font-weight: normal;
   font-size: 1.5rem;
 }
@@ -44,6 +46,10 @@ body {
 @media screen and (min-width: 966px) {
   .lineHeader {
     margin: 4rem 0 5rem;
+  }
+  .lineHeaderText {
+    width: auto;
+    max-width: none;
   }
 }
 
@@ -66,6 +72,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .feature h3,
