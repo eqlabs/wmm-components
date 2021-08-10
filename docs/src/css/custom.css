@@ -7,7 +7,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary: black;
   --ifm-color-primary-dark: rgb(33, 175, 144);
   --ifm-color-primary-darker: rgb(31, 165, 136);
   --ifm-color-primary-darkest: rgb(26, 136, 112);
@@ -15,8 +15,23 @@
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
+  --ifm-hero-background-color: white;
+  --ifm-hero-text-color: black;
+  --ifm-background-color: white;
+  --well-background: #f1f1f1;
 }
 
+html[data-theme="dark"] {
+  --ifm-color-primary: white;
+  --ifm-hero-background-color: #1a1a1a;
+  --ifm-hero-text-color: white;
+  --ifm-background-color: #1a1a1a;
+  --well-background: #000;
+}
+
+.navbar__link {
+  text-decoration: underline;
+}
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
@@ -24,7 +39,110 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
-article a, article a:visited, article a:active, article a:hover {
+.navbar {
+  border-bottom: 1px solid var(--ifm-color-primary);
+  box-shadow: none;
+  background-color: var(--ifm-background-color);
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 1.6rem;
+}
+
+.hero__subtitle {
+  text-transform: uppercase;
+
+  margin: 2rem auto;
+  max-width: 42rem;
+}
+
+@media screen and (min-width: 966px) {
+  .hero__subtitle {
+    font-size: 2.8rem;
+    line-height: 3.7rem;
+  }
+}
+
+.get-started-steps {
+  text-align: left;
+  background: var(--well-background);
+  padding: 1.2rem 1rem 1.5rem 3rem;
+  font-family: monospace;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+.get-started-steps li {
+  margin-bottom: 0.5rem;
+}
+@media screen and (min-width: 966px) {
+  .get-started-steps {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+}
+
+article a,
+article a:visited,
+article a:active,
+article a:hover {
   color: #0095dd;
   text-decoration: none;
+}
+
+.button-arrow {
+  stroke: var(--ifm-color-primary);
+}
+.logo-text {
+  fill: var(--ifm-color-primary);
+}
+
+.eq-logo {
+  display: inline-block;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.button,
+.button--outline,
+.button--secondary,
+.button--lg {
+  border-radius: 0;
+  font-weight: 400;
+  padding: 0.8rem 1.2rem;
+  margin: 0.5rem;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 3px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+footer h2 {
+  font-weight: normal;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+footer h3 {
+  font-size: 1.3rem;
+  text-decoration: underline;
+}
+
+.footer-content {
+  margin: 3rem 0;
+}
+.community-logo {
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 965px) {
+  .community-item:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+.subfooter {
+  border-top: 1px solid var(--ifm-color-primary);
+  padding: 1rem 0;
+  margin-top: 1rem;
 }
