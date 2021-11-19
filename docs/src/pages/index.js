@@ -1,11 +1,11 @@
-import React from "react";
-import clsx from "clsx";
-import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import styles from "./styles.module.css";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import clsx from "clsx";
+import React from "react";
 import "./jsDoc.css";
+import styles from "./styles.module.css";
 
 const features = [
   {
@@ -275,9 +275,9 @@ function Home() {
                 "button button--outline button--secondary button--lg",
                 styles.getStarted
               )}
-              to={useBaseUrl("docs/")}
+              to="https://github.com/eqlabs/wmm-components"
             >
-              Github{" "}
+              GitHub{" "}
               <svg
                 width="21"
                 height="21"
@@ -378,9 +378,9 @@ function Home() {
                   "button button--outline button--secondary",
                   styles.footerButton
                 )}
-                to={useBaseUrl("docs/")}
+                to="https://github.com/eqlabs/wmm-components"
               >
-                Github{" "}
+                GitHub{" "}
                 <svg
                   width="14"
                   height="14"
