@@ -1,0 +1,25 @@
+<svg width="320" height="220" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="23" y="32" width="216" height="121" fill="#0CD3FF"/>
+<circle cx="238.5" cy="145.5" r="56" fill="white" stroke="black" stroke-width="3"/>
+<path d="M207 128L227 137.5L215.5 162.5H234V177C244.667 177.667 267.1 175.7 271.5 162.5" stroke="black" stroke-width="3" stroke-linecap="square"/>
+<circle cx="250.5" cy="131.5" r="6.5" fill="black"/>
+<rect x="66.5" y="116.5" width="92" height="59" fill="white" stroke="black" stroke-width="3"/>
+<path d="M134 139H140.5C143.261 139 145.5 141.239 145.5 144V150.5C145.5 153.261 143.261 155.5 140.5 155.5H134" stroke="black" stroke-width="3" stroke-linecap="square"/>
+<circle cx="112.5" cy="146.5" r="22" stroke="black" stroke-width="3"/>
+<circle cx="113" cy="146" r="11.5" stroke="black" stroke-width="3"/>
+<path d="M98.364 108.636L91 116H135L127.636 108.636C125.948 106.948 123.659 106 121.272 106H104.728C102.341 106 100.052 106.948 98.364 108.636Z" fill="white" stroke="black" stroke-width="3" stroke-linecap="square"/>
+<path d="M205 19H174.5V57.5" stroke="white" stroke-width="3" stroke-linecap="square"/>
+<circle cx="165.5" cy="58.5" r="10.5" fill="white"/>
+<path d="M202 16H171.5V54.5" stroke="black" stroke-width="3" stroke-linecap="square"/>
+<circle cx="162.5" cy="55.5" r="10.5" fill="black"/>
+<path d="M235 18H204.5V56.5" stroke="white" stroke-width="3" stroke-linecap="square"/>
+<circle cx="195.5" cy="57.5" r="10.5" fill="white"/>
+<path d="M232 16H201.5V54.5" stroke="black" stroke-width="3" stroke-linecap="square"/>
+<circle cx="192.5" cy="55.5" r="10.5" fill="black"/>
+<path d="M48 68.7368L56.5 47L65 68.7368L56.5 89L48 68.7368Z" fill="white"/>
+<path d="M48 68.7368L56.5 47L65 68.7368L56.5 89L48 68.7368Z" fill="white"/>
+<path d="M80 82.4912L85.5 68L91 82.4912L85.5 96L80 82.4912Z" fill="white"/>
+<path d="M80 82.4912L85.5 68L91 82.4912L85.5 96L80 82.4912Z" fill="white"/>
+<path d="M43 113.351L47 103L51 113.351L47 123L43 113.351Z" fill="white"/>
+<path d="M43 113.351L47 103L51 113.351L47 123L43 113.351Z" fill="white"/>
+</svg>

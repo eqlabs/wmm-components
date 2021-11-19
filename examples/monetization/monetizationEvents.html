@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="monetization" content="$ilp.uphold.com/4m2d2Xn4EUyk">
+  </head>
+
+  <body style="background:white">
+    <h1>Web Monetization events</h1>
+    <p>
+      Use this page to test Web Monetization events.
+      You can use Web Monetization Simulator
+      (<a href="https://addons.mozilla.org/en-GB/firefox/addon/web-monetization-simulator/">Firefox</a>,
+      <a href="https://chrome.google.com/webstore/detail/web-monetization-simulato/nkomliabffjdnjdmchafafbkmhlofgga/related">Chrome</a>)
+      to generate the events.
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      <span id="status"></span>
+    </p>
+
+    <h3>Events:</h3>
+    <div id="events"></div>
+
+    <script type="application/javascript">
+      function updateStatus(){
+        document.querySelector('#status').textContent = document.monetization.state
+      }
+      const elEvents = document.querySelector('#events')
+      function logEvent(text){
+        const pre = document.createElement('pre')
+        pre.textContent = text
+        elEvents.insertBefore(pre, elEvents.firstChild)
+      }
+      (function(){
+        if (!document.monetization) {
+          return alert("Web Monetization not supported")
+        }
+        updateStatus();
+        ['monetizationstart', 'monetizationprogress', 'monetizationpending', 'monetizationstop'].forEach((evName) => {
+          document.monetization.addEventListener(evName, (ev) => {
+            console.log('event: ', evName)
+            updateStatus()
+            logEvent(evName + ': ' + JSON.stringify(ev.detail))
+          })
+        })
+      })()
+    </script>
+  </body>
+</html>

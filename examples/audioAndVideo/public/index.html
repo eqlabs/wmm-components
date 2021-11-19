@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css"></link>
+  </head>
+
+  <body>
+
+    <h1>Monetized media</h1>
+    <div id="media-links">
+      <a href="#">ElephantsDream.mp4</a>
+      <a href="#">webmonetization.mp3</a>
+    </div>
+    <div id="media-container"></div>
+    <p>Monetization backend logs:</p>
+    <div id="logs"></div>
+
+    <script type="module">
+      import {showMedia} from "/client.js"
+      document.querySelectorAll('#media-links a').forEach((el) => {
+        el.addEventListener('click', () => showMedia(el.textContent))
+      })
+    </script>
+
+    <style>
+      body {
+        margin: 1em;
+      }
+      #media-links a {
+        margin-right: 1em;
+      }
+      #media-container {
+        margin: 1em 0 2em;
+      }
+      wmm-video, wmm-audio {
+        display: inline-block;
+        position: relative;
+      }
+      .data-ok:after, .data-stalled:after, .data-pending:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        border-radius: 1em;
+        top: 1em;
+        right: 1em;
+      }
+      wmm-video.data-ok:after      { background-color: green; }
+      wmm-video.data-stalled:after { background-color: red; }
+      wmm-video.data-pending:after { background-color: gray; }
+      #logs {
+        overflow-y: auto;
+        height: 4em;
+        min-width: 20em;
+        background: rgba(0,0,0,0.2);
+        padding: 0.6em 1em 0;
+        box-sizing: border-box;
+      }
+      #logs pre {
+        padding: 0;
+        background: none;
+        line-height: 1em;
+        font-size: 0.9em;
+      }
+    </style>
+  </body>
+</html>

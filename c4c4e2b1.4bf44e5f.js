@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[30],{97:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Testing","permalink":"/wmm-components/blog/2020/12/02/testing"},{"title":"Hello","permalink":"/wmm-components/blog/hello-world"}]}')}}]);

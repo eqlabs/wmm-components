@@ -1,0 +1,11 @@
+<h1>Web Monetization</h1>
+
+A JavaScript browser API that allows the creation of a payment stream from the user agent to the website.
+
+<h2>Motivation</h2>
+
+The ability to transfer money has been a long-standing omission from the web platform. As a result, the web suffers from a flood of advertising and corrupt business models. Web Monetization provides an open, native, efficient, and automatic way to compensate creators, pay for API calls, and support crucial web infrastructure.
+
+<h2>Why Now?</h2>
+
+Until recently, there hasn't been an open, neutral protocol for transferring money. <a href="https://interledger.org/">Interledger</a> provides a simple, ledger-agnostic, and currency-agnostic method for the transfer of small quantities of money. This opens up the possibility for streaming money, which makes Web Monetization possible for the first time.

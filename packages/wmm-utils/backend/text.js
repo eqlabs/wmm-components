@@ -1,0 +1,39 @@
+import fs from 'fs'
+
+/**
+ * Text file content and word count as paragrapshs.
+ * filename => {
+ *   paragraphs: [paragraphs],
+ *   wordCount: [words per paragraph]
+ * }
+ */
+export const texts = {}
+
+/**
+ * Reads all text files in *mediaPath* and caches their *paragraphs*
+ * and *wordCount*s.
+ * @param {string} mediaPath path to folder storing text files.
+ * @returns array of filenames found in mediaPath folder.
+ */
+export async function initTexts(mediaPath) {
+  const dir = await fs.promises.readdir(mediaPath)
+  for (const file of dir) {
+    const cont = await fs.promises.readFile(mediaPath+file)
+    parseTextFile(file, await cont.toString())
+    parseWordCount(file)
+  }
+  return dir
+}
+
+function parseTextFile(file, text) {
+  texts[file] = {
+    paragraphs: text.split(/\n\n+/g)
+  }
+}
+
+function parseWordCount(file) {
+  texts[file].wordCount = []
+  texts[file].paragraphs.forEach((p, ind) => {
+    texts[file].wordCount[ind] = p.split(/ +/).length
+  })
+}

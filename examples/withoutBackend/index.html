@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--link rel="stylesheet" href="/styles.css"></link-->
+  </head>
+
+  <body>
+    <h1>Video</h1>
+    <wmm-video skipVerification="true"
+               src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+               paymentUrl="$ilp.uphold.com/4m2d2Xn4EUyk"></wmm-video>
+
+    <h1>Audio</h1>
+    <wmm-audio src="https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/g3gRKNimL5zM4DNEF766ketx0xnM2O2x6ZfotD27.mp3"
+               skipVerification="true"
+               paymentUrl="$ilp.uphold.com/4m2d2Xn4EUyk"></wmm-audio>
+
+    <h1>Text</h1>
+    <wmm-text media="diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;diipa daapa&#10;&#10;"
+              skipVerification="true"
+              paymentUrl="$ilp.uphold.com/4m2d2Xn4EUyk"></wmm-text>
+    <script type="module">
+      import "./node_modules/@eqlabs/wmm-web-components/WmmVideo.js"
+      import "./node_modules/@eqlabs/wmm-web-components/WmmAudio.js"
+      import "./node_modules/@eqlabs/wmm-web-components/WmmText.js"
+    </script>
+  </body>
+</html>

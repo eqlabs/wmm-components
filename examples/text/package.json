@@ -1,0 +1,19 @@
+{
+  "name": "monetize-video",
+  "main": "backend.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend.js",
+    "dev": "nodemon --inspect -w . -w ../../packages/wmm-utils backend.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "koa": "^2.13.0",
+    "koa-body-parser": "^1.1.2",
+    "koa-mount": "^4.0.0",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "wmm-utils": "file:../../packages/wmm-utils"
+  }
+}

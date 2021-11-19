@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css"></link>
+    <style type="text/css">
+      html, body {
+        /* margin: 0; */
+        height: 100%;
+        /* min-height: 100vh; */
+      }
+      body {
+        margin: 0;
+      }
+      #mediaLinks {
+        box-sizing: content-box;
+        display: flex;
+        max-width: 27em;
+        padding: 1em 0 1em calc(50vw - 27em/2);
+      }
+      #mediaLinks a {
+        display: block;
+        text-align: center;
+        flex-grow: 1;
+        border-right: 1px solid lightgray;
+      }
+      #mediaLinks a:last-child {
+        border: none;
+      }
+      #footer {
+        text-align: center;
+        padding: 6em;
+        margin-top: 2em;
+        background: hsl(0, 0%, 70%);
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="mediaLinks"></div>
+    <div id="mediaContent"></div>
+    <div id="footer">
+      Footer with some height, to make sure paragraph loading works even with content below it.
+    </div>
+
+    <script type="module" src="./client.js"></script>
+  </body>
+</html>
